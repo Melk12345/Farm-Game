@@ -1,0 +1,127 @@
+body {
+    font-family: 'Roboto Mono';
+    user-select: none;
+    color: #FAEDC6;
+    background-color: #817464;
+}
+
+.table-formatting {
+    font-family: 'Roboto Mono';
+    width: 90%;
+    font-size: 20px;
+    margin: 0 auto;
+	text-align: center;
+    border-spacing: 0 4px;
+}
+
+tbody tr:nth-child(odd) {
+    height: 45px;
+    background: #2f4858;
+}
+
+tbody tr:nth-child(even) {
+    height: 45px;
+    background: #5C4033;
+}
+
+#plot-table tr td:last-child {
+    width: 0px;
+}
+
+#header-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#header-container p {
+    font-family: 'Roboto Mono';
+    font-size: 25px;
+    margin: 20px 200px 20px 200px;
+}
+
+#menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 0px 25px 0px;
+}
+
+.menu-buttons {
+    font-size: 25px;
+    color: black;
+    background-color: silver;
+    width: 175px;
+    height: 50px;
+    margin-left: 25px;
+    margin-right: 25px;
+    font-family: 'Roboto Mono';
+    border-width: 4px;
+    border-color: black;
+    transition-duration: 0.5s;
+}
+
+.menu-buttons:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+}
+
+.plot-buttons {
+    color: black;
+    font-size: 25px;
+    width: 150px;
+    height: 45px;
+    font-family: 'Roboto Mono';
+    background-color: silver;
+    border-width: 4px;
+    border-color: black;
+}
+
+.plot-buttons:hover {
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+}
+
+.crop-buttons {
+    color: black;
+    font-size: 25px;
+    width: 150px;
+    height: 45px;
+    font-family: 'Roboto Mono';
+    background-color: silver;
+    border-width: 4px;
+    border-color: black;
+}
+
+.crop-buttons:hover {
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+}
+
+#settings-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-buttons {
+    text-align: center;
+    font-size: 25px;
+    width: 175px;
+    height: 50px;
+    margin: 50px 25px 50px 100px;
+    font-family: 'Roboto Mono';
+    color: black;
+    background-color: silver;
+    border-width: 4px;
+    border-color: black;
+}
+
+.settings-buttons:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+}
