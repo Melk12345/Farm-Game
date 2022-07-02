@@ -22,4 +22,5 @@ function openMenu(clickedMenu, clickedMenuButton) {
     activeMenuButton = clickedMenuButton;
     activeMenuButton.style.borderColor = 'Orange';
     activeMenu.style.display = "block";
+    console.log(activeMenu);
 }

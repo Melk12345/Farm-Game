@@ -16,7 +16,7 @@
     <div id="header-container">
         <p>Level <span id="player-level-text">1</span> - <span id="player-xp-text">15</span>/<span id="xp-req-text">100</span> XP</p>
         <p><span id="player-gold-text">1.00e6</span> gold</p>
-        <p>Crop Selected: Blueberries Gold: 2 XP:1 Cost: 0 Harvest Time: 30s</p>
+        <p>Crop Selected: Blueberries Gold: 2 XP:1 Cost: 0 Harvest Time: 10s</p>
     </div>
     <div id="menu-container">
         <button onclick="openMenu(farmMenuContainerElement, farmMenuButtonElement)" class="menu-buttons" id="farm-menu-button">Farm</button>
@@ -32,6 +32,7 @@
                     <th>Gold</th>
                     <th>XP</th>
                     <th>Harvest Time</th>
+                    <th>Wilt Time</th>
                     <th>Cost to Plant</th>
                 </tr>
             </thead>
@@ -42,6 +43,7 @@
                     <td><span id="plot1-gold">--</span></td>
                     <td><span id="plot1-xp">--</span></td>
                     <td><span id="plot1-harvest-time">--</span></td>
+                    <td><span id="plot1-wilt-time">--</span></td>
                     <td><span id="plot1-cost-to-plant">--</span></td>
                     <td><button onclick="plantCrop()" class="plot-buttons" id="plant1-button">Plant</button></td>
                     <td><button onclick="harvestCrop()" class="plot-buttons" id="harvest1-button">Harvest</button></td>
@@ -53,6 +55,7 @@
                     <td><span id="plot2-gold">--</span></td>
                     <td><span id="plot2-xp">--</span></td>
                     <td><span id="plot2-harvest-time">--</span></td>
+                    <td><span id="plot2-wilt-time">--</span></td>
                     <td><span id="plot2-cost-to-plant">--</span></td>
                     <td><button onclick="plantCrop()" class="plot-buttons" id="plant2-button">Plant</button></td>
                     <td><button onclick="harvestCrop()" class="plot-buttons" id="harvest2-button">Harvest</button></td>
@@ -70,6 +73,7 @@
                     <th>Gold</th>
                     <th>XP</th>
                     <th>Harvest Time</th>
+                    <th>Wilt Time</th>
                     <th>Cost to Plant</th>
                 </tr>
             </thead>
@@ -80,8 +84,9 @@
                     <td><span id="crop1-gold">--</span></td>
                     <td><span id="crop1-xp">--</span></td>
                     <td><span id="crop1-harvest-time">--</span></td>
+                    <td><span id="crop1-wilt-time">--</span></td>
                     <td><span id="crop1-cost-to-plant">--</span></td>
-                    <td><button onclick="selectCrop()" class="crop-buttons" id="plant1-button">Select</button></td>
+                    <td><button onclick="selectCrop(0)" class="crop-buttons" id="plant1-button">Select</button></td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -89,15 +94,16 @@
                     <td><span id="crop2-gold">--</span></td>
                     <td><span id="crop2-xp">--</span></td>
                     <td><span id="crop2-harvest-time">--</span></td>
+                    <td><span id="crop2-wilt-time">--</span></td>
                     <td><span id="crop2-cost-to-plant">--</span></td>
-                    <td><button onclick="selectCrop()" class="crop-buttons" id="plant2-button">Select</button></td>
+                    <td><button onclick="selectCrop(1)" class="crop-buttons" id="plant2-button">Select</button></td>
                 </tr>
     </div>
     <div id="settings-container">
         <button onclick="saveData()" class="settings-buttons" id="save-data-button">Save Data</button>
         <button onclick="resetData()" class="settings-buttons" id="reset-data-button">Reset Data</button>
-        <button onclick="importData()" class="settings-buttons" id="import-data-button">Import</button>
-        <button onclick="exportData()" class="settings-buttons" id="export-data-button">Export</button>
+        <button onclick="importData()" class="settings-buttons" id="import-data-button">Import Data</button>
+        <button onclick="exportData()" class="settings-buttons" id="export-data-button">Export Data</button>
     </div>
 </body>
 </html>

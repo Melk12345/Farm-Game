@@ -101,17 +101,11 @@ tbody tr:nth-child(even) {
     transition-duration: 0.5s;
 }
 
-#settings-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .settings-buttons {
     text-align: center;
-    font-size: 25px;
-    width: 175px;
-    height: 50px;
+    font-size: 30px;
+    width: 225px;
+    height: 100px;
     margin: 50px 25px 50px 100px;
     font-family: 'Roboto Mono';
     color: black;

@@ -1,4 +1,4 @@
-const saveName = '';
+const saveName = 'FarmGame';
 
 function autoSaveData() {
     data.time = Date.now();
