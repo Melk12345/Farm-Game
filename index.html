@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
+    <script src="src/helper.js" defer></script>
     <script src="src/data.js" defer></script>
     <script src="src/ui.js" defer></script>
-    <script src="src/helper.js" defer></script>
+    <script src="src/main.js" defer></script>
     <script src="src/settings.js" defer></script>
     <title>Game Name</title>
 </head>
 <body>
     <div id="header-container">
-        <p>Level <span id="player-level-text">1</span> - <span id="player-xp-text">15</span>/<span id="xp-req-text">100</span> XP</p>
-        <p><span id="player-gold-text">1.00e6</span> gold</p>
+        <p>Level <span id="level-text"></span> - <span id="xp-text"></span>/<span id="xp-req-text"></span> XP</p>
+        <p><span id="gold-text"></span> gold</p>
         <p>Crop Selected: Blueberries Gold: 2 XP:1 Cost: 0 Harvest Time: 10s</p>
     </div>
     <div id="menu-container">

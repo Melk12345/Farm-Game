@@ -1,7 +1,7 @@
-function format(amount) {
+function format(amount, numFloatingDigits) {
     let power = Math.floor(Math.log10(amount));
     let mantissa = amount/Math.pow(10, power);
-    if (power < 6) return formatWithCommas(amount, 2);
+    if (power < 6) return formatWithCommas(amount, numFloatingDigits);
     else return mantissa.toFixed(2) + "e" + power;
 }
 

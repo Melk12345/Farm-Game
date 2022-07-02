@@ -1,3 +1,10 @@
+const data = {
+    gold: 0,
+    xp: 0,
+    xpReq: 10,
+    level: 0
+}
+
 const crops = [{
     name: "--",
     cost: "--",
