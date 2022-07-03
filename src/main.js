@@ -16,30 +16,10 @@ function updateLevelAndGoldInfo() {
     goldTextElement.innerHTML = format(data.gold, 0);
 }
 
-function updateCropSelectedInfo() {
-    let harvestTime = " ";
-    let totalSeconds = crops[data.selectedCrop].harvestTime;
-
-    let days = totalSeconds / (24 * 60 * 60 * 1000);
-    let hours = (days % 1) * 24;
-    let minutes = (hours % 1) * 60;
-    let seconds = (minutes % 1) * 60;
-
-    if (crops[data.selectedCrop].harvestTime < 60000) harvestTime += `${format(seconds, 0)}s`;
-    else if (crops[data.selectedCrop].harvestTime < 3600000) harvestTime += `${format(minutes, 0)}m ${format(seconds, 0)}s`;
-    else if (crops[data.selectedCrop].harvestTime < 86400000) harvestTime += `${format(hours, 0)}h ${format(minutes, 0)}m ${format(seconds, 0)}s`;
-    else if (crops[data.selectedCrop].harvestTime >= 86400000) harvestTime += `${format(days, 0)}d ${format(hours, 0)}h ${format(minutes, 0)}m ${format(seconds, 0)}s`;
-
-    headerCropSelectedTextElement.innerHTML = crops[data.selectedCrop].name;
-    headerGoldTextElement.innerHTML = `+${crops[data.selectedCrop].gold}`;
-    headerXpTextElement.innerHTML = `+${crops[data.selectedCrop].xp}`;
-    headerCostTextElement.innerHTML = `${crops[data.selectedCrop].cost} gold`;
-    headerHarvestTimeTextElement.innerHTML = harvestTime;
-}
-
 function load() {
     updateLevelAndGoldInfo();
-    updateCropSelectedInfo();
+    updateHeaderCropSelectedInfo();
+    updateSelectedCropColor();
     updateUnlockNextPlotInfo();
     updateUnlockNextCropInfo();
     updateCropInfo();

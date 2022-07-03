@@ -1,16 +1,35 @@
-const crop1ButtonElement = document.getElementById("crop1-button");
-const crop2ButtonElement = document.getElementById("crop2-button");
-
-let activeCrop = crop1ButtonElement;
-crop1ButtonElement.style.borderColor = 'Orange';
-crop2ButtonElement.style.borderColor = 'Black';
-
-function selectCropAndUpdateColor(cropButtonElement, cropIndex) {
+function selectCrop(cropIndex) {
     data.selectedCrop = cropIndex;
-    updateCropSelectedInfo();
-    activeCrop.style.borderColor = 'Black';
-    activeCrop = cropButtonElement;
-    activeCrop.style.borderColor = 'Orange';
+    updateHeaderCropSelectedInfo();
+    updateSelectedCropColor();
+}
+
+function updateSelectedCropColor() {
+    for (let i = 0; i < crops.length; i++) {
+        document.getElementById("crop" + (i + 1) + "-button").style.borderColor = 'Black';
+    }
+    document.getElementById("crop" + data.selectedCrop + "-button").style.borderColor = 'Orange';
+}
+
+function updateHeaderCropSelectedInfo() {
+    let harvestTime = " ";
+    let totalSeconds = crops[data.selectedCrop].harvestTime;
+
+    let days = totalSeconds / (24 * 60 * 60 * 1000);
+    let hours = (days % 1) * 24;
+    let minutes = (hours % 1) * 60;
+    let seconds = (minutes % 1) * 60;
+
+    if (crops[data.selectedCrop].harvestTime < 60000) harvestTime += `${format(seconds, 0)}s`;
+    else if (crops[data.selectedCrop].harvestTime < 3600000) harvestTime += `${format(minutes, 0)}m ${format(seconds, 0)}s`;
+    else if (crops[data.selectedCrop].harvestTime < 86400000) harvestTime += `${format(hours, 0)}h ${format(minutes, 0)}m ${format(seconds, 0)}s`;
+    else if (crops[data.selectedCrop].harvestTime >= 86400000) harvestTime += `${format(days, 0)}d ${format(hours, 0)}h ${format(minutes, 0)}m ${format(seconds, 0)}s`;
+
+    headerCropSelectedTextElement.innerHTML = crops[data.selectedCrop].name;
+    headerGoldTextElement.innerHTML = `+${crops[data.selectedCrop].gold}`;
+    headerXpTextElement.innerHTML = `+${crops[data.selectedCrop].xp}`;
+    headerCostTextElement.innerHTML = `${crops[data.selectedCrop].cost} gold`;
+    headerHarvestTimeTextElement.innerHTML = harvestTime;
 }
 
 function updateCropInfo() {
