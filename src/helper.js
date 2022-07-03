@@ -16,10 +16,10 @@ function formatHarvestTime(totalSeconds) {
     let minutes = (hours % 1) * 60;
     let seconds = (minutes % 1) * 60;
 
-    if (totalSeconds.harvestTime < 60000) harvestTime += `${format(seconds, 0)}s`;
-    else if (totalSeconds.harvestTime < 3600000) harvestTime += `${format(minutes, 0)}m ${format(seconds, 0)}s`;
-    else if (totalSeconds.harvestTime < 86400000) harvestTime += `${format(hours, 0)}h ${format(minutes, 0)}m ${format(seconds, 0)}s`;
-    else if (totalSeconds.harvestTime >= 86400000) harvestTime += `${format(days, 0)}d ${format(hours, 0)}h ${format(minutes, 0)}m ${format(seconds, 0)}s`;
+    if (totalSeconds < 60000) harvestTime += `${Math.floor(seconds)}s`;
+    else if (totalSeconds < 3600000) harvestTime += `${Math.floor(minutes)}m ${Math.floor(seconds)}s`;
+    else if (totalSeconds < 86400000) harvestTime += `${Math.floor(hours)}h ${Math.floor(minutes)}m ${Math.floor(seconds)}s`;
+    else if (totalSeconds >= 86400000) harvestTime += `${Math.floor(days)}d ${Math.floor(hours)}h ${Math.floor(minutes)}m ${Math.floor(seconds)}s`;
 
     return harvestTime;
 }
