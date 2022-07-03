@@ -17,19 +17,15 @@ function updateSelectedCropColor() {
     document.getElementById("crop" + data.selectedCrop + "-button").style.borderColor = 'Orange';
 }
 
+const headerCropSelectedTextElement = document.getElementById("header-cropSelected-text");
+const headerGoldTextElement = document.getElementById("header-gold-text");
+const headerXpTextElement = document.getElementById("header-xp-text");
+const headerCostTextElement = document.getElementById("header-cost-text");
+const headerHarvestTimeTextElement = document.getElementById("header-harvestTime-text");
+
 function updateHeaderCropSelectedInfo() {
-    let harvestTime = " ";
     let totalSeconds = crops[data.selectedCrop].harvestTime;
-
-    let days = totalSeconds / (24 * 60 * 60 * 1000);
-    let hours = (days % 1) * 24;
-    let minutes = (hours % 1) * 60;
-    let seconds = (minutes % 1) * 60;
-
-    if (crops[data.selectedCrop].harvestTime < 60000) harvestTime += `${format(seconds, 0)}s`;
-    else if (crops[data.selectedCrop].harvestTime < 3600000) harvestTime += `${format(minutes, 0)}m ${format(seconds, 0)}s`;
-    else if (crops[data.selectedCrop].harvestTime < 86400000) harvestTime += `${format(hours, 0)}h ${format(minutes, 0)}m ${format(seconds, 0)}s`;
-    else if (crops[data.selectedCrop].harvestTime >= 86400000) harvestTime += `${format(days, 0)}d ${format(hours, 0)}h ${format(minutes, 0)}m ${format(seconds, 0)}s`;
+    let harvestTime = formatHarvestTime(totalSeconds);
 
     headerCropSelectedTextElement.innerHTML = crops[data.selectedCrop].name;
     headerGoldTextElement.innerHTML = `+${crops[data.selectedCrop].gold}`;
@@ -38,21 +34,11 @@ function updateHeaderCropSelectedInfo() {
     headerHarvestTimeTextElement.innerHTML = harvestTime;
 }
 
-function updateHeaderCropInfo() {
+function updateTableCropInfo() {
     for (let i = 1; i < crops.length; i++) {
         if (data.cropsRevealed[i - 1] === true) {
-            let harvestTime = " ";
             let totalSeconds = crops[i].harvestTime;
-
-            let days = totalSeconds / (24 * 60 * 60 * 1000);
-            let hours = (days % 1) * 24;
-            let minutes = (hours % 1) * 60;
-            let seconds = (minutes % 1) * 60;
-
-            if (crops[i].harvestTime < 60000) harvestTime += `${format(seconds, 0)}s`;
-            else if (crops[i].harvestTime < 3600000) harvestTime += `${format(minutes, 0)}m ${format(seconds, 0)}s`;
-            else if (crops[i].harvestTime < 86400000) harvestTime += `${format(hours, 0)}h ${format(minutes, 0)}m ${format(seconds, 0)}s`;
-            else if (crops[i].harvestTime >= 86400000) harvestTime += `${format(days, 0)}d ${format(hours, 0)}h ${format(minutes, 0)}m ${format(seconds, 0)}s`;
+            let harvestTime = formatHarvestTime(totalSeconds);
 
             document.getElementById("crop" + i + "-name").innerHTML = crops[i].name;
             document.getElementById("crop" + i + "-gold").innerHTML = `+${crops[i].gold}`;
@@ -117,18 +103,8 @@ function updateUnlockNextCropColor() {
 
 function updateCropInfo() {
     for (let i = 1; i < data.cropsRevealed.length; i++) {
-        let harvestTime = " ";
         let totalSeconds = crops[i].harvestTime;
-
-        let days = totalSeconds / (24 * 60 * 60 * 1000);
-        let hours = (days % 1) * 24;
-        let minutes = (hours % 1) * 60;
-        let seconds = (minutes % 1) * 60;
-
-        if (crops[i].harvestTime < 60000) harvestTime += `${format(seconds, 0)}s`;
-        else if (crops[i].harvestTime < 3600000) harvestTime += `${format(minutes, 0)}m ${format(seconds, 0)}s`;
-        else if (crops[i].harvestTime < 86400000) harvestTime += `${format(hours, 0)}h ${format(minutes, 0)}m ${format(seconds, 0)}s`;
-        else if (crops[i].harvestTime >= 86400000) harvestTime += `${format(days, 0)}d ${format(hours, 0)}h ${format(minutes, 0)}m ${format(seconds, 0)}s`;
+        let harvestTime = formatHarvestTime(totalSeconds);
 
         document.getElementById("crop" + i + "-name").innerHTML = crops[i].name;
         document.getElementById("crop" + i + "-gold").innerHTML = `+${crops[i].gold}`;
