@@ -2,28 +2,27 @@ const data = {
     gold: 0,
     xp: 0,
     xpReq: 10,
-    level: 0
+    level: 0,
+    selectedCrop: 1,
+    nextPlotLevelRequirement: 2
 }
 
 const crops = [{
     name: "--",
-    cost: "--",
     gold: "--",
     xp: "--",
-    harvestTime: "--", 
-    wiltTime: "--", 
-
+    cost: "--",
+    harvestTime: "--",
+}, {
     name: "Blueberries",
-    cost: 0,
     gold: 2,
     xp: 1,
+    cost: 0,
     harvestTime: 10000, // 10s
-    wiltTime: 300000, // 5m
-
+}, {
     name: "Raspberries",
-    cost: 2,
     gold: 8,
     xp: 8,
+    cost: 2,
     harvestTime: 300000, // 5m
-    wiltTime: 600000, // 10m
 }];
