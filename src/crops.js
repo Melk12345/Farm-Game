@@ -34,10 +34,10 @@ function updateHeaderCropSelectedInfo() {
     headerHarvestTimeTextElement.innerHTML = harvestTime;
 }
 
-function updateTableCropInfo() {
+function loadCropInfo() {
     for (let i = 1; i < crops.length; i++) {
         if (data.cropsRevealed[i - 1] === true) {
-            let totalSeconds = crops[i].harvestTime;
+            let totalSeconds =  crops[i].harvestTime;
             let harvestTime = formatHarvestTime(totalSeconds);
 
             document.getElementById("crop" + i + "-name").innerHTML = crops[i].name;

@@ -16,7 +16,7 @@ function load() {
     updateSelectedCropColor();
     updateUnlockNextPlotInfo();
     updateUnlockNextCropInfo();
-    updateTableCropInfo();
+    loadCropInfo();
     revealPlots();
     revealCrops();
     updateUnlockNextPlotColor();
