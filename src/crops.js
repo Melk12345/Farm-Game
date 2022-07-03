@@ -1,6 +1,16 @@
-function selectCrop(cropIndex) {
+const crop1ButtonElement = document.getElementById("crop1-button");
+const crop2ButtonElement = document.getElementById("crop2-button");
+
+let activeCrop = crop1ButtonElement;
+crop1ButtonElement.style.borderColor = 'Orange';
+crop2ButtonElement.style.borderColor = 'Black';
+
+function selectCropAndUpdateColor(cropButtonElement, cropIndex) {
     data.selectedCrop = cropIndex;
     updateCropSelectedInfo();
+    activeCrop.style.borderColor = 'Black';
+    activeCrop = cropButtonElement;
+    activeCrop.style.borderColor = 'Orange';
 }
 
 function updateCropInfo() {

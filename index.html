@@ -10,6 +10,7 @@
     <script src="src/data.js" defer></script>
     <script src="src/ui.js" defer></script>
     <script src="src/main.js" defer></script>
+    <script src="src/farm.js" defer></script>
     <script src="src/crops.js" defer></script>
     <script src="src/settings.js" defer></script>
     <title>Game Name</title>
@@ -64,18 +65,18 @@
                     <td><span id="plot1-xp">--</span></td>
                     <td><span id="plot1-cost">--</span></td>
                     <td><span id="plot1-harvest-time">--</span></td>
-                    <td><button onclick="plantCrop()" class="plot-buttons" id="plant1-button">Plant</button></td>
+                    <td><button onclick="plantCrop()" class="plot-buttons" id="plot1-button">Plant</button></td>
                     <td><button onclick="harvestCrop()" class="plot-buttons" id="harvest1-button">Harvest</button></td>
                     <td><button onclick="emptyPlot()" class="plot-buttons" id="empty1-button">Empty</button></td>
                 </tr>
-                <tr>
+                <tr id="plot2-row">
                     <td>2</td>
                     <td><span id="plot2-name">--</span></td>
                     <td><span id="plot2-gold">--</span></td>
                     <td><span id="plot2-xp">--</span></td>
                     <td><span id="plot2-cost">--</span></td>
                     <td><span id="plot2-harvest-time">--</span></td>
-                    <td><button onclick="plantCrop()" class="plot-buttons" id="plant2-button">Plant</button></td>
+                    <td><button onclick="plantCrop()" class="plot-buttons" id="plot2-button">Plant</button></td>
                     <td><button onclick="harvestCrop()" class="plot-buttons" id="harvest2-button">Harvest</button></td>
                     <td><button onclick="emptyPlot()" class="plot-buttons" id="empty2-button">Empty</button></td>
                 </tr>
@@ -108,19 +109,25 @@
                     <td><span id="crop1-xp"></span></td>
                     <td><span id="crop1-cost"></span></td>
                     <td><span id="crop1-harvestTime"></span></td>
-                    <td><button onclick="selectCrop(1)" class="crop-buttons" id="plant1-button">Select</button></td>
+                    <td><button onclick="selectCropAndUpdateColor(crop1ButtonElement, 1)" class="crop-buttons" id="crop1-button">Select</button></td>
                 </tr>
-                <tr>
+                <tr id="crop2-row">
                     <td>2</td>
                     <td><span id="crop2-name"></span></td>
                     <td><span id="crop2-gold"></span></td>
                     <td><span id="crop2-xp"></span></td>
                     <td><span id="crop2-cost"></span></td>
                     <td><span id="crop2-harvestTime"></span></td>
-                    <td><button onclick="selectCrop(2)" class="crop-buttons" id="plant2-button">Select</button></td>
+                    <td><button onclick="selectCropAndUpdateColor(crop2ButtonElement, 2)" class="crop-buttons" id="crop2-button">Select</button></td>
                 </tr>
             </tbody>
         </table>
+        <div class="footer-container">
+            <button onclick="unlockNextCrop()" class="footer-buttons" id="unlock-crops-button">
+                Unlock Next Crop<br>
+                Req: Lv. <span id="next-crop-level-requirement-text"></span>
+            </button>
+        </div>
     </div>
     <div id="settings-container">
         <button onclick="saveData()" class="settings-buttons" id="save-data-button">Save Data</button>

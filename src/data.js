@@ -2,9 +2,10 @@ const data = {
     gold: 0,
     xp: 0,
     xpReq: 10,
-    level: 0,
+    level: 1,
     selectedCrop: 1,
-    nextPlotLevelRequirement: 2
+    nextPlotLevelRequirement: 2,
+    nextCropLevelRequirement: 3
 }
 
 const crops = [{

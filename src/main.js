@@ -37,16 +37,11 @@ function updateCropSelectedInfo() {
     headerHarvestTimeTextElement.innerHTML = harvestTime;
 }
 
-const nextPlotLevelRequirementTextElement = document.getElementById("next-plot-level-requirement-text");
-
-function updateFooterInfo() {
-    nextPlotLevelRequirementTextElement.innerHTML = data.nextPlotLevelRequirement;
-}
-
 function load() {
     updateLevelAndGoldInfo();
     updateCropSelectedInfo();
-    updateFooterInfo();
+    updateUnlockNextPlotInfo();
+    updateUnlockNextCropInfo();
     updateCropInfo();
 }
 
