@@ -1,3 +1,9 @@
+const nextCropLevelRequirementTextElement = document.getElementById("next-crop-level-requirement-text");
+
+function updateUnlockNextCropInfo() {
+    nextCropLevelRequirementTextElement.innerHTML = data.nextCropLevelRequirement;
+}
+
 function selectCrop(cropIndex) {
     data.selectedCrop = cropIndex;
     updateHeaderCropSelectedInfo();
@@ -5,8 +11,8 @@ function selectCrop(cropIndex) {
 }
 
 function updateSelectedCropColor() {
-    for (let i = 0; i < crops.length; i++) {
-        document.getElementById("crop" + (i + 1) + "-button").style.borderColor = 'Black';
+    for (let i = 1; i < crops.length; i++) {
+        document.getElementById("crop" + i + "-button").style.borderColor = 'Black';
     }
     document.getElementById("crop" + data.selectedCrop + "-button").style.borderColor = 'Orange';
 }
