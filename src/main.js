@@ -22,7 +22,12 @@ function load() {
     updateSelectedCropColor();
     updateUnlockNextPlotInfo();
     updateUnlockNextCropInfo();
-    updateCropInfo();
+    updateHeaderCropInfo();
+    revealPlots();
+    revealCrops();
+    updateUnlockNextPlotColor();
+    updateUnlockNextCropColor();
+    selectCrop(data.selectedCrop)
 }
 
 window.onload = function() {
