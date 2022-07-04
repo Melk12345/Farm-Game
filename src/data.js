@@ -1,4 +1,4 @@
-const crops = [{
+let crops = [{
     name: "--",
     cost: "--",
     gold: "--",
@@ -57,7 +57,7 @@ const crops = [{
 let basePlotLevelRequirement = 2;
 let baseCropLevelRequirement = 3;
 
-const data = {
+let data = {
     gold: 0,
     xp: 0,
     xpReq: 10,
@@ -69,4 +69,5 @@ const data = {
     cropsRevealed: [true, false, false, false, false, false, false, false, false],
     plotInUse: [false, false, false, false, false, false, false, false],
     cropIDInPlot: [crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0]],
+    plotHarvestTime: [0, 0, 0, 0, 0, 0, 0, 0],
 }

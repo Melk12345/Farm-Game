@@ -11,7 +11,7 @@ function saveData() {
     alert("Game saved!");
 }
 
-function loadData() {
+function loadSavedData() {
     let savedGame = JSON.parse(localStorage.getItem(saveName));
     if (savedGame !== null) data = savedGame;
 }
@@ -19,7 +19,22 @@ function loadData() {
 function resetData() {
     if (!confirm("Are you sure you want to reset your data? ALL of your progress will be lost and you will need to start over!")) return;
 
-    // update functions
+    data.gold = 0;
+    data.xp = 0;
+    data.xpReq = 10;
+    data.level = 1;
+    data.selectedCrop = 1;
+    data.nextPlotLevelRequirement = basePlotLevelRequirement;
+    data.nextCropLevelRequirement = baseCropLevelRequirement;
+    data.plotsRevealed = [true, false, false, false, false, false, false, false, false];
+    data.cropsRevealed = [true, false, false, false, false, false, false, false, false];
+    data.plotInUse = [false, false, false, false, false, false, false, false];
+    data.cropIDInPlot = [crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0]];
+    data.plotHarvestTime = [0, 0, 0, 0, 0, 0, 0, 0];
+
+    data.time = Date.now();
+    window.localStorage.setItem(saveName, JSON.stringify(data));
+    load();
 }
 
 function importData() {
@@ -31,7 +46,7 @@ function importData() {
     data = JSON.parse((atob(importedData)));
     window.localStorage.setItem(saveName, JSON.stringify(data));
 
-    // update functions
+    load();
 }
 
 function exportData() {

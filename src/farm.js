@@ -76,10 +76,6 @@ function updatePlotInfo() {
     }
 }
 
-/*
-
-*/
-
 function increaseLevel() {
     data.level += 100;
     updateLevelAndGoldInfo();
@@ -88,13 +84,17 @@ function increaseLevel() {
 }
 
 function plantCrop() {
-    
+
+    // we turn everything to selectedCrop and start the timer
 }
 
 function harvestCrop() {
-    
+
+    // we collect the gold and exp and turn everything to "--"
 }
 
 function emptyPlot() {
-    
+
+    // we refund the player 50% of the gold and turn everything to "--"
+
 }

@@ -11,6 +11,7 @@ function updateLevelAndGoldInfo() {
 }
 
 function load() {
+    loadSavedData();
     updateLevelAndGoldInfo();
     updateHeaderCropSelectedInfo();
     updateSelectedCropColor();
