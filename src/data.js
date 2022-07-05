@@ -69,5 +69,6 @@ let data = {
     cropsRevealed: [true, false, false, false, false, false, false, false, false],
     plotInUse: [false, false, false, false, false, false, false, false],
     cropIDInPlot: [crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0]],
-    plotHarvestTime: [0, 0, 0, 0, 0, 0, 0, 0],
+    plotHarvestTime: [-1, -1, -1, -1, -1, -1, -1, -1],
+    harvestable: [false, false, false, false, false, false, false, false],
 }

@@ -83,18 +83,53 @@ function increaseLevel() {
     updateUnlockNextCropColor();
 }
 
+function updatePlantCropButtonColor() {
+    for (let i = 1; i < data.plotsRevealed.length; i++) {
+        if (data.plotHarvestTime[i - 1] > 0 || data.gold > data.crops[data.selectedCrop].cost) {
+            document.getElementById("plant" + i + "-button").style.borderColor = '#b33939';
+            document.getElementById("plant" + i + "-button").style.cursor = "not-allowed";
+            document.getElementById("plant" + i + "-button").disabled = true;
+        } else if (data.plotHarvestTime[i - 1] === -1){
+            document.getElementById("plant" + i + "-button").style.borderColor = 'Green';
+            document.getElementById("plant" + i + "-button").style.cursor = "pointer";
+            document.getElementById("plant" + i + "-button").disabled = false;
+        }
+    }
+}
+
+function updateHarvesetCropButtonColor() {
+    if (data.level < data.nextPlotLevelRequirement) {
+        document.getElementById("unlock-plots-button").style.borderColor = '#b33939';
+        document.getElementById("unlock-plots-button").style.cursor = "not-allowed";
+        document.getElementById("unlock-plots-button").disabled = true;
+    } else {
+        document.getElementById("unlock-plots-button").style.borderColor = 'Green';
+        document.getElementById("unlock-plots-button").style.cursor = "pointer";
+        document.getElementById("unlock-plots-button").disabled = false;
+    }
+}
+
+function updateEmptyPlotButtonColor() {
+    if (data.level < data.nextPlotLevelRequirement) {
+        document.getElementById("unlock-plots-button").style.borderColor = '#b33939';
+        document.getElementById("unlock-plots-button").style.cursor = "not-allowed";
+        document.getElementById("unlock-plots-button").disabled = true;
+    } else {
+        document.getElementById("unlock-plots-button").style.borderColor = 'Green';
+        document.getElementById("unlock-plots-button").style.cursor = "pointer";
+        document.getElementById("unlock-plots-button").disabled = false;
+    }
+}
+
 function plantCrop() {
 
-    // we turn everything to selectedCrop and start the timer
 }
 
 function harvestCrop() {
-
-    // we collect the gold and exp and turn everything to "--"
+    
 }
 
 function emptyPlot() {
 
-    // we refund the player 50% of the gold and turn everything to "--"
 
 }

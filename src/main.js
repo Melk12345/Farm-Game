@@ -10,6 +10,15 @@ function updateLevelAndGoldInfo() {
     goldTextElement.innerHTML = format(data.gold, 0);
 }
 
+function mainLoop() {
+    // const now = Date.now();
+    // const deltaTime = (now - lastUpdate) / 1000;
+    // lastUpdate = now;
+    updatePlantCropButtonColor();
+    // updateHarvesetCropButtonColor();
+
+}
+
 function load() {
     loadSavedData();
     updateLevelAndGoldInfo();
@@ -22,9 +31,12 @@ function load() {
     revealCrops();
     updateUnlockNextPlotColor();
     updateUnlockNextCropColor();
-    selectCrop(data.selectedCrop)
+    selectCrop(data.selectedCrop);
 }
 
 window.onload = function() {
     load();
 }
+
+setInterval(mainLoop, 50);
+// setInterval(autoSaveData, 15000); // saves every 15s
