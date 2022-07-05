@@ -14,7 +14,7 @@ let lastUpdate = Date.now();
 
 function mainLoop() {
     const now = Date.now();
-    const deltaTime = (now - lastUpdate) / 1000;
+    const deltaTime = (now - lastUpdate);
     lastUpdate = now;
     updatePlantCropButtonColor();
     updateHarvestCropButtonColor();
