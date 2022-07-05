@@ -67,11 +67,11 @@ function updatePlotInfo() {
             let totalSeconds = data.cropIDInPlot[i - 1];
             let harvestTime = formatHarvestTime(totalSeconds);
 
-            document.getElementById("crop" + i + "-name").innerHTML = data.cropIDInPlot[i - 1].name;
-            document.getElementById("crop" + i + "-gold").innerHTML = `+${data.cropIDInPlot[i - 1].gold}`;
-            document.getElementById("crop" + i + "-xp").innerHTML = `+${data.cropIDInPlot[i - 1].xp}`;
-            document.getElementById("crop" + i + "-cost").innerHTML = `${data.cropIDInPlot[i - 1].cost} gold`
-            document.getElementById("crop" + i + "-harvestTime").innerHTML = harvestTime;
+            document.getElementById("plot" + i + "-name").innerHTML = data.cropIDInPlot[i - 1].name;
+            document.getElementById("plot" + i + "-gold").innerHTML = `+${data.cropIDInPlot[i - 1].gold}`;
+            document.getElementById("plot" + i + "-xp").innerHTML = `+${data.cropIDInPlot[i - 1].xp}`;
+            document.getElementById("plot" + i + "-cost").innerHTML = `${data.cropIDInPlot[i - 1].cost} gold`
+            document.getElementById("plot" + i + "-harvestTime").innerHTML = harvestTime;
         }
     }
 }
@@ -81,6 +81,11 @@ function increaseLevel() {
     updateLevelAndGoldInfo();
     updateUnlockNextPlotColor();
     updateUnlockNextCropColor();
+}
+
+function increaseGold() {
+    data.gold += 1000;
+    updateLevelAndGoldInfo();
 }
 
 function updatePlantCropButtonColor() {
@@ -125,15 +130,57 @@ function updateEmptyPlotButtonColor() {
     }
 }
 
-function plantCrop() {
-
+function plantCrop(plotIndex) {
+    data.gold -= crops[data.selectedCrop].cost;
+    updateLevelAndGoldInfo();
+    data.cropIDInPlot[plotIndex - 1] = crops[data.selectedCrop];
+    data.plotHarvestTime[plotIndex - 1] = data.cropIDInPlot[plotIndex - 1].harvestTime;
+    let totalSeconds = data.cropIDInPlot[plotIndex - 1].harvestTime;
+    let harvestTime = formatHarvestTime(totalSeconds);
+    document.getElementById("plot" + plotIndex + "-name").innerHTML = data.cropIDInPlot[plotIndex - 1].name;
+    document.getElementById("plot" + plotIndex + "-gold").innerHTML = `+${data.cropIDInPlot[plotIndex - 1].gold}`;
+    document.getElementById("plot" + plotIndex + "-xp").innerHTML = `+${data.cropIDInPlot[plotIndex - 1].xp}`;
+    document.getElementById("plot" + plotIndex + "-cost").innerHTML = `${data.cropIDInPlot[plotIndex - 1].cost} gold`
+    document.getElementById("plot" + plotIndex + "-harvestTime").innerHTML = harvestTime;
+    updatePlotInfo();
+    console.log(harvestTime);
 }
 
-function harvestCrop() {
-    
+function harvestCrop(plotIndex, cropIDInPlot) {
+    data.gold += cropIDInPlot[plotIndex - 1].gold;
+    data.xp += cropIDInPlot[plotIndex - 1].xp;
+    if (data.xp >= data.xpReq) {
+        data.xp -= data.xpReq;
+        data.level++;
+        data.xpReq = baseXPReq * Math.pow(1.15, data.level);
+        updatePlotInfo();
+    }
+    data.harvestable[plotIndex - 1] = false;
+    updatePlotInfo();
 }
 
-function emptyPlot() {
+function emptyPlot(plotIndex) {
+    data.cropIDInPlot[plotIndex - 1] = crops[0];
+    document.getElementById("plot" + plotIndex + "-name").innerHTML = data.cropIDInPlot[plotIndex - 1].name;
+    document.getElementById("plot" + plotIndex + "-gold").innerHTML = `+${data.cropIDInPlot[plotIndex - 1].gold}`;
+    document.getElementById("plot" + plotIndex + "-xp").innerHTML = `+${data.cropIDInPlot[plotIndex - 1].xp}`;
+    document.getElementById("plot" + plotIndex + "-cost").innerHTML = `${data.cropIDInPlot[plotIndex - 1].cost} gold`
+    document.getElementById("plot" + plotIndex + "-harvestTime").innerHTML = `${data.cropIDInPlot[plotIndex - 1].harvestTime}`;
+    data.harvestable[plotIndex - 1] = false;
+    data.plotHarvestTime[plotIndex - 1] = -10;
+    updatePlotInfo();
+}
 
+function calculateHarvestTime(deltaTime) {
+    for (let i = 0; i < data.plotsRevealed.length; i++) {
+        if (data.plotsRevealed[i] === false || data.plotHarvestTime[i] === -10) break;
 
+        if (data.plotHarvestTime[i] <= 0) {
+            data.plotHarvestTime[i] = 0;
+            updatePlotInfo();
+        } else {
+            data.plotHarvestTime[i] -= deltaTime;
+            updatePlotInfo();
+        }
+    }
 }

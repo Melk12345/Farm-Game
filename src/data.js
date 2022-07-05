@@ -54,21 +54,21 @@ let crops = [{
     harvestTime: 28800000, // 8h
 }];
 
+let baseXPReq = 10;
 let basePlotLevelRequirement = 2;
 let baseCropLevelRequirement = 3;
 
 let data = {
     gold: 0,
     xp: 0,
-    xpReq: 10,
+    xpReq: baseXPReq,
     level: 1,
     selectedCrop: 1,
     nextPlotLevelRequirement: basePlotLevelRequirement,
     nextCropLevelRequirement: baseCropLevelRequirement,
     plotsRevealed: [true, false, false, false, false, false, false, false, false],
     cropsRevealed: [true, false, false, false, false, false, false, false, false],
-    plotInUse: [false, false, false, false, false, false, false, false],
     cropIDInPlot: [crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0]],
-    plotHarvestTime: [-1, -1, -1, -1, -1, -1, -1, -1],
+    plotHarvestTime: [-10, -10, -10, -10, -10, -10, -10, -10],
     harvestable: [false, false, false, false, false, false, false, false],
 }

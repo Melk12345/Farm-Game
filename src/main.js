@@ -10,14 +10,16 @@ function updateLevelAndGoldInfo() {
     goldTextElement.innerHTML = format(data.gold, 0);
 }
 
+let lastUpdate = Date.now();
+
 function mainLoop() {
-    // const now = Date.now();
-    // const deltaTime = (now - lastUpdate) / 1000;
-    // lastUpdate = now;
+    const now = Date.now();
+    const deltaTime = (now - lastUpdate) / 1000;
+    lastUpdate = now;
     updatePlantCropButtonColor();
     updateHarvestCropButtonColor();
     updateEmptyPlotButtonColor();
-
+    calculateHarvestTime(deltaTime);
 }
 
 function load() {
