@@ -30,7 +30,8 @@ function resetData() {
     data.cropsRevealed = [true, false, false, false, false, false, false, false, false];
     data.plotInUse = [false, false, false, false, false, false, false, false];
     data.cropIDInPlot = [crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0]];
-    data.plotHarvestTime = [0, 0, 0, 0, 0, 0, 0, 0];
+    data.plotHarvestTime = [-1, -1, -1, -1, -1, -1, -1, -1];
+    data.harvestable = [false, false, false, false, false, false, false, false];
 
     data.time = Date.now();
     window.localStorage.setItem(saveName, JSON.stringify(data));

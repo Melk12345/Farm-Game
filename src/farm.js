@@ -85,11 +85,11 @@ function increaseLevel() {
 
 function updatePlantCropButtonColor() {
     for (let i = 1; i < data.plotsRevealed.length; i++) {
-        if (data.plotHarvestTime[i - 1] > 0 || data.gold > data.crops[data.selectedCrop].cost) {
+        if (data.plotHarvestTime[i - 1] > 0 || data.gold < crops[data.selectedCrop].cost) {
             document.getElementById("plant" + i + "-button").style.borderColor = '#b33939';
             document.getElementById("plant" + i + "-button").style.cursor = "not-allowed";
             document.getElementById("plant" + i + "-button").disabled = true;
-        } else if (data.plotHarvestTime[i - 1] === -1){
+        } else {
             document.getElementById("plant" + i + "-button").style.borderColor = 'Green';
             document.getElementById("plant" + i + "-button").style.cursor = "pointer";
             document.getElementById("plant" + i + "-button").disabled = false;
@@ -97,27 +97,31 @@ function updatePlantCropButtonColor() {
     }
 }
 
-function updateHarvesetCropButtonColor() {
-    if (data.level < data.nextPlotLevelRequirement) {
-        document.getElementById("unlock-plots-button").style.borderColor = '#b33939';
-        document.getElementById("unlock-plots-button").style.cursor = "not-allowed";
-        document.getElementById("unlock-plots-button").disabled = true;
-    } else {
-        document.getElementById("unlock-plots-button").style.borderColor = 'Green';
-        document.getElementById("unlock-plots-button").style.cursor = "pointer";
-        document.getElementById("unlock-plots-button").disabled = false;
+function updateHarvestCropButtonColor() {
+    for (let i = 1; i < data.plotsRevealed.length; i++) {
+        if (data.harvestable[i - 1] === false) {
+            document.getElementById("harvest" + i + "-button").style.borderColor = '#b33939';
+            document.getElementById("harvest" + i + "-button").style.cursor = "not-allowed";
+            document.getElementById("harvest" + i + "-button").disabled = true;
+        } else {
+            document.getElementById("harvest" + i + "-button").style.borderColor = 'Green';
+            document.getElementById("harvest" + i + "-button").style.cursor = "pointer";
+            document.getElementById("harvest" + i + "-button").disabled = false;
+        }
     }
 }
 
 function updateEmptyPlotButtonColor() {
-    if (data.level < data.nextPlotLevelRequirement) {
-        document.getElementById("unlock-plots-button").style.borderColor = '#b33939';
-        document.getElementById("unlock-plots-button").style.cursor = "not-allowed";
-        document.getElementById("unlock-plots-button").disabled = true;
-    } else {
-        document.getElementById("unlock-plots-button").style.borderColor = 'Green';
-        document.getElementById("unlock-plots-button").style.cursor = "pointer";
-        document.getElementById("unlock-plots-button").disabled = false;
+    for (let i = 1; i < data.plotsRevealed.length; i++) {
+        if (data.plotHarvestTime[i - 1] < 0) {
+            document.getElementById("empty" + i + "-button").style.borderColor = '#b33939';
+            document.getElementById("empty" + i + "-button").style.cursor = "not-allowed";
+            document.getElementById("empty" + i + "-button").disabled = true;
+        } else {
+            document.getElementById("empty" + i + "-button").style.borderColor = 'Green';
+            document.getElementById("empty" + i + "-button").style.cursor = "pointer";
+            document.getElementById("empty" + i + "-button").disabled = false;
+        }
     }
 }
 

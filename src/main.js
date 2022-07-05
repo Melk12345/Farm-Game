@@ -15,7 +15,8 @@ function mainLoop() {
     // const deltaTime = (now - lastUpdate) / 1000;
     // lastUpdate = now;
     updatePlantCropButtonColor();
-    // updateHarvesetCropButtonColor();
+    updateHarvestCropButtonColor();
+    updateEmptyPlotButtonColor();
 
 }
 
