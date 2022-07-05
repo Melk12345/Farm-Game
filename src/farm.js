@@ -64,13 +64,13 @@ function updatePlotInfo() {
             document.getElementById("plot" + i + "-cost").innerHTML = `${data.cropIDInPlot[i - 1].cost} gold`
             document.getElementById("plot" + i + "-harvestTime").innerHTML = `${data.cropIDInPlot[i - 1].harvestTime}`;
         } else {
-            let totalSeconds = data.cropIDInPlot[i - 1].harvestTime;
+            let totalSeconds = data.plotHarvestTime[i - 1];
             let harvestTime = formatHarvestTime(totalSeconds);
 
             document.getElementById("plot" + i + "-name").innerHTML = data.cropIDInPlot[i - 1].name;
             document.getElementById("plot" + i + "-gold").innerHTML = `+${data.cropIDInPlot[i - 1].gold}`;
             document.getElementById("plot" + i + "-xp").innerHTML = `+${data.cropIDInPlot[i - 1].xp}`;
-            document.getElementById("plot" + i + "-cost").innerHTML = `${data.cropIDInPlot[i - 1].cost} gold`
+            document.getElementById("plot" + i + "-cost").innerHTML = `${data.cropIDInPlot[i - 1].cost} gold`;
             document.getElementById("plot" + i + "-harvestTime").innerHTML = harvestTime;
         }
     }
@@ -90,7 +90,7 @@ function increaseGold() {
 
 function updatePlantCropButtonColor() {
     for (let i = 1; i < data.plotsRevealed.length; i++) {
-        if (data.plotHarvestTime[i - 1] > 0 || data.gold < crops[data.selectedCrop].cost) {
+        if (data.plotHarvestTime[i - 1] >= 0 || data.gold < crops[data.selectedCrop].cost) {
             document.getElementById("plant" + i + "-button").style.borderColor = '#b33939';
             document.getElementById("plant" + i + "-button").style.cursor = "not-allowed";
             document.getElementById("plant" + i + "-button").disabled = true;
@@ -144,17 +144,20 @@ function plantCrop(plotIndex) {
     document.getElementById("plot" + plotIndex + "-harvestTime").innerHTML = harvestTime;
 }
 
-function harvestCrop(plotIndex, cropIDInPlot) {
-    data.gold += cropIDInPlot[plotIndex - 1].gold;
-    data.xp += cropIDInPlot[plotIndex - 1].xp;
+function harvestCrop(plotIndex) {
+    data.gold += data.cropIDInPlot[plotIndex - 1].gold;
+    data.xp += data.cropIDInPlot[plotIndex - 1].xp;
+    updateLevelAndGoldInfo();
     if (data.xp >= data.xpReq) {
         data.xp -= data.xpReq;
         data.level++;
         data.xpReq = baseXPReq * Math.pow(1.15, data.level);
         updatePlotInfo();
+        updateLevelAndGoldInfo();
     }
     data.harvestable[plotIndex - 1] = false;
     data.cropIDInPlot[plotIndex - 1] = crops[0];
+    data.plotHarvestTime[plotIndex - 1] = -10;
 }
 
 function emptyPlot(plotIndex) {
@@ -173,7 +176,7 @@ function calculateHarvestTime(deltaTime) {
     for (let i = 0; i < data.plotsRevealed.length; i++) {
         if (data.plotsRevealed[i] === false || data.plotHarvestTime[i] === -10) break;
 
-        if (data.plotHarvestTime[i] <= 0) {
+        if (data.plotHarvestTime[i] <= 0 || data.plotHarvestTime[i] - deltaTime <= 0) {
             data.plotHarvestTime[i] = 0;
             data.harvestable[i] = true;
             updatePlotInfo();
