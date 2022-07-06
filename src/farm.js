@@ -147,7 +147,6 @@ function plantCrop(plotIndex) {
 function harvestCrop(plotIndex) {
     data.gold += data.cropIDInPlot[plotIndex - 1].gold;
     data.xp += data.cropIDInPlot[plotIndex - 1].xp;
-    updateLevelAndGoldInfo();
     if (data.xp >= data.xpReq) {
         data.xp -= data.xpReq;
         data.level++;
@@ -158,6 +157,8 @@ function harvestCrop(plotIndex) {
     data.harvestable[plotIndex - 1] = false;
     data.cropIDInPlot[plotIndex - 1] = crops[0];
     data.plotHarvestTime[plotIndex - 1] = -10;
+    updateLevelAndGoldInfo();
+    updatePlotInfo();
 }
 
 function emptyPlot(plotIndex) {
