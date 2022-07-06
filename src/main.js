@@ -24,12 +24,12 @@ function calculateAFKGains() {
     for (let i = 0; i < data.plotsRevealed.length; i++) {
         if (data.plotsRevealed[i] === false || data.plotHarvestTime[i] === -10) break;
 
-        if (data.plotHarvestTime[i] <= 0 || data.plotHarvestTime[i] - deltaTime <= 0) {
+        if (data.plotHarvestTime[i] <= 0 || data.plotHarvestTime[i] - delta <= 0) {
             data.plotHarvestTime[i] = 0;
             data.harvestable[i] = true;
             updatePlotInfo();
         } else {
-            data.plotHarvestTime[i] -= deltaTime;
+            data.plotHarvestTime[i] -= delta;
             updatePlotInfo();
         }
     }
