@@ -10,7 +10,7 @@ function formatWithCommas(amount, numFloatingDigits) {
 }
 
 function formatHarvestTime(totalSeconds) {
-    let harvestTime = " ";
+    let harvestTime = "";
     const seconds = Math.floor(totalSeconds / 1000) % 60;
     const minutes = Math.floor((totalSeconds / (1000 * 60)) % 60);
     const hours = Math.floor((totalSeconds / (1000 * 60 * 60)) % 24);

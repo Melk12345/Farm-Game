@@ -82,7 +82,9 @@ function updatePlotInfo() {
             document.getElementById("plot" + i + "-gold").innerHTML = `+${data.cropIDInPlot[i - 1].gold}`;
             document.getElementById("plot" + i + "-xp").innerHTML = `+${data.cropIDInPlot[i - 1].xp}`;
             document.getElementById("plot" + i + "-cost").innerHTML = `${data.cropIDInPlot[i - 1].cost} gold`;
-            document.getElementById("plot" + i + "-harvestTime").innerHTML = harvestTime;
+            if (harvestTime === "0s") document.getElementById("plot" + i + "-harvestTime").innerHTML = "Ready!";
+            else document.getElementById("plot" + i + "-harvestTime").innerHTML = harvestTime;
+            console.log(harvestTime);
         }
     }
 }
