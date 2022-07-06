@@ -1,10 +1,5 @@
 const saveName = 'FarmGame';
 
-function autoSaveData() {
-    data.time = Date.now();
-    window.localStorage.setItem(saveName, JSON.stringify(data));
-}
-
 function saveData() {
     data.time = Date.now();
     window.localStorage.setItem(saveName, JSON.stringify(data));

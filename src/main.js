@@ -22,6 +22,11 @@ function mainLoop() {
     calculateHarvestTime(deltaTime);
 }
 
+function autoSaveData() {
+    data.time = Date.now();
+    window.localStorage.setItem(saveName, JSON.stringify(data));
+}
+
 function load() {
     loadSavedData();
     updateLevelAndGoldInfo();
@@ -42,4 +47,4 @@ window.onload = function() {
 }
 
 setInterval(mainLoop, 50);
-// setInterval(autoSaveData, 15000); // saves every 15s
+setInterval(autoSaveData, 15000); // saves every 15s
