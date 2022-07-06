@@ -23,19 +23,7 @@ const crops = [{
     xp: 45,
     harvestTime: 3600000, // 1h
 }, {
-    name: "Potatoes",
-    cost: 15,
-    gold: 60,
-    xp: 150,
-    harvestTime: 86400000, // 1d
-}, {
-    name: "Watermelon",
-    cost: 12,
-    gold: 48,
-    xp: 120,
-    harvestTime: 43200000, // 12h
-}, {
-    name: "Daffodils",
+    name: "Wheat",
     cost: 5,
     gold: 12,
     xp: 50,
@@ -46,12 +34,25 @@ const crops = [{
     gold: 36,
     xp: 90,
     harvestTime: 18000000, // 5h
+
 }, {
     name: "Tomatoes",
     cost: 11,
     gold: 42,
     xp: 105,
     harvestTime: 28800000, // 8h
+}, {
+    name: "Watermelon",
+    cost: 12,
+    gold: 48,
+    xp: 120,
+    harvestTime: 43200000, // 12h
+}, {
+    name: "Potatoes",
+    cost: 15,
+    gold: 60,
+    xp: 150,
+    harvestTime: 86400000, // 1d
 }];
 
 const baseXPReq = 10;

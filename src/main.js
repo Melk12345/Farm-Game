@@ -83,5 +83,9 @@ window.onload = function() {
     calculateAFKGains();
 }
 
+window.onbeforeunload = function() { 
+    autoSaveData();
+}
+
 setInterval(mainLoop, 50);
 setInterval(autoSaveData, 15000); // saves every 15s
