@@ -19,7 +19,7 @@ function calculateAFKGains() {
     if (!data.AFKGains) return;
 
     const now = Date.now();
-    let delta = (now - data.time) / 1000;
+    let delta = now - data.time;
 
     for (let i = 0; i < data.plotsRevealed.length; i++) {
         if (data.plotsRevealed[i] === false || data.plotHarvestTime[i] === -10) break;
@@ -30,11 +30,13 @@ function calculateAFKGains() {
             updatePlotInfo();
         } else {
             data.plotHarvestTime[i] -= delta;
+            console.log(data.plotHarvestTime[i]);
+            console.log(delta);
             updatePlotInfo();
         }
     }
 
-    const seconds = Math.floor(delta % 60);
+    const seconds = Math.floor((delta / 1000) % 60);
     const minutes = Math.floor((delta / (1000 * 60)) % 60);
     const hours = Math.floor((delta / (1000 * 60 * 60)) % 24);
     const days = Math.floor(delta / (1000 * 60 * 60 * 24));
