@@ -87,7 +87,7 @@ function unlockNextCrop() {
         for (let i = 0; i < data.cropsRevealed.length; i++) {
             if (data.cropsRevealed[i] === false) {
                 data.cropsRevealed[i] = true;
-                break;
+                return;
             }
         }
         data.nextCropLevelRequirement += 2;
