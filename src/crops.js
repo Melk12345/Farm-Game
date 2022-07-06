@@ -60,8 +60,6 @@ function revealCrops() {
     }
 }
 
-const unlockNexCropButtonElement = document.getElementById("unlock-crops-button");
-
 function unlockNextCrop() {
     let count = 0;
     for (let i = 0; i < data.cropsRevealed.length; i++) {
@@ -89,15 +87,17 @@ function unlockNextCrop() {
     }
 }
 
+const unlockCropsButtonElement = document.getElementById("unlock-crops-button");
+
 function updateUnlockNextCropColor() {
     if (data.level < data.nextCropLevelRequirement) {
-        document.getElementById("unlock-crops-button").style.borderColor = '#b33939';
-        document.getElementById("unlock-crops-button").style.cursor = "not-allowed";
-        document.getElementById("unlock-crops-button").disabled = true;
+        unlockCropsButtonElement.style.borderColor = '#b33939';
+        unlockCropsButtonElement.style.cursor = "not-allowed";
+        unlockCropsButtonElement.disabled = true;
     } else {
-        document.getElementById("unlock-crops-button").style.borderColor = 'Green';
-        document.getElementById("unlock-crops-button").style.cursor = "pointer";
-        document.getElementById("unlock-crops-button").disabled = false;
+        unlockCropsButtonElement.style.borderColor = 'Green';
+        unlockCropsButtonElement.style.cursor = "pointer";
+        unlockCropsButtonElement.disabled = false;
     }
 }
 

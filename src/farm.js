@@ -43,15 +43,17 @@ function unlockNextPlot() {
     }
 }
 
+const unlockPlotsButtonElement = document.getElementById("unlock-plots-button");
+
 function updateUnlockNextPlotColor() {
     if (data.level < data.nextPlotLevelRequirement) {
-        document.getElementById("unlock-plots-button").style.borderColor = '#b33939';
-        document.getElementById("unlock-plots-button").style.cursor = "not-allowed";
-        document.getElementById("unlock-plots-button").disabled = true;
+        unlockPlotsButtonElement.style.borderColor = '#b33939';
+        unlockPlotsButtonElement.style.cursor = "not-allowed";
+        unlockPlotsButtonElement.disabled = true;
     } else {
-        document.getElementById("unlock-plots-button").style.borderColor = 'Green';
-        document.getElementById("unlock-plots-button").style.cursor = "pointer";
-        document.getElementById("unlock-plots-button").disabled = false;
+        unlockPlotsButtonElement.style.borderColor = 'Green';
+        unlockPlotsButtonElement.style.cursor = "pointer";
+        unlockPlotsButtonElement.disabled = false;
     }
 }
 
@@ -74,18 +76,6 @@ function updatePlotInfo() {
             document.getElementById("plot" + i + "-harvestTime").innerHTML = harvestTime;
         }
     }
-}
-
-function increaseLevel() {
-    data.level += 100;
-    updateLevelAndGoldInfo();
-    updateUnlockNextPlotColor();
-    updateUnlockNextCropColor();
-}
-
-function increaseGold() {
-    data.gold += 1000;
-    updateLevelAndGoldInfo();
 }
 
 function updatePlantCropButtonColor() {
@@ -153,6 +143,8 @@ function harvestCrop(plotIndex) {
         data.xpReq = baseXPReq * Math.pow(1.15, data.level);
         updatePlotInfo();
         updateLevelAndGoldInfo();
+        updateUnlockNextPlotColor();
+        updateUnlockNextCropColor();
     }
     data.harvestable[plotIndex - 1] = false;
     data.cropIDInPlot[plotIndex - 1] = crops[0];
@@ -170,7 +162,6 @@ function emptyPlot(plotIndex) {
     document.getElementById("plot" + plotIndex + "-harvestTime").innerHTML = `${data.cropIDInPlot[plotIndex - 1].harvestTime}`;
     data.harvestable[plotIndex - 1] = false;
     data.plotHarvestTime[plotIndex - 1] = -10;
-    updatePlotInfo();
 }
 
 function calculateHarvestTime(deltaTime) {

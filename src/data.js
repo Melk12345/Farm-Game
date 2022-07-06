@@ -1,4 +1,4 @@
-let crops = [{
+const crops = [{
     name: "--",
     cost: "--",
     gold: "--",
@@ -7,8 +7,8 @@ let crops = [{
 }, {
     name: "Blueberries",
     cost: 0,
-    gold: 2,
-    xp: 1,
+    gold: 1,
+    xp: 2,
     harvestTime: 10000, // 10s
 }, {
     name: "Raspberries",
@@ -54,9 +54,9 @@ let crops = [{
     harvestTime: 28800000, // 8h
 }];
 
-let baseXPReq = 10;
-let basePlotLevelRequirement = 2;
-let baseCropLevelRequirement = 3;
+const baseXPReq = 10;
+const basePlotLevelRequirement = 2;
+const baseCropLevelRequirement = 3;
 
 let data = {
     gold: 0,
