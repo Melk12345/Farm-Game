@@ -59,6 +59,8 @@ const basePlotLevelRequirement = 2;
 const baseCropLevelRequirement = 3;
 
 let data = {
+    firstTime: true,
+    AFKGains: true,
     gold: 0,
     xp: 0,
     xpReq: baseXPReq,

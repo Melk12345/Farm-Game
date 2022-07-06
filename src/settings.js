@@ -56,3 +56,20 @@ function exportData() {
     document.body.removeChild(exportedDataText);
     alert("Exported Data Copied to Clipboard! Copy and Paste your Save Data String to a safe place so if you lose your data you can get back to where you were!");
 }
+
+const toggleAFKGainsButtonElement = document.getElementById("toggle-afk-gains-button");
+
+function updateAFKGainsButtonInfo() {
+    if (data.AFKGains) toggleAFKGainsButtonElement.innerHTML = "AFK Gains: ON";
+    else toggleAFKGainsButtonElement.innerHTML = "AFK Gains: OFF";
+}
+
+function toggleAFKGains() {
+    if (data.AFKGains) {
+        data.AFKGains = false;
+        updateAFKGainsButtonInfo();
+    } else {
+        data.AFKGains = true;
+        updateAFKGainsButtonInfo();
+    }
+}
