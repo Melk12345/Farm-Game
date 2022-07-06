@@ -30,8 +30,6 @@ function calculateAFKGains() {
             updatePlotInfo();
         } else {
             data.plotHarvestTime[i] -= delta;
-            console.log(data.plotHarvestTime[i]);
-            console.log(delta);
             updatePlotInfo();
         }
     }
