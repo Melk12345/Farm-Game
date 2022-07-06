@@ -34,16 +34,13 @@ function calculateAFKGains() {
         }
     }
 
-    let days =  Math.floor(delta / 86400);
-    delta -= days * 86400;
-    let hours = Math.floor(delta / 3600) % 24;
-    delta -= hours * 3600;
-    let minutes = Math.floor(delta / 60) % 60;
-    delta -= minutes * 60;
-    let seconds = delta % 60;
+    let days = delta / (24 * 60 * 60 * 1000);
+    let hours = (days % 1) * 24;
+    let minutes = (hours % 1) * 60;
+    let seconds = (minutes % 1) * 60;
 
     alert("Welcome back! \nYou were gone for " 
-    + formatWithCommas(days, 0) + " days, " + formatWithCommas(hours, 0) + " hours, " + formatWithCommas(minutes, 0) + " minutes, and " + formatWithCommas(seconds, 0) + " seconds."); 
+    + Math.floor(days) + " days, " + Math.floor(hours) + " hours, " + Math.floor(minutes) + " minutes, and " + Math.floor(seconds) + " seconds."); 
 }
 
 let lastUpdate = Date.now();
