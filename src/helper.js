@@ -1,5 +1,5 @@
 function format(amount, numFloatingDigits) {
-    let power = Math.floor(Math.log10(amount));
+    let power = Math.log10(Math.floor(amount));
     let mantissa = amount/Math.pow(10, power);
     if (power < 6) return formatWithCommas(amount, numFloatingDigits);
     else return mantissa.toFixed(2) + "e" + power;
@@ -11,15 +11,15 @@ function formatWithCommas(amount, numFloatingDigits) {
 
 function formatHarvestTime(totalSeconds) {
     let harvestTime = " ";
-    let days = totalSeconds / (24 * 60 * 60 * 1000);
-    let hours = (days % 1) * 24;
-    let minutes = (hours % 1) * 60;
-    let seconds = (minutes % 1) * 60;
+    const seconds = Math.floor(totalSeconds / 1000) % 60;
+    const minutes = Math.floor((totalSeconds / (1000 * 60)) % 60);
+    const hours = Math.floor((totalSeconds / (1000 * 60 * 60)) % 24);
+    const days = Math.floor(totalSeconds / (1000 * 60 * 60 * 24));
 
-    if (totalSeconds < 60000) harvestTime += `${Math.floor(seconds)}s`;
-    else if (totalSeconds < 3600000) harvestTime += `${Math.floor(minutes)}m ${Math.floor(seconds)}s`;
-    else if (totalSeconds < 86400000) harvestTime += `${Math.floor(hours)}h ${Math.floor(minutes)}m ${Math.floor(seconds)}s`;
-    else if (totalSeconds >= 86400000) harvestTime += `${Math.floor(days)}d ${Math.floor(hours)}h ${Math.floor(minutes)}m ${Math.floor(seconds)}s`;
+    if (totalSeconds < 60000) harvestTime += `${seconds}s`;
+    else if (totalSeconds < 3600000) harvestTime += `${minutes}m ${seconds}s`;
+    else if (totalSeconds < 86400000) harvestTime += `${hours}h ${minutes}m ${seconds}s`;
+    else if (totalSeconds >= 86400000) harvestTime += `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
     return harvestTime;
 }

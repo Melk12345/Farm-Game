@@ -1,6 +1,20 @@
 const nextPlotLevelRequirementTextElement = document.getElementById("next-plot-level-requirement-text");
+const unlockNextPlotButtonElement = document.getElementById("unlock-plots-button");
 
 function updateUnlockNextPlotInfo() {
+    let count = 0;
+    for (let i = 0; i < data.plotsRevealed.length; i++) {
+        if (data.plotsRevealed[i] === true) {
+            count++;
+        } else {
+            break;
+        }
+    }
+    if (count === data.plotsRevealed.length - 1) {
+        unlockNextPlotButtonElement.style.display = "none";
+        return;
+    }
+    
     nextPlotLevelRequirementTextElement.innerHTML = data.nextPlotLevelRequirement;
 }
 
@@ -14,8 +28,6 @@ function revealPlots() {
     }
     updatePlotInfo();
 }
-
-const unlockNextPlotButtonElement = document.getElementById("unlock-plots-button");
 
 function unlockNextPlot() {
     let count = 0;
@@ -37,9 +49,6 @@ function unlockNextPlot() {
         revealPlots();
         updateUnlockNextPlotColor();
         updateUnlockNextPlotInfo();
-        if (count + 1 === data.plotsRevealed.length - 1) {
-            unlockNextPlotButtonElement.style.display = "none";
-        }
     }
 }
 

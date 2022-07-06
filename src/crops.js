@@ -1,6 +1,20 @@
 const nextCropLevelRequirementTextElement = document.getElementById("next-crop-level-requirement-text");
+const unlockNextCropButtonElement = document.getElementById("unlock-crops-button");
 
 function updateUnlockNextCropInfo() {
+    let count = 0;
+    for (let i = 0; i < data.cropsRevealed.length; i++) {
+        if (data.cropsRevealed[i] === true) {
+            count++;
+        } else {
+            break;
+        }
+    }
+    if (count === data.cropsRevealed.length - 1) {
+        unlockNextCropButtonElement.style.display = "none";
+        return;
+    }
+
     nextCropLevelRequirementTextElement.innerHTML = data.nextCropLevelRequirement;
 }
 
@@ -81,9 +95,6 @@ function unlockNextCrop() {
         updateUnlockNextCropColor();
         updateUnlockNextCropInfo();
         updateCropInfo();
-        if (count + 1 === data.cropsRevealed.length - 1) {
-            unlockNexCropButtonElement.style.display = "none";
-        }
     }
 }
 
