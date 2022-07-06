@@ -41,8 +41,7 @@ function calculateAFKGains() {
     const hours = Math.floor((delta / (1000 * 60 * 60)) % 24);
     const days = Math.floor(delta / (1000 * 60 * 60 * 24));
 
-    alert("Welcome back! \nYou were gone for " 
-    + days + " days, " + hours + " hours, " + minutes + " minutes, and " + seconds + " seconds."); 
+    console.log(`You were gone for ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds.`); 
 }
 
 let lastUpdate = Date.now();
