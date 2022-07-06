@@ -183,7 +183,6 @@ function calculateHarvestTime(deltaTime) {
         } else {
             data.plotHarvestTime[i] -= deltaTime;
             updatePlotInfo();
-            console.log(data.plotHarvestTime[i]);
         }
     }
 }
