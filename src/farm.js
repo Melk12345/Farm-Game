@@ -184,7 +184,7 @@ function emptyPlot(plotIndex) {
 
 function calculateHarvestTime(deltaTime) {
     for (let i = 0; i < data.plotsRevealed.length; i++) {
-        if (data.plotsRevealed[i] === false) return;
+        if (data.plotsRevealed[i] === false && data.plotHarvestTime[i] === -10) return;
 
         if (data.plotHarvestTime[i] <= 0 || data.plotHarvestTime[i] - deltaTime <= 0) {
             data.plotHarvestTime[i] = 0;
@@ -231,7 +231,6 @@ function updateHarvestAllButtonColor() {
     for (let i = 1; i < data.plotsRevealed.length; i++) {
         if (data.plotsRevealed[i- 1] === false) break;
 
-        console.log(count);
         if (count < 1) {
             harvestAllButtonElement.style.borderColor = '#b33939';
             harvestAllButtonElement.style.cursor = "not-allowed";
