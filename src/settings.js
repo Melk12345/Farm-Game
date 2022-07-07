@@ -16,7 +16,7 @@ function resetData() {
 
     data.gold = 0;
     data.xp = 0;
-    data.xpReq = 10;
+    data.xpReq = baseXPReq;
     data.level = 1;
     data.selectedCrop = 1;
     data.nextPlotLevelRequirement = basePlotLevelRequirement;

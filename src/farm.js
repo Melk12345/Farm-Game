@@ -184,7 +184,7 @@ function emptyPlot(plotIndex) {
 
 function calculateHarvestTime(deltaTime) {
     for (let i = 0; i < data.plotsRevealed.length; i++) {
-        if (data.plotsRevealed[i] === false || data.plotHarvestTime[i] === -10) return;
+        if (data.plotsRevealed[i] === false || data.plotHarvestTime[i] === -10) continue;
 
         if (data.plotHarvestTime[i] <= 0 || data.plotHarvestTime[i] - deltaTime <= 0) {
             data.plotHarvestTime[i] = 0;
