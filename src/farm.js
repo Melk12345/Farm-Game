@@ -220,16 +220,8 @@ const harvestAllButtonElement = document.getElementById("harvest-all-button");
 function updateHarvestAllButtonColor() {
     let count = 0;
     for (let i = 1; i < data.plotsRevealed.length; i++) {
-        if (data.plotsRevealed[i- 1] === false) break;
-
-        if (data.harvestable[i - 1] === true) {
-            count++;
-        } else {
-            break;
-        }
-    }
-    for (let i = 1; i < data.plotsRevealed.length; i++) {
-        if (data.plotsRevealed[i- 1] === false) break;
+        if (data.plotsRevealed[i- 1] === false) continue;
+        if (data.harvestable[i - 1] === true) count++;
 
         if (count < 1) {
             harvestAllButtonElement.style.borderColor = '#b33939';
