@@ -201,7 +201,7 @@ function calculateHarvestTime(deltaTime) {
 
 const plantAllButtonElement = document.getElementById("plant-all-button");;
 
-// if the plot is empty and we have enough to buy at least 1 crop, enable button
+// if at least 1 plot is empty and we have enough gold to plant at least 1 crop, enable the button
 function updatePlantAllButtonColor() {
     let count = 0
     for (let i = 1; i < data.plotsRevealed.length; i++) {
@@ -211,7 +211,7 @@ function updatePlantAllButtonColor() {
             count++;
         }
     }
-    if (count >= 1) {
+    if (count === 0) {
         plantAllButtonElement.style.borderColor = '#b33939';
         plantAllButtonElement.style.cursor = "not-allowed";
         plantAllButtonElement.disabled = true;
