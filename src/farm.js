@@ -1,6 +1,7 @@
 const nextPlotLevelRequirementTextElement = document.getElementById("next-plot-level-requirement-text");
 const unlockNextPlotButtonElement = document.getElementById("unlock-plots-button");
 
+// if we unlocked every single plot, we hide the button
 function updateUnlockNextPlotInfo() {
     let count = 0;
     for (let i = 0; i < data.plotsRevealed.length; i++) {
@@ -29,6 +30,7 @@ function revealPlots() {
     updatePlotInfo();
 }
 
+// count the number of plots already revealed and if its less than the max number of plots, reveal the next plot
 function unlockNextPlot() {
     let count = 0;
     for (let i = 0; i < data.plotsRevealed.length; i++) {
@@ -199,12 +201,13 @@ function calculateHarvestTime(deltaTime) {
 
 const plantAllButtonElement = document.getElementById("plant-all-button");;
 
+// if the plot is empty and we have enough to buy at least 1 crop, enable button
 function updatePlantAllButtonColor() {
     let count = 0
     for (let i = 1; i < data.plotsRevealed.length; i++) {
         if (data.plotsRevealed[i - 1] === false) break;
 
-        if (data.plotHarvestTime[i - 1] <= 0 && data.gold > crops[data.selectedCrop].cost) {
+        if (data.plotHarvestTime[i - 1] < 0 && data.gold >= crops[data.selectedCrop].cost) {
             count++;
         }
     }
@@ -221,6 +224,7 @@ function updatePlantAllButtonColor() {
 
 const harvestAllButtonElement = document.getElementById("harvest-all-button");
 
+// if we have at least 1 plot ready, enable the button
 function updateHarvestAllButtonColor() {
     let count = 0;
     for (let i = 1; i < data.plotsRevealed.length; i++) {
@@ -241,6 +245,8 @@ function updateHarvestAllButtonColor() {
 
 const emptyAllButtonElement = document.getElementById("empty-all-button");
 
+// if at least 1 crop is still growing, enable the button
+// if at least 1 crop is done growing, disable the button
 function updateEmptyAllButtonColor() {
     let count = 0
     for (let i = 1; i < data.plotsRevealed.length; i++) {
@@ -260,6 +266,7 @@ function updateEmptyAllButtonColor() {
     }
 }
 
+// loop through all revealed plots and if the plot is revealed, empty, and we have enough gold, we may plant in this plot
 function plantAll() {
     for (let i = 1; i < data.plotsRevealed.length; i++) {
         if (data.plotsRevealed[i - 1] === true && data.plotHarvestTime[i - 1] < 0 && data.gold >= crops[data.selectedCrop].cost) {
@@ -278,6 +285,7 @@ function plantAll() {
     }
 }
 
+// loop through all revealed plots and if the plot is done growing, we may harvest the crop
 function harvestAll() {
     for (let i = 1; i < data.plotsRevealed.length; i++) {
         if (data.harvestable[i - 1] === true) {
@@ -301,6 +309,7 @@ function harvestAll() {
     }
 }
 
+// loop through all revealed plots and if the crop is still growing, we can empty the plot
 function emptyAll() {
     for (let i = 1; i < data.plotsRevealed.length; i++) {
         if (data.plotHarvestTime[i - 1] > 0) {
