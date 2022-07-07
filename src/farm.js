@@ -204,7 +204,7 @@ function updatePlantAllButtonColor() {
     for (let i = 1; i < data.plotsRevealed.length; i++) {
         if (data.plotsRevealed[i - 1] === false) break;
 
-        if (data.plotHarvestTime[i - 1] >= 0 || data.gold < crops[data.selectedCrop].cost) {
+        if (data.plotHarvestTime[i - 1] >= 0 && data.gold > crops[data.selectedCrop].cost) {
             count++;
         }
     }
