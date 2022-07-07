@@ -22,10 +22,10 @@ function calculateAFKGains() {
     let delta = now - data.time;
 
     for (let i = 0; i < data.plotsRevealed.length; i++) {
-        if (data.plotsRevealed[i] === false && data.plotHarvestTime[i] === -10) return;
+        if (data.plotsRevealed[i] === false || data.plotHarvestTime[i] === -10) continue;
 
         if (data.plotHarvestTime[i] <= 0 || data.plotHarvestTime[i] - delta <= 0) {
-            data.plotHarvestTime[i] = 0;
+            data.plotHarvestTime[i] = -10;
             data.harvestable[i] = true;
             updatePlotInfo();
         } else {
@@ -63,9 +63,7 @@ function autoSaveData() {
 }
 
 function load() {
-    console.log(data.plotHarvestTime[0]);
     loadSavedData();
-    console.log(data.plotHarvestTime[0]);
     updateLevelAndGoldInfo();
     updateHeaderCropSelectedInfo();
     updateSelectedCropColor();
