@@ -11,15 +11,16 @@ function formatWithCommas(amount, numFloatingDigits) {
 
 function formatHarvestTime(totalSeconds) {
     let harvestTime = "";
-    const seconds = Math.floor(totalSeconds / 1000) % 60;
-    const minutes = Math.floor((totalSeconds / (1000 * 60)) % 60);
-    const hours = Math.floor((totalSeconds / (1000 * 60 * 60)) % 24);
-    const days = Math.floor(totalSeconds / (1000 * 60 * 60 * 24));
+    const seconds = totalSeconds / 1000 % 60;
+    const minutes = (totalSeconds / (1000 * 60)) % 60;
+    const hours = (totalSeconds / (1000 * 60 * 60)) % 24;
+    const days = totalSeconds / (1000 * 60 * 60 * 24);
 
-    if (totalSeconds < 60000) harvestTime += `${seconds}s`;
-    else if (totalSeconds < 3600000) harvestTime += `${minutes}m ${seconds}s`;
-    else if (totalSeconds < 86400000) harvestTime += `${hours}h ${minutes}m ${seconds}s`;
-    else if (totalSeconds >= 86400000) harvestTime += `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    if (totalSeconds < 10000) harvestTime += `${formatWithCommas(seconds, 1)}s`;
+    else if (totalSeconds < 60000) harvestTime += `${Math.floor(seconds)}s`;
+    else if (totalSeconds < 3600000) harvestTime += `${Math.floor(minutes)}m ${Math.floor(seconds)}s`;
+    else if (totalSeconds < 86400000) harvestTime += `${Math.floor(hours)}h ${Math.floor(minutes)}m ${Math.floor(seconds)}s`;
+    else if (totalSeconds >= 86400000) harvestTime += `${Math.floor(days)}d ${Math.floor(hours)}h ${Math.floor(minutes)}m ${Math.floor(seconds)}s`;
 
     return harvestTime;
 }

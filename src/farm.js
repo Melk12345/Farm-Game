@@ -84,7 +84,7 @@ function updatePlotInfo() {
             document.getElementById("plot" + i + "-gold").innerHTML = `+${data.cropIDInPlot[i - 1].gold}`;
             document.getElementById("plot" + i + "-xp").innerHTML = `+${data.cropIDInPlot[i - 1].xp}`;
             document.getElementById("plot" + i + "-cost").innerHTML = `${data.cropIDInPlot[i - 1].cost} gold`;
-            if (harvestTime !== "0s") document.getElementById("plot" + i + "-harvestTime").innerHTML = harvestTime;
+            if (harvestTime !== "0.0s") document.getElementById("plot" + i + "-harvestTime").innerHTML = harvestTime;
             else document.getElementById("plot" + i + "-harvestTime").innerHTML = "Ready!";
         }
     }
@@ -184,7 +184,7 @@ function emptyPlot(plotIndex) {
 
 function calculateHarvestTime(deltaTime) {
     for (let i = 0; i < data.plotsRevealed.length; i++) {
-        if (data.plotsRevealed[i] === false && data.plotHarvestTime[i] === -10) return;
+        if (data.plotsRevealed[i] === false || data.plotHarvestTime[i] === -10) return;
 
         if (data.plotHarvestTime[i] <= 0 || data.plotHarvestTime[i] - deltaTime <= 0) {
             data.plotHarvestTime[i] = 0;
