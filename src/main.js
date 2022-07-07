@@ -53,6 +53,7 @@ function mainLoop() {
     updateEmptyPlotButtonColor();
     updatePlantAllButtonColor();
     updateHarvestAllButtonColor();
+    updateEmptyAllButtonColor();
     calculateHarvestTime(deltaTime);
 }
 
