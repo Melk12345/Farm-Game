@@ -22,10 +22,9 @@ function calculateAFKGains() {
     let delta = now - data.time;
 
     for (let i = 0; i < data.plotsRevealed.length; i++) {
-        if (data.plotsRevealed[i] === false || data.plotHarvestTime[i] === -10) continue;
+        if (data.plotsRevealed[i] === false || data.harvestable[i] === false) continue;
 
-        if (data.plotHarvestTime[i] <= 0 || data.plotHarvestTime[i] - delta <= 0) {
-            data.plotHarvestTime[i] = -10;
+        if (data.plotHarvestTime[i] === 0 || data.plotHarvestTime[i] - delta <= 0) {
             data.harvestable[i] = true;
             updatePlotInfo();
         } else {
@@ -69,13 +68,14 @@ function load() {
     updateSelectedCropColor();
     updateUnlockNextPlotInfo();
     updateUnlockNextCropInfo();
-    loadCropInfo();
+    updateCropInfo();
     revealPlots();
     revealCrops();
     updateUnlockNextPlotColor();
     updateUnlockNextCropColor();
     selectCrop(data.selectedCrop);
     updateAFKGainsButtonInfo();
+    console.log(data.plotHarvestTime[0]);
 }
 
 window.onload = function() {

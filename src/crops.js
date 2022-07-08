@@ -1,6 +1,7 @@
 const nextCropLevelRequirementTextElement = document.getElementById("next-crop-level-requirement-text");
 const unlockNextCropButtonElement = document.getElementById("unlock-crops-button");
 
+// if we unlocked all of the available crops, hide the unlock button
 function updateUnlockNextCropInfo() {
     let count = 0;
     for (let i = 0; i < data.cropsRevealed.length; i++) {
@@ -46,22 +47,6 @@ function updateHeaderCropSelectedInfo() {
     headerXpTextElement.innerHTML = `+${crops[data.selectedCrop].xp}`;
     headerCostTextElement.innerHTML = `${crops[data.selectedCrop].cost} gold`;
     headerHarvestTimeTextElement.innerHTML = harvestTime;
-}
-
-function loadCropInfo() {
-    for (let i = 1; i < crops.length; i++) {
-        if (data.cropsRevealed[i - 1] === true) {
-            let totalSeconds =  crops[i].harvestTime;
-            let harvestTime = formatHarvestTime(totalSeconds);
-
-            document.getElementById("crop" + i + "-name").innerHTML = crops[i].name;
-            document.getElementById("crop" + i + "-gold").innerHTML = `+${crops[i].gold}`;
-            document.getElementById("crop" + i + "-xp").innerHTML = `+${crops[i].xp}`;
-            document.getElementById("crop" + i + "-cost").innerHTML = `${crops[i].cost} gold`
-            document.getElementById("crop" + i + "-harvestTime").innerHTML = harvestTime;
-        }
-    }
-    revealCrops();
 }
 
 function revealCrops() {
