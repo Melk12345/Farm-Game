@@ -9,8 +9,6 @@ function formatWithCommas(amount, numFloatingDigits) {
     return amount.toFixed(numFloatingDigits).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-console.log(formatWithCommas(-10 / 1000 % 60, 1))
-
 function formatHarvestTime(totalSeconds) {
     let harvestTime = "";
     const seconds = totalSeconds / 1000 % 60;

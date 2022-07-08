@@ -76,7 +76,6 @@ function load() {
     updateUnlockNextCropColor();
     selectCrop(data.selectedCrop);
     updateAFKGainsButtonInfo();
-    console.log(data.plotHarvestTime[0]);
 }
 
 window.onload = function() {
