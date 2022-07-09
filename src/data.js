@@ -55,6 +55,28 @@ const crops = [{
     harvestTime: 86400000, // 1d
 }];
 
+const farmUpgrades = [{
+    name: " ", 
+    description: "+10% Crop Gold",
+    boost: 1,
+    cost: 100,
+}, {
+    name: " ", 
+    description: "+10% Crop XP",
+    boost: 1,
+    cost: 100,
+}, {
+    name: " ", 
+    description: "-10% Crop Cost",
+    boost: 1,
+    cost: 100,
+}, {
+    name: " ", 
+    description: "-10% Crop Harvest Time",
+    boost: 1,
+    cost: 100,
+}];
+
 const baseXPReq = 10;
 const basePlotLevelRequirement = 2;
 const baseCropLevelRequirement = 3;
@@ -75,4 +97,5 @@ let data = {
     cropIDInPlot: [crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0]],
     plotHarvestTime: [-10, -10, -10, -10, -10, -10, -10, -10],
     harvestable: [false, false, false, false, false, false, false, false],
+    farmUpgradesLevel: [0, 0, 0, 0],
 }

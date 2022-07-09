@@ -28,17 +28,16 @@ tbody tr:nth-child(even):not(.no-coloring) {
     width: 0px;
 }
 
-#header-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
-
-#header-container p {
-    font-family: 'Roboto Mono';
-    font-size: 25px;
-    margin: 20px 200px 20px 200px;
+#right-container {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
 }
 
 #menu-container {
@@ -67,6 +66,31 @@ tbody tr:nth-child(even):not(.no-coloring) {
     cursor: pointer;
     transform: scale(1.1);
     transition-duration: 0.5s;
+}
+
+#left-container {
+    height: 100%;
+    width: 80%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #817464;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+#header-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#header-container p {
+    font-family: 'Roboto Mono';
+    font-size: 25px;
+    margin: 20px 200px 20px 200px;
 }
 
 .plot-buttons {
