@@ -23,7 +23,7 @@ function selectCrop(cropIndex) {
     data.selectedCrop = cropIndex;
     updateHeaderCropSelectedInfo();
     updateSelectedCropColor();
-    checkGoldColor();
+    upgradeHeaderCostColor();
 }
 
 function updateSelectedCropColor() {
