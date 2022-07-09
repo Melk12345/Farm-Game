@@ -14,8 +14,10 @@ function updateLevelAndGoldInfo() {
 function checkGoldColor() {
     if (data.gold < crops[data.selectedCrop].cost) {
         goldTextElement.style.color = 'Red';
+        headerCostTextElement.style.color = 'Red';
     } else {
         goldTextElement.style.color = '#FAEDC6';
+        headerCostTextElement.style.color = '#FAEDC6';
     }
 }
 
