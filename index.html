@@ -16,7 +16,12 @@
     <title>Farm Idle</title>
 </head>
 <body>
-    <div id="right-container">
+    <div id="sidebar-container">
+        <div id="sidebar-header-container">
+            <p>Level <span id="level-text"></span><br>
+            <span id="xp-text"></span>/<span id="xp-req-text"></span> XP<br>
+            <span id="gold-text"></span> gold</p>
+        </div>
         <div id="menu-container">
             <button onclick="openMenu(farmMenuContainerElement, farmMenuButtonElement)" class="menu-buttons" id="farm-menu-button">Farm</button>
             <button onclick="openMenu(cropsMenuContainerElement, cropsMenuButtonElement)" class="menu-buttons" id="crops-menu-button">Crops</button>
@@ -25,9 +30,7 @@
     </div>
     <div id="left-container">
         <div id="header-container">
-            <p>Level <span id="level-text"></span> - <span id="xp-text"></span>/<span id="xp-req-text"></span> XP</p>
-            <p><span id="gold-text"></span> gold</p>
-            <table class="table-formatting" id="header-table">
+            <table id="header-table">
                 <thead>
                     <tr class="no-coloring">
                         <th>Crop Selected</th>
