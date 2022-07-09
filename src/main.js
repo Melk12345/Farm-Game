@@ -8,6 +8,15 @@ function updateLevelAndGoldInfo() {
     xpTextElement.innerHTML = format(data.xp, 0);
     xpReqTextElement.innerHTML = format(data.xpReq, 0);
     goldTextElement.innerHTML = format(data.gold, 0);
+    checkGoldColor();
+}
+
+function checkGoldColor() {
+    if (data.gold < crops[data.selectedCrop].cost) {
+        goldTextElement.style.color = 'Red';
+    } else {
+        goldTextElement.style.color = '#FAEDC6';
+    }
 }
 
 function calculateAFKGains() {
