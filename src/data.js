@@ -56,24 +56,24 @@ const crops = [{
 }];
 
 const farmUpgrades = [{
-    name: " ", 
+    name: "Marketing", 
     description: "+10% Crop Gold",
-    boost: 1,
+    boost: 0.1,
     cost: 100,
 }, {
-    name: " ", 
+    name: "Herbology", 
     description: "+10% Crop XP",
-    boost: 1,
+    boost: 0.1,
     cost: 100,
 }, {
-    name: " ", 
-    description: "-10% Crop Cost",
-    boost: 1,
+    name: "Fertilizer", 
+    description: "-10% Harvest Time",
+    boost: 0.1,
     cost: 100,
 }, {
-    name: " ", 
-    description: "-10% Crop Harvest Time",
-    boost: 1,
+    name: "Discounts", 
+    description: "-10% Upgrade Cost",
+    boost: 0.1,
     cost: 100,
 }];
 
