@@ -172,6 +172,7 @@ function harvestCrop(plotIndex) {
     data.plotHarvestTime[plotIndex - 1] = -10;
     updateLevelAndGoldInfo();
     updatePlotInfo();
+    updateFarmUpgradesButtonColor();
 }
 
 function emptyPlot(plotIndex) {
@@ -307,6 +308,7 @@ function harvestAll() {
             data.plotHarvestTime[i - 1] = -10;
             updateLevelAndGoldInfo();
             updatePlotInfo();
+            updateFarmUpgradesButtonColor();
         }
     }
 }
