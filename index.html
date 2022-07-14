@@ -12,7 +12,7 @@
     <script src="src/main.js" defer></script>
     <script src="src/farm.js" defer></script>
     <script src="src/crops.js" defer></script>
-    <script src="src/farmUpgrades.js" defer></script>
+    <script src="src/upgrades.js" defer></script>
     <script src="src/settings.js" defer></script>
     <title>Farm Idle</title>
 </head>
@@ -26,6 +26,7 @@
         <div id="menu-container">
             <button onclick="openMenu(farmMenuContainerElement, farmMenuButtonElement)" class="menu-buttons" id="farm-menu-button">Farm</button>
             <button onclick="openMenu(cropsMenuContainerElement, cropsMenuButtonElement)" class="menu-buttons" id="crops-menu-button">Crops</button>
+            <button onclick="openMenu(upgradesMenuContainerElement, upgradesMenuButtonElement)" class="menu-buttons" id="upgrades-menu-button">Upgrades</button>
             <button onclick="openMenu(settingsMenuContainerElement, settingsMenuButtonElement)" class="menu-buttons" id="settings-menu-button">Settings</button>
         </div>
     </div>
@@ -267,6 +268,47 @@
                     Req: Lv. <span id="next-crop-level-requirement-text"></span>
                 </button>
             </div>
+        </div>
+        <div id="upgrades-container">
+            <table class="table-formatting" id="upgrade-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Level</th>
+                        <th>Boost</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span id="upgrade1-name"></span></td>
+                        <td><span id="upgrade1-level"></span></td>
+                        <td><span id="upgrade1-boost"></span></td>
+                        <td><span id="upgrade1-cost"></span></td>
+                        <td><button onclick="buyUpgrade(1)" class="upgrade-buttons" id="upgrade1-button">Buy</button></td>
+                    </tr>
+                    <tr>
+                        <td><span id="upgrade2-name"></span></td>
+                        <td><span id="upgrade2-level"></span></td>
+                        <td><span id="upgrade2-boost"></span></td>
+                        <td><span id="upgrade2-cost"></span></td>
+                        <td><button onclick="buyUpgrade(2)" class="upgrade-buttons" id="upgrade2-button">Buy</button></td>
+                    </tr>
+                    <tr>
+                        <td><span id="upgrade3-name"></span></td>
+                        <td><span id="upgrade3-level"></span></td>
+                        <td><span id="upgrade3-boost"></span></td>
+                        <td><span id="upgrade3-cost"></span></td>
+                        <td><button onclick="buyUpgrade(3)" class="upgrade-buttons" id="upgrade3-button">Buy</button></td>
+                    </tr>
+                    <tr>
+                        <td><span id="upgrade4-name"></span></td>
+                        <td><span id="upgrade4-level"></span></td>
+                        <td><span id="upgrade4-boost"></span></td>
+                        <td><span id="upgrade4-cost"></span></td>
+                        <td><button onclick="buyUpgrade(4)" class="upgrade-buttons" id="upgrade4-button">Buy</button></td>
+                    </tr>
+                </tbody>
         </div>
         <div id="settings-container">
             <button onclick="saveData()" class="settings-buttons" id="save-data-button">Save Data</button>

@@ -143,7 +143,7 @@ function updateEmptyPlotButtonColor() {
 function plantCrop(plotIndex) {
     data.gold -= crops[data.selectedCrop].cost;
     updateLevelAndGoldInfo();
-    updateFarmUpgradesButtonColor();
+    updateUpgradesButtonColor();
     data.cropIDInPlot[plotIndex - 1] = crops[data.selectedCrop];
     data.plotHarvestTime[plotIndex - 1] = data.cropIDInPlot[plotIndex - 1].harvestTime;
     let totalSeconds = data.cropIDInPlot[plotIndex - 1].harvestTime;
@@ -172,7 +172,7 @@ function harvestCrop(plotIndex) {
     data.plotHarvestTime[plotIndex - 1] = -10;
     updateLevelAndGoldInfo();
     updatePlotInfo();
-    updateFarmUpgradesButtonColor();
+    updateUpgradesButtonColor();
 }
 
 function emptyPlot(plotIndex) {
@@ -274,7 +274,7 @@ function plantAll() {
         if (data.plotsRevealed[i - 1] === true && data.plotHarvestTime[i - 1] < 0 && data.gold >= crops[data.selectedCrop].cost) {
             data.gold -= crops[data.selectedCrop].cost;
             updateLevelAndGoldInfo();
-            updateFarmUpgradesButtonColor();
+            updateUpgradesButtonColor();
             data.cropIDInPlot[i - 1] = crops[data.selectedCrop];
             data.plotHarvestTime[i - 1] = data.cropIDInPlot[i - 1].harvestTime;
             let totalSeconds = data.cropIDInPlot[i - 1].harvestTime;
@@ -308,7 +308,7 @@ function harvestAll() {
             data.plotHarvestTime[i - 1] = -10;
             updateLevelAndGoldInfo();
             updatePlotInfo();
-            updateFarmUpgradesButtonColor();
+            updateUpgradesButtonColor();
         }
     }
 }

@@ -26,6 +26,7 @@ function resetData() {
     data.cropIDInPlot = [crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0]];
     data.plotHarvestTime = [-10, -10, -10, -10, -10, -10, -10, -10];
     data.harvestable = [false, false, false, false, false, false, false, false];
+    data.upgradesLevel = [0, 0, 0, 0];
 
     data.time = Date.now();
     window.localStorage.setItem(saveName, JSON.stringify(data));

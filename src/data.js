@@ -55,7 +55,7 @@ const crops = [{
     harvestTime: 86400000, // 1d
 }];
 
-const farmUpgrades = [{
+const upgrade = [{
     name: "Marketing", 
     description: "+10% Crop Gold",
     boost: 0.1,
@@ -97,5 +97,5 @@ let data = {
     cropIDInPlot: [crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0]],
     plotHarvestTime: [-10, -10, -10, -10, -10, -10, -10, -10],
     harvestable: [false, false, false, false, false, false, false, false],
-    farmUpgradesLevel: [0, 0, 0, 0],
+    upgradeLevel: [0, 0, 0, 0]
 }
