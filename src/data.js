@@ -57,23 +57,23 @@ const crops = [{
 
 const upgrade = [{
     name: "Marketing", 
-    description: "+10% Crop Gold",
-    boost: 0.1,
+    description: "+5% Crop Gold",
+    boost: 0.05,
     cost: 100,
 }, {
     name: "Herbology", 
-    description: "+10% Crop XP",
-    boost: 0.1,
+    description: "+5% Crop XP",
+    boost: 0.05,
     cost: 100,
 }, {
     name: "Fertilizer", 
-    description: "-10% Harvest Time",
-    boost: 0.1,
+    description: "-5% Harvest Time",
+    boost: 0.05,
     cost: 100,
 }, {
     name: "Discounts", 
-    description: "-10% Upgrade Cost",
-    boost: 0.1,
+    description: "-5% Upgrade Cost",
+    boost: 0.05,
     cost: 100,
 }];
 
@@ -94,7 +94,7 @@ let data = {
     nextCropLevelRequirement: baseCropLevelRequirement,
     plotsRevealed: [true, false, false, false, false, false, false, false, false],
     cropsRevealed: [true, false, false, false, false, false, false, false, false],
-    cropIDInPlot: [0, 0, 0, 0, 0, 0, 0, 0],
+    cropIDInPlot: [crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0]],
     plotHarvestTime: [-10, -10, -10, -10, -10, -10, -10, -10],
     harvestable: [false, false, false, false, false, false, false, false],
     upgradeLevel: [0, 0, 0, 0]

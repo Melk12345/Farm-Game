@@ -14,23 +14,9 @@ function loadSavedData() {
 function resetData() {
     if (!confirm("Are you sure you want to reset your data? ALL of your progress will be lost and you will need to start over!")) return;
 
-    data.gold = 0;
-    data.xp = 0;
-    data.xpReq = baseXPReq;
-    data.level = 1;
-    data.selectedCrop = 1;
-    data.nextPlotLevelRequirement = basePlotLevelRequirement;
-    data.nextCropLevelRequirement = baseCropLevelRequirement;
-    data.plotsRevealed = [true, false, false, false, false, false, false, false, false];
-    data.cropsRevealed = [true, false, false, false, false, false, false, false, false];
-    cropIDInPlot = [0, 0, 0, 0, 0, 0, 0, 0],
-    data.plotHarvestTime = [-10, -10, -10, -10, -10, -10, -10, -10];
-    data.harvestable = [false, false, false, false, false, false, false, false];
-    data.upgradeLevel = [0, 0, 0, 0];
-
-    data.time = Date.now();
-    window.localStorage.setItem(saveName, JSON.stringify(data));
-    load();
+    data = null;
+    localStorage.removeItem(saveName);
+    location.reload();
 }
 
 function importData() {

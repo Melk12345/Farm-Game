@@ -79,7 +79,7 @@ function updatePlotInfo() {
             document.getElementById("plot" + i + "-cost").innerHTML = `${data.cropIDInPlot[i - 1].cost} gold`
             document.getElementById("plot" + i + "-harvestTime").innerHTML = `${data.cropIDInPlot[i - 1].harvestTime}`;
         } else {
-            let totalSeconds = data.plotHarvestTime[i - 1];
+            let totalSeconds = data.plotHarvestTime[i - 1] * harvestTimeBoost;
             let harvestTime = formatHarvestTime(totalSeconds);
 
             document.getElementById("plot" + i + "-name").innerHTML = data.cropIDInPlot[i - 1].name;
@@ -144,7 +144,7 @@ function plantCrop(plotIndex) {
     data.gold -= crops[data.selectedCrop].cost;
     updateLevelAndGoldInfo();
     updateUpgradesButtonColor();
-    data.cropIDInPlot[plotIndex - 1] = data.selectedCrop;
+    data.cropIDInPlot[plotIndex - 1] = crops[data.selectedCrop];
     data.plotHarvestTime[plotIndex - 1] = data.cropIDInPlot[plotIndex - 1].harvestTime;
     let totalSeconds = data.cropIDInPlot[plotIndex - 1].harvestTime;
     let harvestTime = formatHarvestTime(totalSeconds);
@@ -275,7 +275,7 @@ function plantAll() {
             data.gold -= crops[data.selectedCrop].cost;
             updateLevelAndGoldInfo();
             updateUpgradesButtonColor();
-            data.cropIDInPlot[i - 1] = data.selectedCrop;
+            data.cropIDInPlot[i - 1] = crops[data.selectedCrop];
             data.plotHarvestTime[i - 1] = data.cropIDInPlot[i - 1].harvestTime;
             let totalSeconds = data.cropIDInPlot[i - 1].harvestTime;
             let harvestTime = formatHarvestTime(totalSeconds);
@@ -304,7 +304,7 @@ function harvestAll() {
                 updateUnlockNextCropColor();
             }
             data.harvestable[i - 1] = false;
-            data.cropIDInPlot[i - 1] = 0;
+            data.cropIDInPlot[i - 1] = crops[0];
             data.plotHarvestTime[i - 1] = -10;
             updateLevelAndGoldInfo();
             updatePlotInfo();
@@ -317,7 +317,7 @@ function harvestAll() {
 function emptyAll() {
     for (let i = 1; i < data.plotsRevealed.length; i++) {
         if (data.plotHarvestTime[i - 1] > 0) {
-            data.cropIDInPlot[i - 1] = 0;
+            data.cropIDInPlot[i - 1] = crops[0];
             document.getElementById("plot" + i + "-name").innerHTML = data.cropIDInPlot[i - 1].name;
             document.getElementById("plot" + i + "-gold").innerHTML = `+${data.cropIDInPlot[i - 1].gold}`;
             document.getElementById("plot" + i + "-xp").innerHTML = `+${data.cropIDInPlot[i - 1].xp}`;

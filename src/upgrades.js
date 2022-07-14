@@ -11,7 +11,7 @@ function updateBoostsInfo() {
 }
 
 function upgradeCost(upgradeIndex) {
-    return upgrade[upgradeIndex].cost * Math.pow(1.15, data.upgradeLevel[upgradeIndex]) * discountBoost;
+    return Math.ceil(upgrade[upgradeIndex].cost * Math.pow(1.15, data.upgradeLevel[upgradeIndex]) * discountBoost);
 }
 
 function updateUpgradeInfo() {
@@ -19,7 +19,7 @@ function updateUpgradeInfo() {
         document.getElementById("upgrade" + i + "-name").innerHTML = upgrade[i - 1].name;
         document.getElementById("upgrade" + i + "-level").innerHTML = data.upgradeLevel[i - 1];
         document.getElementById("upgrade" + i + "-description").innerHTML = upgrade[i - 1].description;
-        document.getElementById("upgrade" + i + "-cost").innerHTML = `${Math.floor(upgradeCost(i - 1))} gold`;
+        document.getElementById("upgrade" + i + "-cost").innerHTML = `${(upgradeCost(i - 1))} gold`;
     }
 }
 
@@ -45,4 +45,7 @@ function buyUpgrade(upgradeIndex) {
     updateBoostsInfo();
     updateUpgradeInfo();
     updateUpgradesButtonColor();
+    updateHeaderCropSelectedInfo();
+
+    console.log(upgradeCost(upgradeIndex - 1));
 }

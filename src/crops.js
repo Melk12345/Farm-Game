@@ -104,8 +104,8 @@ function updateCropInfo() {
         let harvestTime = formatHarvestTime(totalSeconds);
 
         document.getElementById("crop" + i + "-name").innerHTML = crops[i].name;
-        document.getElementById("crop" + i + "-gold").innerHTML = `+${crops[i].gold}`;
-        document.getElementById("crop" + i + "-xp").innerHTML = `+${crops[i].xp}`;
+        document.getElementById("crop" + i + "-gold").innerHTML = `+${cropGold(i)}`;
+        document.getElementById("crop" + i + "-xp").innerHTML = `+${cropXP(i)}`;
         document.getElementById("crop" + i + "-cost").innerHTML = `${crops[i].cost} gold`
         document.getElementById("crop" + i + "-harvestTime").innerHTML = harvestTime;
     }

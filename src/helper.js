@@ -1,5 +1,5 @@
 function format(amount, numFloatingDigits) {
-    let power = Math.log10(Math.floor(amount));
+    let power = Math.floor(Math.log10(Math.floor(amount)));
     let mantissa = amount/Math.pow(10, power);
     if (power < 6) return formatWithCommas(amount, numFloatingDigits);
     else return mantissa.toFixed(2) + "e" + power;
@@ -31,15 +31,14 @@ function plotGold(plotIndex) {
 }
 
 function plotXP(plotIndex) {
-    let cropID = data.cropIDInPlot[plotIndex];
+    let cropID = data.cropIDInPlot[plotIndex]
     return cropXP(cropID);
 }
 
 function cropGold(cropID) {
-    return crops[cropID].gold * goldBoost;
+    return crops[cropID].gold * goldBoost
 }
 
 function cropXP(cropID) {
     return crops[cropID].xp * xpBoost;
 }
-
