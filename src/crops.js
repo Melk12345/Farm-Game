@@ -44,8 +44,8 @@ function updateHeaderCropSelectedInfo() {
     let harvestTime = formatHarvestTime(totalSeconds);
 
     headerCropSelectedTextElement.innerHTML = crops[data.selectedCrop].name;
-    headerGoldTextElement.innerHTML = `+${crops[data.selectedCrop].gold}`;
-    headerXpTextElement.innerHTML = `+${crops[data.selectedCrop].xp}`;
+    headerGoldTextElement.innerHTML = `+${cropGold(data.selectedCrop)}`;
+    headerXpTextElement.innerHTML = `+${cropXP(data.selectedCrop)}`;
     headerCostTextElement.innerHTML = `${crops[data.selectedCrop].cost} gold`;
     headerHarvestTimeTextElement.innerHTML = harvestTime;
 }

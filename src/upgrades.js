@@ -3,20 +3,29 @@ function updateBoostsInfo() {
     xpBoost = upgrade[1].boost * data.upgradeLevel[1] + 1;
     discountBoost = Math.pow(1 - upgrade[2].boost, data.upgradeLevel[2]);
     harvestTimeBoost = Math.pow(1 - upgrade[3].boost, data.upgradeLevel[3]);
+
+    console.log(`gold boost: ${goldBoost}`);
+    console.log(`xp boost: ${xpBoost}`);
+    console.log(`discount boost: ${discountBoost}`);
+    console.log(`harvest time boost: ${harvestTimeBoost}`);
+}
+
+function upgradeCost(upgradeIndex) {
+    return upgrade[upgradeIndex].cost * Math.pow(1.15, data.upgradeLevel[upgradeIndex]) * discountBoost;
 }
 
 function updateUpgradeInfo() {
-    for (let i = 1; i < data.upgradeLevel.length; i++) {
+    for (let i = 1; i < data.upgradeLevel.length + 1; i++) {
         document.getElementById("upgrade" + i + "-name").innerHTML = upgrade[i - 1].name;
         document.getElementById("upgrade" + i + "-level").innerHTML = data.upgradeLevel[i - 1];
-        document.getElementById("upgrade" + i + "-boost").innerHTML = upgrade[i - 1].boost;
-        document.getElementById("upgrade" + i + "-cost").innerHTML = `${upgrade[i - 1].baseCost * Math.pow(1.15, data.upgradeLevel[i - 1]) * discountBoost} gold`
+        document.getElementById("upgrade" + i + "-description").innerHTML = upgrade[i - 1].description;
+        document.getElementById("upgrade" + i + "-cost").innerHTML = `${Math.floor(upgradeCost(i - 1))} gold`;
     }
 }
 
 function updateUpgradesButtonColor() {
-    for (let i = 1; i < data.upgradeLevel.length; i++) {
-        if (data.gold < upgrade[i - 1].baseCost * Math.pow(1.15, data.upgradeLevel[i - 1]) * discountBoost) {
+    for (let i = 1; i < data.upgradeLevel.length + 1; i++) {
+        if (data.gold < upgradeCost(i - 1)) {
             document.getElementById("upgrade" + i + "-button").style.borderColor = '#b33939';
             document.getElementById("upgrade" + i + "-button").style.cursor = "not-allowed";
             document.getElementById("upgrade" + i + "-button").disabled = true;
@@ -29,9 +38,9 @@ function updateUpgradesButtonColor() {
 }
 
 function buyUpgrade(upgradeIndex) {
-    if (data.gold < upgrade[upgradeIndex - 1].baseCost * discountBoost) return;
+    if (data.gold < upgradeCost(upgradeIndex - 1)) return;
 
-    data.gold -= upgrade[upgradeIndex - 1].baseCost * discountBoost;
+    data.gold -= upgradeCost(upgradeIndex - 1);
     data.upgradeLevel[upgradeIndex - 1]++;
     updateBoostsInfo();
     updateUpgradeInfo();

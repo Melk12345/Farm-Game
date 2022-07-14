@@ -24,3 +24,22 @@ function formatHarvestTime(totalSeconds) {
 
     return harvestTime;
 }
+
+function plotGold(plotIndex) {
+    let cropID = data.cropIDInPlot[plotIndex];
+    return cropGold(cropID);
+}
+
+function plotXP(plotIndex) {
+    let cropID = data.cropIDInPlot[plotIndex];
+    return cropXP(cropID);
+}
+
+function cropGold(cropID) {
+    return crops[cropID].gold * goldBoost;
+}
+
+function cropXP(cropID) {
+    return crops[cropID].xp * xpBoost;
+}
+

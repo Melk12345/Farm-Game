@@ -94,7 +94,7 @@ let data = {
     nextCropLevelRequirement: baseCropLevelRequirement,
     plotsRevealed: [true, false, false, false, false, false, false, false, false],
     cropsRevealed: [true, false, false, false, false, false, false, false, false],
-    cropIDInPlot: [crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0]],
+    cropIDInPlot: [0, 0, 0, 0, 0, 0, 0, 0],
     plotHarvestTime: [-10, -10, -10, -10, -10, -10, -10, -10],
     harvestable: [false, false, false, false, false, false, false, false],
     upgradeLevel: [0, 0, 0, 0]

@@ -72,9 +72,8 @@ function autoSaveData() {
 }
 
 function load() {
-    console.log(data.upgradeLevel.length);
     loadSavedData();
-    console.log(data.upgradeLevel.length);
+    updateBoostsInfo();
     updateLevelAndGoldInfo();
     updateHeaderCropSelectedInfo();
     updateSelectedCropColor();
@@ -87,8 +86,8 @@ function load() {
     updateUnlockNextCropColor();
     selectCrop(data.selectedCrop);
     updateAFKGainsButtonInfo();
+    updateUpgradesButtonColor();
     updateUpgradeInfo();
-    updateBoostsInfo();
 }
 
 window.onload = function() {
