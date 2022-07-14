@@ -31,7 +31,7 @@ function plotGold(plotIndex) {
 }
 
 function plotXP(plotIndex) {
-    let cropID = data.cropIDInPlot[plotIndex]
+    let cropID = data.cropIDInPlot[plotIndex];
     return cropXP(cropID);
 }
 

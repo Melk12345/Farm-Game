@@ -79,13 +79,13 @@ function updatePlotInfo() {
             document.getElementById("plot" + i + "-cost").innerHTML = `${data.cropIDInPlot[i - 1].cost} gold`
             document.getElementById("plot" + i + "-harvestTime").innerHTML = `${data.cropIDInPlot[i - 1].harvestTime}`;
         } else {
-            let totalSeconds = data.plotHarvestTime[i - 1] * harvestTimeBoost;
+            let totalSeconds = data.plotHarvestTime[i - 1];
             let harvestTime = formatHarvestTime(totalSeconds);
 
-            document.getElementById("plot" + i + "-name").innerHTML = data.cropIDInPlot[i - 1].name;
+            document.getElementById("plot" + i + "-name").innerHTML = crops[data.cropIDInPlot[i - 1]].name;
             document.getElementById("plot" + i + "-gold").innerHTML = `+${plotGold(i - 1)}`;
             document.getElementById("plot" + i + "-xp").innerHTML = `+${plotXP(i - 1)}`;
-            document.getElementById("plot" + i + "-cost").innerHTML = `${data.cropIDInPlot[i - 1].cost} gold`;
+            document.getElementById("plot" + i + "-cost").innerHTML = `${crops[data.cropIDInPlot[i - 1]].cost} gold`;
             if (harvestTime !== "0.0s") document.getElementById("plot" + i + "-harvestTime").innerHTML = harvestTime;
             else document.getElementById("plot" + i + "-harvestTime").innerHTML = "Ready!";
         }
@@ -145,13 +145,13 @@ function plantCrop(plotIndex) {
     updateLevelAndGoldInfo();
     updateUpgradesButtonColor();
     data.cropIDInPlot[plotIndex - 1] = crops[data.selectedCrop];
-    data.plotHarvestTime[plotIndex - 1] = data.cropIDInPlot[plotIndex - 1].harvestTime;
-    let totalSeconds = data.cropIDInPlot[plotIndex - 1].harvestTime;
+    data.plotHarvestTime[plotIndex - 1] = crops[data.cropIDInPlot[plotIndex - 1]].harvestTime* harvestTimeBoost;
+    let totalSeconds = crops[data.cropIDInPlot[plotIndex - 1]].harvestTime;
     let harvestTime = formatHarvestTime(totalSeconds);
-    document.getElementById("plot" + plotIndex + "-name").innerHTML = data.cropIDInPlot[plotIndex - 1].name;
+    document.getElementById("plot" + plotIndex + "-name").innerHTML = crops[data.cropIDInPlot[plotIndex - 1]].name;
     document.getElementById("plot" + plotIndex + "-gold").innerHTML = `+${plotGold(plotIndex - 1).gold}`;
     document.getElementById("plot" + plotIndex + "-xp").innerHTML = `+${plotXP(plotIndex - 1).xp}`;
-    document.getElementById("plot" + plotIndex + "-cost").innerHTML = `${data.cropIDInPlot[plotIndex - 1].cost} gold`
+    document.getElementById("plot" + plotIndex + "-cost").innerHTML = `${crops[data.cropIDInPlot[plotIndex - 1]].cost} gold`
     document.getElementById("plot" + plotIndex + "-harvestTime").innerHTML = harvestTime;
 }
 
@@ -177,11 +177,11 @@ function harvestCrop(plotIndex) {
 
 function emptyPlot(plotIndex) {
     data.cropIDInPlot[plotIndex - 1] = crops[0];
-    document.getElementById("plot" + plotIndex + "-name").innerHTML = data.cropIDInPlot[plotIndex - 1].name;
-    document.getElementById("plot" + plotIndex + "-gold").innerHTML = `+${data.cropIDInPlot[plotIndex - 1].gold}`;
-    document.getElementById("plot" + plotIndex + "-xp").innerHTML = `+${data.cropIDInPlot[plotIndex - 1].xp}`;
-    document.getElementById("plot" + plotIndex + "-cost").innerHTML = `${data.cropIDInPlot[plotIndex - 1].cost} gold`
-    document.getElementById("plot" + plotIndex + "-harvestTime").innerHTML = `${data.cropIDInPlot[plotIndex - 1].harvestTime}`;
+    document.getElementById("plot" + plotIndex + "-name").innerHTML = crops[data.cropIDInPlot[plotIndex - 1]].name;
+    document.getElementById("plot" + plotIndex + "-gold").innerHTML = `+${crops[data.cropIDInPlot[plotIndex - 1]].gold}`;
+    document.getElementById("plot" + plotIndex + "-xp").innerHTML = `+${crops[data.cropIDInPlot[plotIndex - 1]].xp}`;
+    document.getElementById("plot" + plotIndex + "-cost").innerHTML = `${crops[data.cropIDInPlot[plotIndex - 1]].cost} gold`
+    document.getElementById("plot" + plotIndex + "-harvestTime").innerHTML = `${crops[data.cropIDInPlot[plotIndex - 1]].harvestTime}`;
     data.harvestable[plotIndex - 1] = false;
     data.plotHarvestTime[plotIndex - 1] = -10;
 }
@@ -272,18 +272,7 @@ function updateEmptyAllButtonColor() {
 function plantAll() {
     for (let i = 1; i < data.plotsRevealed.length; i++) {
         if (data.plotsRevealed[i - 1] === true && data.plotHarvestTime[i - 1] < 0 && data.gold >= crops[data.selectedCrop].cost) {
-            data.gold -= crops[data.selectedCrop].cost;
-            updateLevelAndGoldInfo();
-            updateUpgradesButtonColor();
-            data.cropIDInPlot[i - 1] = crops[data.selectedCrop];
-            data.plotHarvestTime[i - 1] = data.cropIDInPlot[i - 1].harvestTime;
-            let totalSeconds = data.cropIDInPlot[i - 1].harvestTime;
-            let harvestTime = formatHarvestTime(totalSeconds);
-            document.getElementById("plot" + i + "-name").innerHTML = data.cropIDInPlot[i - 1].name;
-            document.getElementById("plot" + i + "-gold").innerHTML = `+${plotGold(i - 1)}`;
-            document.getElementById("plot" + i + "-xp").innerHTML = `+${plotXP(i - 1)}`;
-            document.getElementById("plot" + i + "-cost").innerHTML = `${data.cropIDInPlot[i - 1].cost} gold`
-            document.getElementById("plot" + i + "-harvestTime").innerHTML = harvestTime; 
+            plantCrop();
         }       
     }
 }
@@ -318,11 +307,11 @@ function emptyAll() {
     for (let i = 1; i < data.plotsRevealed.length; i++) {
         if (data.plotHarvestTime[i - 1] > 0) {
             data.cropIDInPlot[i - 1] = crops[0];
-            document.getElementById("plot" + i + "-name").innerHTML = data.cropIDInPlot[i - 1].name;
-            document.getElementById("plot" + i + "-gold").innerHTML = `+${data.cropIDInPlot[i - 1].gold}`;
-            document.getElementById("plot" + i + "-xp").innerHTML = `+${data.cropIDInPlot[i - 1].xp}`;
-            document.getElementById("plot" + i + "-cost").innerHTML = `${data.cropIDInPlot[i - 1].cost} gold`
-            document.getElementById("plot" + i + "-harvestTime").innerHTML = `${data.cropIDInPlot[i - 1].harvestTime}`;
+            document.getElementById("plot" + i + "-name").innerHTML = crops[data.cropIDInPlot[i - 1]].name;
+            document.getElementById("plot" + i + "-gold").innerHTML = `+${crops[data.cropIDInPlot[i - 1]].gold}`;
+            document.getElementById("plot" + i + "-xp").innerHTML = `+${crops[data.cropIDInPlot[i - 1]].xp}`;
+            document.getElementById("plot" + i + "-cost").innerHTML = `${crops[data.cropIDInPlot[i - 1]].cost} gold`
+            document.getElementById("plot" + i + "-harvestTime").innerHTML = `${crops[data.cropIDInPlot[i - 1]].harvestTime}`;
             data.harvestable[i - 1] = false;
             data.plotHarvestTime[i - 1] = -10;
         }
