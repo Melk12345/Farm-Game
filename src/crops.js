@@ -5,7 +5,7 @@ const unlockNextCropButtonElement = document.getElementById("unlock-crops-button
 function updateUnlockNextCropInfo() {
     let count = 0;
     for (let i = 0; i < data.cropsRevealed.length; i++) {
-        if (data.cropsRevealed[i] === true) {
+        if (data.cropsRevealed[i]) {
             count++;
         } else {
             break;
@@ -40,7 +40,7 @@ const headerCostTextElement = document.getElementById("header-cost-text");
 const headerHarvestTimeTextElement = document.getElementById("header-harvestTime-text");
 
 function updateHeaderCropSelectedInfo() {
-    let totalSeconds = crops[data.selectedCrop].harvestTime;
+    let totalSeconds = crops[data.selectedCrop].harvestTime  * harvestTimeBoost;
     let harvestTime = formatHarvestTime(totalSeconds);
 
     headerCropSelectedTextElement.innerHTML = crops[data.selectedCrop].name;
@@ -52,7 +52,7 @@ function updateHeaderCropSelectedInfo() {
 
 function revealCrops() {
     for (let i = 1; i < data.cropsRevealed.length; i++) {
-        if (data.cropsRevealed[i - 1] === true) {
+        if (data.cropsRevealed[i - 1]) {
             document.getElementById("crop" + i + "-row").style.display = "table-row";
         } else {
             document.getElementById("crop" + i + "-row").style.display = "none";
@@ -63,7 +63,7 @@ function revealCrops() {
 function unlockNextCrop() {
     let count = 0;
     for (let i = 0; i < data.cropsRevealed.length; i++) {
-        if (data.cropsRevealed[i] === true) {
+        if (data.cropsRevealed[i]) {
             count++;
         } else {
             break;
@@ -100,12 +100,12 @@ function updateUnlockNextCropColor() {
 
 function updateCropInfo() {
     for (let i = 1; i < data.cropsRevealed.length; i++) {
-        let totalSeconds = crops[i].harvestTime;
+        let totalSeconds = crops[i].harvestTime * harvestTimeBoost;
         let harvestTime = formatHarvestTime(totalSeconds);
 
         document.getElementById("crop" + i + "-name").innerHTML = crops[i].name;
-        document.getElementById("crop" + i + "-gold").innerHTML = `+${cropGold(i)}`;
-        document.getElementById("crop" + i + "-xp").innerHTML = `+${cropXP(i)}`;
+        document.getElementById("crop" + i + "-gold").innerHTML = `+${formatWithCommas(cropGold(i))}`;
+        document.getElementById("crop" + i + "-xp").innerHTML = `+${formatWithCommas(cropXP(i))}`;
         document.getElementById("crop" + i + "-cost").innerHTML = `${crops[i].cost} gold`
         document.getElementById("crop" + i + "-harvestTime").innerHTML = harvestTime;
     }

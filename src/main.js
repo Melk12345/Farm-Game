@@ -4,10 +4,10 @@ const xpReqTextElement = document.getElementById("xp-req-text");
 const goldTextElement = document.getElementById("gold-text");
 
 function updateLevelAndGoldInfo() {
-    levelTextElement.innerHTML = formatWithCommas(data.level, 0);
-    xpTextElement.innerHTML = format(data.xp, 0);
-    xpReqTextElement.innerHTML = format(data.xpReq, 0);
-    goldTextElement.innerHTML = format(data.gold, 0);
+    levelTextElement.innerHTML = data.level;
+    xpTextElement.innerHTML = format(Math.floor(data.xp));
+    xpReqTextElement.innerHTML = format(Math.floor(data.xpReq));
+    goldTextElement.innerHTML = format(Math.floor(data.gold));
     upgradeHeaderCostColor();
 }
 

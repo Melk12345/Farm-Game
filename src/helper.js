@@ -1,12 +1,12 @@
-function format(amount, numFloatingDigits) {
+function format(amount) {
     let power = Math.floor(Math.log10(Math.floor(amount)));
     let mantissa = amount/Math.pow(10, power);
-    if (power < 6) return formatWithCommas(amount, numFloatingDigits);
+    if (power < 6) return amount;
     else return mantissa.toFixed(2) + "e" + power;
 }
 
-function formatWithCommas(amount, numFloatingDigits) {
-    return amount.toFixed(numFloatingDigits).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+function formatWithCommas(amount) {
+    return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function formatHarvestTime(totalSeconds) {
@@ -16,7 +16,7 @@ function formatHarvestTime(totalSeconds) {
     const hours = (totalSeconds / (1000 * 60 * 60)) % 24;
     const days = totalSeconds / (1000 * 60 * 60 * 24);
 
-    if (totalSeconds < 10000) harvestTime += `${formatWithCommas(seconds, 1)}s`;
+    if (totalSeconds < 10000) harvestTime += `${formatWithCommas(seconds.toFixed(1))}s`;
     else if (totalSeconds < 60000) harvestTime += `${Math.floor(seconds)}s`;
     else if (totalSeconds < 3600000) harvestTime += `${Math.floor(minutes)}m ${Math.floor(seconds)}s`;
     else if (totalSeconds < 86400000) harvestTime += `${Math.floor(hours)}h ${Math.floor(minutes)}m ${Math.floor(seconds)}s`;
@@ -36,7 +36,7 @@ function plotXP(plotIndex) {
 }
 
 function cropGold(cropID) {
-    return crops[cropID].gold * goldBoost
+    return crops[cropID].gold * goldBoost;
 }
 
 function cropXP(cropID) {

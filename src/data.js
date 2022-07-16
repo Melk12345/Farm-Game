@@ -7,52 +7,52 @@ const crops = [{
 }, {
     name: "Blueberries",
     cost: 0,
-    gold: 1,
+    gold: 2,
     xp: 2,
-    harvestTime: 10000, // 10s
+    harvestTime: 10000,
 }, {
     name: "Raspberries",
-    cost: 2,
-    gold: 8,
-    xp: 8,
-    harvestTime: 300000, // 5m
+    cost: 1,
+    gold: 7,
+    xp: 7,
+    harvestTime: 30000,
 }, {
     name: "Strawberries",
-    cost: 6,
-    gold: 24,
-    xp: 45,
-    harvestTime: 3600000, // 1h
+    cost: 2,
+    gold: 20,
+    xp: 20,
+    harvestTime: 90000,
 }, {
     name: "Wheat",
-    cost: 5,
-    gold: 12,
-    xp: 50,
-    harvestTime: 7200000, // 2h
+    cost: 3,
+    gold: 60,
+    xp: 60,
+    harvestTime: 270000,
 }, {
     name: "Carrots",
-    cost: 9,
-    gold: 36,
-    xp: 90,
-    harvestTime: 18000000, // 5h
+    cost: 4,
+    gold: 185,
+    xp: 185,
+    harvestTime: 810000,
 
 }, {
     name: "Tomatoes",
-    cost: 11,
-    gold: 42,
-    xp: 105,
-    harvestTime: 28800000, // 8h
+    cost: 5,
+    gold: 573,
+    xp: 573,
+    harvestTime: 2430000,
 }, {
     name: "Watermelon",
-    cost: 12,
-    gold: 48,
-    xp: 120,
-    harvestTime: 43200000, // 12h
+    cost: 6,
+    gold: 1776,
+    xp: 1776,
+    harvestTime: 7290000,
 }, {
     name: "Potatoes",
-    cost: 15,
-    gold: 60,
-    xp: 150,
-    harvestTime: 86400000, // 1d
+    cost: 7,
+    gold: 5503,
+    xp: 5502,
+    harvestTime: 21870000,
 }];
 
 const upgrade = [{
@@ -94,7 +94,7 @@ let data = {
     nextCropLevelRequirement: baseCropLevelRequirement,
     plotsRevealed: [true, false, false, false, false, false, false, false, false],
     cropsRevealed: [true, false, false, false, false, false, false, false, false],
-    cropIDInPlot: [crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0], crops[0]],
+    cropIDInPlot: [0, 0, 0, 0, 0, 0, 0, 0],
     plotHarvestTime: [-10, -10, -10, -10, -10, -10, -10, -10],
     harvestable: [false, false, false, false, false, false, false, false],
     upgradeLevel: [0, 0, 0, 0]
