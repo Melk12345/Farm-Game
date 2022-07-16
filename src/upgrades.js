@@ -27,7 +27,7 @@ function updateUpgradeInfo() {
 function updateUpgradesButtonColor() {
     for (let i = 0; i < data.upgradeLevel.length; i++) {
         if (data.gold < upgradeCost(i)) {
-            document.getElementById("upgrade" + i + "-button").style.borderColor = '#b33939';
+            document.getElementById("upgrade" + i + "-button").style.borderColor = '#B33939';
             document.getElementById("upgrade" + i + "-button").style.cursor = "not-allowed";
             document.getElementById("upgrade" + i + "-button").disabled = true;
         } else {

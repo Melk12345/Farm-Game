@@ -58,13 +58,15 @@ const unlockPlotsButtonElement = document.getElementById("unlock-plots-button");
 
 function updateUnlockNextPlotColor() {
     if (data.level < data.nextPlotLevelRequirement) {
-        unlockPlotsButtonElement.style.borderColor = '#b33939';
+        unlockPlotsButtonElement.style.borderColor = '#B33939';
         unlockPlotsButtonElement.style.cursor = "not-allowed";
         unlockPlotsButtonElement.disabled = true;
+        farmMenuButtonElement.style.backgroundColor = 'Silver';
     } else {
         unlockPlotsButtonElement.style.borderColor = 'Green';
         unlockPlotsButtonElement.style.cursor = "pointer";
         unlockPlotsButtonElement.disabled = false;
+        farmMenuButtonElement.style.backgroundColor = 'Green';
     }
 }
 
@@ -97,7 +99,7 @@ function updatePlantCropButtonColor() {
         if (data.plotsRevealed[i] === false) return;
 
         if (data.plotHarvestTime[i] >= 0 || data.gold < crops[data.selectedCrop].cost) {
-            document.getElementById("plant" + i + "-button").style.borderColor = '#b33939';
+            document.getElementById("plant" + i + "-button").style.borderColor = '#B33939';
             document.getElementById("plant" + i + "-button").style.cursor = "not-allowed";
             document.getElementById("plant" + i + "-button").disabled = true;
         } else {
@@ -113,7 +115,7 @@ function updateHarvestCropButtonColor() {
         if (data.plotsRevealed[i] === false) return;
 
         if (data.harvestable[i] === false) {
-            document.getElementById("harvest" + i + "-button").style.borderColor = '#b33939';
+            document.getElementById("harvest" + i + "-button").style.borderColor = '#B33939';
             document.getElementById("harvest" + i + "-button").style.cursor = "not-allowed";
             document.getElementById("harvest" + i + "-button").disabled = true;
         } else {
@@ -129,7 +131,7 @@ function updateEmptyPlotButtonColor() {
         if (data.plotsRevealed[i] === false) return;
 
         if (data.plotHarvestTime[i] <= 0) {
-            document.getElementById("empty" + i + "-button").style.borderColor = '#b33939';
+            document.getElementById("empty" + i + "-button").style.borderColor = '#B33939';
             document.getElementById("empty" + i + "-button").style.cursor = "not-allowed";
             document.getElementById("empty" + i + "-button").disabled = true;
         } else {
@@ -207,7 +209,7 @@ function updatePlantAllButtonColor() {
         }
     }
     if (count === 0) {
-        plantAllButtonElement.style.borderColor = '#b33939';
+        plantAllButtonElement.style.borderColor = '#B33939';
         plantAllButtonElement.style.cursor = "not-allowed";
         plantAllButtonElement.disabled = true;
     } else {
@@ -227,7 +229,7 @@ function updateHarvestAllButtonColor() {
         if (data.harvestable[i]) count++;
 
         if (count < 1) {
-            harvestAllButtonElement.style.borderColor = '#b33939';
+            harvestAllButtonElement.style.borderColor = '#B33939';
             harvestAllButtonElement.style.cursor = "not-allowed";
             harvestAllButtonElement.disabled = true;
         } else {
@@ -250,7 +252,7 @@ function updateEmptyAllButtonColor() {
         if (data.plotHarvestTime[i] >= 0) count++;
 
         if (count < 1 || data.plotHarvestTime[i] === 0) {
-            emptyAllButtonElement.style.borderColor = '#b33939';
+            emptyAllButtonElement.style.borderColor = '#B33939';
             emptyAllButtonElement.style.cursor = "not-allowed";
             emptyAllButtonElement.disabled = true;
         } else {

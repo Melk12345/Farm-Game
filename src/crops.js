@@ -88,13 +88,15 @@ const unlockCropsButtonElement = document.getElementById("unlock-crops-button");
 
 function updateUnlockNextCropColor() {
     if (data.level < data.nextCropLevelRequirement) {
-        unlockCropsButtonElement.style.borderColor = '#b33939';
+        unlockCropsButtonElement.style.borderColor = '#B33939';
         unlockCropsButtonElement.style.cursor = "not-allowed";
         unlockCropsButtonElement.disabled = true;
+        cropsMenuButtonElement.style.backgroundColor = 'Silver';
     } else {
         unlockCropsButtonElement.style.borderColor = 'Green';
         unlockCropsButtonElement.style.cursor = "pointer";
         unlockCropsButtonElement.disabled = false;
+        cropsMenuButtonElement.style.backgroundColor = 'Green';
     }
 }
 
