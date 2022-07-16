@@ -13,44 +13,44 @@ const crops = [{
 }, {
     name: "Raspberries",
     cost: 1,
-    gold: 7,
-    xp: 7,
+    gold: 6,
+    xp: 6,
     harvestTime: 30000,
 }, {
     name: "Strawberries",
     cost: 2,
-    gold: 20,
-    xp: 20,
+    gold: 19,
+    xp: 19,
     harvestTime: 90000,
 }, {
     name: "Wheat",
     cost: 3,
-    gold: 60,
-    xp: 60,
+    gold: 59,
+    xp: 59,
     harvestTime: 270000,
 }, {
     name: "Carrots",
     cost: 4,
-    gold: 185,
-    xp: 185,
+    gold: 184,
+    xp: 184,
     harvestTime: 810000,
 
 }, {
     name: "Tomatoes",
     cost: 5,
-    gold: 573,
-    xp: 573,
+    gold: 572,
+    xp: 572,
     harvestTime: 2430000,
 }, {
     name: "Watermelon",
     cost: 6,
-    gold: 1776,
-    xp: 1776,
+    gold: 1775,
+    xp: 1775,
     harvestTime: 7290000,
 }, {
     name: "Potatoes",
     cost: 7,
-    gold: 5503,
+    gold: 5502,
     xp: 5502,
     harvestTime: 21870000,
 }];
@@ -98,4 +98,11 @@ let data = {
     plotHarvestTime: [-10, -10, -10, -10, -10, -10, -10, -10],
     harvestable: [false, false, false, false, false, false, false, false],
     upgradeLevel: [0, 0, 0, 0]
+}
+
+let ans = 2;
+
+for (let i = 1; i < 9; i++) {
+    console.log(Math.floor(ans));
+    ans *= 3.1;
 }
