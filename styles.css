@@ -12,6 +12,7 @@ body {
     margin: 0 auto;
 	text-align: center;
     border-spacing: 0 4px;
+    table-layout: fixed;
 }
 
 tbody tr:nth-child(odd):not(.no-coloring) {
