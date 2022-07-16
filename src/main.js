@@ -6,7 +6,7 @@ const goldTextElement = document.getElementById("gold-text");
 function updateLevelAndGoldInfo() {
     levelTextElement.innerHTML = data.level;
     xpTextElement.innerHTML = format(Math.floor(data.xp));
-    xpReqTextElement.innerHTML = format(Math.floor(data.xpReq));
+    xpReqTextElement.innerHTML = format(Math.round(data.xpReq));
     goldTextElement.innerHTML = format(Math.floor(data.gold));
     upgradeHeaderCostColor();
 }

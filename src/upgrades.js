@@ -46,6 +46,7 @@ function buyUpgrade(upgradeIndex) {
     updateBoostsInfo();
     updateUpgradeInfo();
     updateUpgradesButtonColor();
-    updateHeaderCropSelectedInfo();
+    updateHeaderCropSelectedInfo();;
     updateCropInfo();
+    updateLevelAndGoldInfo()
 }

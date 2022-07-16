@@ -36,9 +36,9 @@ function plotXP(plotIndex) {
 }
 
 function cropGold(cropID) {
-    return crops[cropID].gold * goldBoost;
+    return Math.ceil(crops[cropID].gold * goldBoost);
 }
 
 function cropXP(cropID) {
-    return crops[cropID].xp * xpBoost;
+    return Math.ceil(crops[cropID].xp * xpBoost);
 }
