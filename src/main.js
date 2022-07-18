@@ -1,3 +1,5 @@
+"use strict";
+
 const levelTextElement = document.getElementById("level-text");
 const xpTextElement = document.getElementById("xp-text");
 const xpReqTextElement = document.getElementById("xp-req-text");
@@ -35,7 +37,6 @@ function calculateAFKGains() {
 
         if (data.plotHarvestTime[i] <= 0 || data.plotHarvestTime[i] - delta <= 0) {
             data.plotHarvestTime[i] = 0;
-            data.harvestable[i] = true;
             updatePlotInfo();
         } else {
             data.plotHarvestTime[i] -= delta;

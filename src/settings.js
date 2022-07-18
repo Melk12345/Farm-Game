@@ -1,3 +1,5 @@
+"use strict";
+
 const saveName = 'FarmGame';
 
 function saveData() {

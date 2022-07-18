@@ -1,3 +1,5 @@
+"use strict";
+
 const crops = [{
     name: "--",
     cost: "--",
@@ -87,22 +89,14 @@ let data = {
     AFKGains: true,
     gold: 0,
     xp: 0,
-    xpReq: baseXPReq,
+    xpReq: baseXPReq, // xpReq = base * Math.pow(growth, level)
     level: 1,
     selectedCrop: 1,
-    nextPlotLevelRequirement: basePlotLevelRequirement,
-    nextCropLevelRequirement: baseCropLevelRequirement,
+    nextPlotLevelRequirement: basePlotLevelRequirement, // next = base * numPlotsRevealed
+    nextCropLevelRequirement: baseCropLevelRequirement, // next = base * numCropsRevealed
     plotsRevealed: [true, false, false, false, false, false, false, false, false],
     cropsRevealed: [true, false, false, false, false, false, false, false, false],
     cropIDInPlot: [0, 0, 0, 0, 0, 0, 0, 0],
     plotHarvestTime: [-10, -10, -10, -10, -10, -10, -10, -10],
-    harvestable: [false, false, false, false, false, false, false, false],
     upgradeLevel: [0, 0, 0, 0]
-}
-
-let ans = 2;
-
-for (let i = 1; i < 9; i++) {
-    console.log(Math.floor(ans));
-    ans *= 3.1;
 }

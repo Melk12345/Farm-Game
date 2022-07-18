@@ -1,3 +1,5 @@
+"use strict";
+
 const nextCropLevelRequirementTextElement = document.getElementById("next-crop-level-requirement-text");
 const unlockNextCropButtonElement = document.getElementById("unlock-crops-button");
 
@@ -91,13 +93,12 @@ function updateUnlockNextCropColor() {
         unlockCropsButtonElement.style.borderColor = '#B33939';
         unlockCropsButtonElement.style.cursor = "not-allowed";
         unlockCropsButtonElement.disabled = true;
-        cropsMenuButtonElement.style.backgroundColor = 'Silver';
     } else {
         unlockCropsButtonElement.style.borderColor = 'Green';
         unlockCropsButtonElement.style.cursor = "pointer";
         unlockCropsButtonElement.disabled = false;
-        cropsMenuButtonElement.style.backgroundColor = 'Green';
     }
+    if (unlockCropsButtonElement.style.display === "none") cropMenuButtonElement.style.backgroundColor = 'Silver';
 }
 
 function updateCropInfo() {

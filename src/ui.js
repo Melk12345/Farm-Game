@@ -1,3 +1,5 @@
+"use strict";
+
 const farmMenuContainerElement = document.getElementById("farm-container");
 const cropsMenuContainerElement = document.getElementById("crops-container");
 const upgradesMenuContainerElement = document.getElementById("upgrades-container");

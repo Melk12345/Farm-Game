@@ -1,13 +1,15 @@
+"use strict";
+
+let goldBoost = 0;
+let xpBoost = 0;
+let harvestTimeBoost = 0;
+let discountBoost = 0;
+
 function updateBoostsInfo() {
     goldBoost = upgrade[0].boost * data.upgradeLevel[0] + 1;
     xpBoost = upgrade[1].boost * data.upgradeLevel[1] + 1;
     harvestTimeBoost = Math.pow(1 - upgrade[2].boost, data.upgradeLevel[2]);
     discountBoost = Math.pow(1 - upgrade[3].boost, data.upgradeLevel[3]);
-
-    console.log(`gold boost: ${goldBoost}`);
-    console.log(`xp boost: ${xpBoost}`);
-    console.log(`discount boost: ${discountBoost}`);
-    console.log(`harvest time boost: ${harvestTimeBoost}`);
 }
 
 function upgradeCost(upgradeIndex) {
