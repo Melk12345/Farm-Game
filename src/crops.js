@@ -98,7 +98,6 @@ function updateUnlockNextCropColor() {
         unlockCropsButtonElement.style.cursor = "pointer";
         unlockCropsButtonElement.disabled = false;
     }
-    if (unlockCropsButtonElement.style.display === "none") cropMenuButtonElement.style.backgroundColor = 'Silver';
 }
 
 function updateCropInfo() {

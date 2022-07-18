@@ -68,7 +68,6 @@ function updateUnlockNextPlotColor() {
         unlockPlotsButtonElement.style.cursor = "pointer";
         unlockPlotsButtonElement.disabled = false;
     }
-    if (unlockPlotsButtonElement.style.display === "none") farmMenuButtonElement.style.backgroundColor = 'Silver';
 }
 
 function updatePlotInfo() {
