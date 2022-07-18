@@ -115,7 +115,7 @@ function updateHarvestCropButtonColor() {
     for (let i = 0; i < data.plotsRevealed.length; i++) {
         if (data.plotsRevealed[i] === false) return;
 
-        if (data.plotHarvestTime[i] === 0) {
+        if (data.plotHarvestTime[i] === -10 || data.plotHarvestTime[i] > 0) {
             document.getElementById("harvest" + i + "-button").style.borderColor = '#B33939';
             document.getElementById("harvest" + i + "-button").style.cursor = "not-allowed";
             document.getElementById("harvest" + i + "-button").disabled = true;
