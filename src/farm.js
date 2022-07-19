@@ -51,22 +51,26 @@ function unlockNextPlot() {
         }
         data.nextPlotLevelRequirement += 2;
         revealPlots();
-        updateUnlockNextPlotColor();
         updateUnlockNextPlotInfo();
+        updateUnlockNextPlotColor();
+        console.log("h2i");
     }
+    console.log("h2i");
 }
 
 const unlockPlotsButtonElement = document.getElementById("unlock-plots-button");
 
 function updateUnlockNextPlotColor() {
-    if (data.level < data.nextPlotLevelRequirement) {
-        unlockPlotsButtonElement.style.borderColor = '#B33939';
-        unlockPlotsButtonElement.style.cursor = "not-allowed";
-        unlockPlotsButtonElement.disabled = true;
-    } else {
+    if (data.level >= data.nextPlotLevelRequirement) {
         unlockPlotsButtonElement.style.borderColor = 'Green';
         unlockPlotsButtonElement.style.cursor = "pointer";
         unlockPlotsButtonElement.disabled = false;
+        farmMenuButtonElement.style.backgroundColor = unlockPlotsButtonElement.style.display === 'none'  ? 'Silver' : 'Green';
+    } else {
+        unlockPlotsButtonElement.style.borderColor = '#B33939';
+        unlockPlotsButtonElement.style.cursor = "not-allowed";
+        unlockPlotsButtonElement.disabled = true;
+        farmMenuButtonElement.style.backgroundColor = 'Silver';
     }
 }
 

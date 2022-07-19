@@ -80,23 +80,27 @@ function unlockNextCrop() {
         }
         data.nextCropLevelRequirement += 2;
         revealCrops();
-        updateUnlockNextCropColor();
         updateUnlockNextCropInfo();
         updateCropInfo();
+        updateUnlockNextCropColor();
+        console.log("h1i");
     }
+    console.log("h1i");
 }
 
 const unlockCropsButtonElement = document.getElementById("unlock-crops-button");
 
 function updateUnlockNextCropColor() {
-    if (data.level < data.nextCropLevelRequirement) {
-        unlockCropsButtonElement.style.borderColor = '#B33939';
-        unlockCropsButtonElement.style.cursor = "not-allowed";
-        unlockCropsButtonElement.disabled = true;
-    } else {
+    if (data.level >= data.nextCropLevelRequirement) {
         unlockCropsButtonElement.style.borderColor = 'Green';
         unlockCropsButtonElement.style.cursor = "pointer";
         unlockCropsButtonElement.disabled = false;
+        cropsMenuButtonElement.style.backgroundColor = unlockCropsButtonElement.style.display === 'none'  ? 'Silver' : 'Green';
+    } else {
+        unlockCropsButtonElement.style.borderColor = '#B33939';
+        unlockCropsButtonElement.style.cursor = "not-allowed";
+        unlockCropsButtonElement.disabled = true;
+        cropsMenuButtonElement.style.backgroundColor = 'Silver';
     }
 }
 

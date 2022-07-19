@@ -30,7 +30,7 @@ function importData() {
     data = JSON.parse((atob(importedData)));
     window.localStorage.setItem(saveName, JSON.stringify(data));
 
-    load();
+    location.reload();
 }
 
 function exportData() {
