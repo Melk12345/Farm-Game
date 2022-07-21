@@ -26,17 +26,16 @@ function updateUpgradeInfo() {
     }
 }
 
-// change
 function updateUpgradesButtonColor() {
     for (let i = 0; i < data.upgradeLevel.length; i++) {
+        let element = document.getElementById("upgrade" + i + "-button");
+
         if (data.gold < upgradeCost(i)) {
-            document.getElementById("upgrade" + i + "-button").style.borderColor = '#B33939';
-            document.getElementById("upgrade" + i + "-button").style.cursor = "not-allowed";
-            document.getElementById("upgrade" + i + "-button").disabled = true;
+            element.classList.add("disabled");
+            element.classList.remove("enabled");
         } else {
-            document.getElementById("upgrade" + i + "-button").style.borderColor = 'Green';
-            document.getElementById("upgrade" + i + "-button").style.cursor = "pointer";
-            document.getElementById("upgrade" + i + "-button").disabled = false;
+            element.classList.add("enabled");
+            element.classList.remove("disabled");
         }
     }
 }
