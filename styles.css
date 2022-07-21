@@ -25,6 +25,16 @@ tbody tr:nth-child(even):not(.no-coloring) {
     background: #5C4033;
 }
 
+button.disabled {
+    border-color: '#B33939';
+    cursor: "not-allowed";
+}
+
+button.enabled {
+    border-color: 'Green';
+    cursor: "pointer";
+}
+
 #plot-table tr td:last-child {
     width: 0px;
 }

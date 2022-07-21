@@ -60,16 +60,15 @@ function unlockNextPlot() {
 
 const unlockPlotsButtonElement = document.getElementById("unlock-plots-button");
 
+// change
 function updateUnlockNextPlotColor() {
     if (data.level >= data.nextPlotLevelRequirement) {
-        unlockPlotsButtonElement.style.borderColor = 'Green';
-        unlockPlotsButtonElement.style.cursor = "pointer";
-        unlockPlotsButtonElement.disabled = false;
+        unlockPlotsButtonElement.classList.add("disabled");
+        unlockPlotsButtonElement.classList.remove("enabled");
         farmMenuButtonElement.style.backgroundColor = unlockPlotsButtonElement.style.display === 'none'  ? 'Silver' : 'Green';
     } else {
-        unlockPlotsButtonElement.style.borderColor = '#B33939';
-        unlockPlotsButtonElement.style.cursor = "not-allowed";
-        unlockPlotsButtonElement.disabled = true;
+        unlockPlotsButtonElement.classList.add("disabled");
+        unlockPlotsButtonElement.classList.remove("enabled");
         farmMenuButtonElement.style.backgroundColor = 'Silver';
     }
 }
@@ -98,6 +97,7 @@ function updatePlotInfo() {
     }
 }
 
+// change
 function updatePlantCropButtonColor() {
     for (let i = 0; i < data.plotsRevealed.length; i++) {
         if (data.plotsRevealed[i] === false) return;
@@ -114,6 +114,7 @@ function updatePlantCropButtonColor() {
     }
 }
 
+// change
 function updateHarvestCropButtonColor() {
     for (let i = 0; i < data.plotsRevealed.length; i++) {
         if (data.plotsRevealed[i] === false) return;
@@ -130,6 +131,7 @@ function updateHarvestCropButtonColor() {
     }
 }
 
+// change
 function updateEmptyPlotButtonColor() {
     for (let i = 0; i < data.plotsRevealed.length; i++) {
         if (data.plotsRevealed[i] === false) return;
@@ -200,6 +202,7 @@ function calculateHarvestTime(deltaTime) {
 const plantAllButtonElement = document.getElementById("plant-all-button");
 
 // if at least 1 plot is empty and we have enough gold to plant at least 1 crop, enable the button
+// change
 function updatePlantAllButtonColor() {
     let count = 0
     for (let i = 0; i < data.plotsRevealed.length; i++) {
@@ -223,6 +226,7 @@ function updatePlantAllButtonColor() {
 const harvestAllButtonElement = document.getElementById("harvest-all-button");
 
 // if we have at least 1 plot ready, enable the button
+// change
 function updateHarvestAllButtonColor() {
     let count = 0;
     for (let i = 0; i < data.plotsRevealed.length; i++) {
@@ -245,6 +249,7 @@ const emptyAllButtonElement = document.getElementById("empty-all-button");
 
 // if at least 1 crop is still growing, enable the button
 // if at least 1 crop is done growing, disable the button
+// change
 function updateEmptyAllButtonColor() {
     let count = 0
     for (let i = 0; i < data.plotsRevealed.length; i++) {

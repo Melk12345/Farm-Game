@@ -26,6 +26,7 @@ function updateUpgradeInfo() {
     }
 }
 
+// change
 function updateUpgradesButtonColor() {
     for (let i = 0; i < data.upgradeLevel.length; i++) {
         if (data.gold < upgradeCost(i)) {
