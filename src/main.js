@@ -8,7 +8,7 @@ const goldTextElement = document.getElementById("gold-text");
 function updateLevelAndGoldInfo() {
     levelTextElement.innerHTML = data.level;
     xpTextElement.innerHTML = format(Math.floor(data.xp));
-    xpReqTextElement.innerHTML = format(Math.round(data.xpReq));
+    xpReqTextElement.innerHTML = format(Math.round(xpReq));
     goldTextElement.innerHTML = format(Math.floor(data.gold));
     upgradeHeaderCostColor();
 }
@@ -32,8 +32,8 @@ function calculateAFKGains() {
     const now = Date.now();
     let delta = now - data.time;
 
-    for (let i = 0; i < data.plotsRevealed.length; i++) {
-        if (data.plotsRevealed[i] === false || data.plotHarvestTime[i] === -10) continue;
+    for (let i = 0; i < data.numPlotsRevealed; i++) {
+        if (data.plotHarvestTime[i] === -10) continue;
 
         if (data.plotHarvestTime[i] <= 0 || data.plotHarvestTime[i] - delta <= 0) {
             data.plotHarvestTime[i] = 0;
@@ -75,6 +75,7 @@ function autoSaveData() {
 function load() {
     loadSavedData();
     updateBoostsInfo();
+    calculateXpReq();
     updateLevelAndGoldInfo();
     updateHeaderCropSelectedInfo();
     updateSelectedCropColor();
@@ -85,6 +86,8 @@ function load() {
     revealCrops();
     updateUnlockNextPlotColor();
     updateUnlockNextCropColor();
+    calculateNextCropLevelRequirement();
+    calculateNextPlotLevelRequirement();
     selectCrop(data.selectedCrop);
     updateAFKGainsButtonInfo();
     updateUpgradesButtonColor();

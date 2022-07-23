@@ -79,11 +79,11 @@ const upgrade = [{
     cost: 100,
 }];
 
-const baseXPReq = 10;
+const numPlotsMax = 8;
+const numCropsMax = 8;
+const baseXPReq = 8;
 const basePlotLevelRequirement = 2;
 const baseCropLevelRequirement = 3;
-let numPlotsRevealed = 1;
-let numCropsRevealed = 1;
 
 let data = {
     time: Date.now(),
@@ -91,13 +91,12 @@ let data = {
     AFKGains: true,
     gold: 0,
     xp: 0,
-    xpReq: baseXPReq, // xpReq = base * Math.pow(growth, level)
     level: 1,
     selectedCrop: 1,
-    nextPlotLevelRequirement: basePlotLevelRequirement, // next = base * numPlotsRevealed, change += 2
-    nextCropLevelRequirement: baseCropLevelRequirement, // next = base * numCropsRevealed. change += 2
-    plotsRevealed: [true, false, false, false, false, false, false, false, false], // use numPlotsRevealed
-    cropsRevealed: [true, false, false, false, false, false, false, false, false],  // use numCropsRevealed
+    nextPlotLevelRequirement: basePlotLevelRequirement,
+    nextCropLevelRequirement: baseCropLevelRequirement,
+    numPlotsRevealed: 1,
+    numCropsRevealed: 1,
     cropIDInPlot: [0, 0, 0, 0, 0, 0, 0, 0],
     plotHarvestTime: [-10, -10, -10, -10, -10, -10, -10, -10],
     upgradeLevel: [0, 0, 0, 0]

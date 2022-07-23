@@ -5,15 +5,7 @@ const unlockNextCropButtonElement = document.getElementById("unlock-crops-button
 
 // if we unlocked all of the available crops, hide the unlock button
 function updateUnlockNextCropInfo() {
-    let count = 0;
-    for (let i = 0; i < data.cropsRevealed.length; i++) {
-        if (data.cropsRevealed[i]) {
-            count++;
-        } else {
-            break;
-        }
-    }
-    if (count === data.cropsRevealed.length - 1) {
+    if (data.numCropsRevealed === numCropsMax) {
         unlockNextCropButtonElement.style.display = "none";
         return;
     }
@@ -53,32 +45,23 @@ function updateHeaderCropSelectedInfo() {
 }
 
 function revealCrops() {
-    for (let i = 1; i < data.cropsRevealed.length; i++) {
-        if (data.cropsRevealed[i - 1]) {
-            document.getElementById("crop" + i + "-row").style.display = "table-row";
-        } else {
-            document.getElementById("crop" + i + "-row").style.display = "none";
-        }
+    for (let i = 0; i < data.numCropsRevealed; i++) {
+        let element = document.getElementById("crop" + i + "-row");
+        element.style.display = (i < data.numCropsRevealed) ? "table-row" : "none";
     }
+    updateCropInfo();
+}
+
+let nextCropLevelRequirement = 0;
+
+function calculateNextCropLevelRequirement() {
+    nextCropLevelRequirement = baseCropLevelRequirement * data.numCropsRevealed;
 }
 
 function unlockNextCrop() {
-    let count = 0;
-    for (let i = 0; i < data.cropsRevealed.length; i++) {
-        if (data.cropsRevealed[i]) {
-            count++;
-        } else {
-            break;
-        }
-    }
-    if (data.level >= data.nextCropLevelRequirement && count !== data.cropsRevealed.length - 1) {
-        for (let i = 0; i < data.cropsRevealed.length; i++) {
-            if (data.cropsRevealed[i] === false) {
-                data.cropsRevealed[i] = true;
-                break;
-            }
-        }
-        data.nextCropLevelRequirement += 2;
+    if (data.level >= data.nextCropLevelRequirement && data.numCropsRevealed !== numCropsMax) {
+        data.numCropsRevealed++;
+        calculateNextCropLevelRequirement();
         revealCrops();
         updateUnlockNextCropInfo();
         updateCropInfo();
@@ -108,7 +91,7 @@ function updateCropsMenuButtonColor() {
 }
 
 function updateCropInfo() {
-    for (let i = 1; i < data.cropsRevealed.length; i++) {
+    for (let i = 1; i < data.numCropsRevealed + 1; i++) {
         let totalSeconds = crops[i].harvestTime * harvestTimeBoost;
         let harvestTime = formatHarvestTime(totalSeconds);
 
