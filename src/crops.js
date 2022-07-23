@@ -10,7 +10,7 @@ function updateUnlockNextCropInfo() {
         return;
     }
 
-    nextCropLevelRequirementTextElement.innerHTML = data.nextCropLevelRequirement;
+    nextCropLevelRequirementTextElement.innerHTML = nextCropLevelRequirement;
 }
 
 function selectCrop(cropIndex) {
@@ -45,9 +45,9 @@ function updateHeaderCropSelectedInfo() {
 }
 
 function revealCrops() {
-    for (let i = 0; i < data.numCropsRevealed; i++) {
+    for (let i = 0; i < numCropsMax; i++) {
         let element = document.getElementById("crop" + i + "-row");
-        element.style.display = (i < data.numCropsRevealed) ? "table-row" : "none";
+        element.style.display = i < data.numCropsRevealed ? "table-row" : "none";
     }
     updateCropInfo();
 }
@@ -59,7 +59,7 @@ function calculateNextCropLevelRequirement() {
 }
 
 function unlockNextCrop() {
-    if (data.level >= data.nextCropLevelRequirement && data.numCropsRevealed !== numCropsMax) {
+    if (data.level >= nextCropLevelRequirement && data.numCropsRevealed !== numCropsMax) {
         data.numCropsRevealed++;
         calculateNextCropLevelRequirement();
         revealCrops();
@@ -72,7 +72,7 @@ function unlockNextCrop() {
 const unlockCropsButtonElement = document.getElementById("unlock-crops-button");
 
 function updateUnlockNextCropColor() {
-    if (data.level >= data.nextCropLevelRequirement) {
+    if (data.level >= nextCropLevelRequirement) {
         unlockCropsButtonElement.classList.add("enabled");
         unlockCropsButtonElement.classList.remove("disabled");
     } else {
@@ -83,7 +83,7 @@ function updateUnlockNextCropColor() {
 }
 
 function updateCropsMenuButtonColor() {
-    if (data.level >= data.nextCropLevelRequirement) {
+    if (data.level >= nextCropLevelRequirement) {
         cropsMenuButtonElement.style.backgroundColor = unlockCropsButtonElement.style.display === 'none'  ? 'Silver' : 'Green';
     } else {
         cropsMenuButtonElement.style.backgroundColor = 'Silver';
@@ -91,7 +91,7 @@ function updateCropsMenuButtonColor() {
 }
 
 function updateCropInfo() {
-    for (let i = 1; i < data.numCropsRevealed + 1; i++) {
+    for (let i = 0; i < data.numCropsRevealed; i++) {
         let totalSeconds = crops[i].harvestTime * harvestTimeBoost;
         let harvestTime = formatHarvestTime(totalSeconds);
 

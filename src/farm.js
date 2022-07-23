@@ -10,13 +10,13 @@ function updateUnlockNextPlotInfo() {
         return;
     }
     
-    nextPlotLevelRequirementTextElement.innerHTML = data.nextPlotLevelRequirement;
+    nextPlotLevelRequirementTextElement.innerHTML = nextPlotLevelRequirement;
 }
 
 function revealPlots() {
-    for (let i = 0; i < data.numPlotsRevealed; i++) {
+    for (let i = 0; i < numPlotsMax; i++) {
         let element = document.getElementById("plot" + i + "-row");
-        element.style.display = (i < data.numPlotsRevealed) ? "table-row" : "none";
+        element.style.display = i < data.numPlotsRevealed ? "table-row" : "none";
     }
     updatePlotInfo();
 }
@@ -29,7 +29,7 @@ function calculateNextPlotLevelRequirement() {
 
 // count the number of plots already revealed and if its less than the max number of plots, reveal the next plot
 function unlockNextPlot() {
-    if (data.level >= data.nextPlotLevelRequirement && data.numPlotsRevealed < numPlotsMax) {
+    if (data.level >= nextPlotLevelRequirement && data.numPlotsRevealed < numPlotsMax) {
         data.numPlotsRevealed++;
         calculateNextPlotLevelRequirement();
         revealPlots();
@@ -41,7 +41,7 @@ function unlockNextPlot() {
 const unlockPlotsButtonElement = document.getElementById("unlock-plots-button");
 
 function updateUnlockNextPlotColor() {
-    if (data.level >= data.nextPlotLevelRequirement) {
+    if (data.level >= nextPlotLevelRequirement) {
         unlockPlotsButtonElement.classList.add("enabled");
         unlockPlotsButtonElement.classList.remove("disabled");
     } else {
@@ -52,7 +52,7 @@ function updateUnlockNextPlotColor() {
 }
 
 function updateFarmMenuButtonColor() {
-    if (data.level >= data.nextPlotLevelRequirement) {
+    if (data.level >= nextPlotLevelRequirement) {
         farmMenuButtonElement.style.backgroundColor = unlockPlotsButtonElement.style.display === 'none'  ? 'Silver' : 'Green';
     } else {
         farmMenuButtonElement.style.backgroundColor = 'Silver';
@@ -142,8 +142,9 @@ function calculateXpReq() {
 function harvestCrop(plotIndex) {
     data.gold += plotGold(plotIndex);
     data.xp += plotXP(plotIndex);
-    if (data.xp >= xpReq) {
-        data.xp -= xpReq;
+    calculateXpReq();
+    if (data.xp >= Math.round(xpReq)) {
+        data.xp -= Math.round(xpReq);
         data.level++;
         calculateXpReq();
         updatePlotInfo();
@@ -239,7 +240,7 @@ function updateEmptyAllButtonColor() {
     }
 }
 
-// loop through all revealed plots and if the plot is revealed, empty, and we have enough gold, we may plant in this plot
+// loop through all revealed plots and if the plot is revealed, empty, and we have enough gold, we can plant in this plot
 function plantAll() {
     for (let i = 0; i < data.numPlotsRevealed; i++) {
         if (data.plotHarvestTime[i] < 0 && data.gold >= crops[data.selectedCrop].cost) {
@@ -248,7 +249,7 @@ function plantAll() {
     }
 }
 
-// loop through all revealed plots and if the plot is done growing, we may harvest the crop
+// loop through all revealed plots and if the plot is done growing, we can harvest the crop
 function harvestAll() {
     for (let i = 0; i < data.numPlotsRevealed; i++) {
         if (data.plotHarvestTime[i] === 0) {

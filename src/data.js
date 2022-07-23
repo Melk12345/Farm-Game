@@ -1,12 +1,6 @@
 "use strict";
 
 const crops = [{
-    name: "--",
-    cost: "--",
-    gold: "--",
-    xp: "--",
-    harvestTime: "--",
-}, {
     name: "Blueberries",
     cost: 0,
     gold: 2,
@@ -92,7 +86,7 @@ let data = {
     gold: 0,
     xp: 0,
     level: 1,
-    selectedCrop: 1,
+    selectedCrop: 0,
     nextPlotLevelRequirement: basePlotLevelRequirement,
     nextCropLevelRequirement: baseCropLevelRequirement,
     numPlotsRevealed: 1,
