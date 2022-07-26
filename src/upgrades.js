@@ -1,20 +1,8 @@
 "use strict";
 
-let goldBoost = 0;
-let xpBoost = 0;
-let harvestTimeBoost = 0;
-let discountBoost = 0;
-
-function updateBoostsInfo() {
-    goldBoost = upgrade[0].boost * data.upgradeLevel[0] + 1;
-    xpBoost = upgrade[1].boost * data.upgradeLevel[1] + 1;
-    harvestTimeBoost = Math.pow(1 - upgrade[2].boost, data.upgradeLevel[2]);
-    discountBoost = Math.pow(1 - upgrade[3].boost, data.upgradeLevel[3]);
-}
-
 function upgradeCost(upgradeIndex) {
     let growthRate = 1.3;
-    return Math.ceil(upgrade[upgradeIndex].cost * Math.pow(growthRate, data.upgradeLevel[upgradeIndex]) * discountBoost);
+    return Math.ceil(upgrade[upgradeIndex].cost * Math.pow(growthRate, data.upgradeLevel[upgradeIndex]) * discountBoost());
 }
 
 function updateUpgradeInfo() {
@@ -45,7 +33,6 @@ function buyUpgrade(upgradeIndex) {
 
     data.gold -= upgradeCost(upgradeIndex);
     data.upgradeLevel[upgradeIndex]++;
-    updateBoostsInfo();
     updateUpgradeInfo();
     updateUpgradesButtonColor();
     updateHeaderCropSelectedInfo();;

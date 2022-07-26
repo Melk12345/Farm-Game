@@ -10,18 +10,18 @@ function updateUnlockNextCropInfo() {
         return;
     }
 
-    nextCropLevelRequirementTextElement.innerHTML = nextCropLevelRequirement;
+    nextCropLevelRequirementTextElement.innerHTML = nextCropLevelRequirement();
 }
 
 function selectCrop(cropIndex) {
     data.selectedCrop = cropIndex;
+    headerCostTextElement.style.color = data.gold < crops[data.selectedCrop].cost ? 'Red' : '#FAEDC6';
     updateHeaderCropSelectedInfo();
     updateSelectedCropColor();
-    upgradeHeaderCostColor();
 }
 
 function updateSelectedCropColor() {
-    for (let i = 1; i < crops.length; i++) {
+    for (let i = 0; i < crops.length; i++) {
         document.getElementById("crop" + i + "-button").style.borderColor = 'Black';
     }
     document.getElementById("crop" + data.selectedCrop + "-button").style.borderColor = 'Orange';
@@ -34,7 +34,7 @@ const headerCostTextElement = document.getElementById("header-cost-text");
 const headerHarvestTimeTextElement = document.getElementById("header-harvestTime-text");
 
 function updateHeaderCropSelectedInfo() {
-    let totalSeconds = crops[data.selectedCrop].harvestTime  * harvestTimeBoost;
+    let totalSeconds = crops[data.selectedCrop].harvestTime  * harvestTimeBoost();
     let harvestTime = formatHarvestTime(totalSeconds);
 
     headerCropSelectedTextElement.innerHTML = crops[data.selectedCrop].name;
@@ -52,16 +52,9 @@ function revealCrops() {
     updateCropInfo();
 }
 
-let nextCropLevelRequirement = 0;
-
-function calculateNextCropLevelRequirement() {
-    nextCropLevelRequirement = baseCropLevelRequirement * data.numCropsRevealed;
-}
-
 function unlockNextCrop() {
-    if (data.level >= nextCropLevelRequirement && data.numCropsRevealed !== numCropsMax) {
+    if (data.level >= nextCropLevelRequirement() && data.numCropsRevealed !== numCropsMax) {
         data.numCropsRevealed++;
-        calculateNextCropLevelRequirement();
         revealCrops();
         updateUnlockNextCropInfo();
         updateCropInfo();
@@ -72,7 +65,7 @@ function unlockNextCrop() {
 const unlockCropsButtonElement = document.getElementById("unlock-crops-button");
 
 function updateUnlockNextCropColor() {
-    if (data.level >= nextCropLevelRequirement) {
+    if (data.level >= nextCropLevelRequirement()) {
         unlockCropsButtonElement.classList.add("enabled");
         unlockCropsButtonElement.classList.remove("disabled");
     } else {
@@ -83,7 +76,7 @@ function updateUnlockNextCropColor() {
 }
 
 function updateCropsMenuButtonColor() {
-    if (data.level >= nextCropLevelRequirement) {
+    if (data.level >= nextCropLevelRequirement()) {
         cropsMenuButtonElement.style.backgroundColor = unlockCropsButtonElement.style.display === 'none'  ? 'Silver' : 'Green';
     } else {
         cropsMenuButtonElement.style.backgroundColor = 'Silver';
@@ -92,7 +85,7 @@ function updateCropsMenuButtonColor() {
 
 function updateCropInfo() {
     for (let i = 0; i < data.numCropsRevealed; i++) {
-        let totalSeconds = crops[i].harvestTime * harvestTimeBoost;
+        let totalSeconds = crops[i].harvestTime * harvestTimeBoost();
         let harvestTime = formatHarvestTime(totalSeconds);
 
         document.getElementById("crop" + i + "-name").innerHTML = crops[i].name;

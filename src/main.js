@@ -8,17 +8,9 @@ const goldTextElement = document.getElementById("gold-text");
 function updateLevelAndGoldInfo() {
     levelTextElement.innerHTML = data.level;
     xpTextElement.innerHTML = format(Math.floor(data.xp));
-    xpReqTextElement.innerHTML = format(Math.round(xpReq));
+    xpReqTextElement.innerHTML = xpReq();
     goldTextElement.innerHTML = format(Math.floor(data.gold));
-    upgradeHeaderCostColor();
-}
-
-function upgradeHeaderCostColor() {
-    if (data.gold < crops[data.selectedCrop].cost) {
-        headerCostTextElement.style.color = 'Red';
-    } else {
-        headerCostTextElement.style.color = '#FAEDC6';
-    }
+    headerCostTextElement.style.color = data.gold < crops[data.selectedCrop].cost ? 'Red' : '#FAEDC6';
 }
 
 function calculateAFKGains() {
@@ -58,6 +50,8 @@ function mainLoop() {
     const now = Date.now();
     const deltaTime = (now - lastUpdate);
     lastUpdate = now;
+    // change
+    // try to move these out of the update method
     updatePlantCropButtonColor();
     updateHarvestCropButtonColor();
     updateEmptyPlotButtonColor();
@@ -74,13 +68,9 @@ function autoSaveData() {
 
 function load() {
     loadSavedData();
-    updateBoostsInfo();
-    calculateXpReq();
     updateLevelAndGoldInfo();
     updateHeaderCropSelectedInfo();
     updateSelectedCropColor();
-    calculateNextCropLevelRequirement();
-    calculateNextPlotLevelRequirement();
     updateCropInfo();
     revealPlots();
     revealCrops();

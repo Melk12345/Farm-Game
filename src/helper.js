@@ -27,20 +27,17 @@ function formatHarvestTime(totalSeconds) {
     return harvestTime;
 }
 
-function plotGold(plotIndex) {
-    let cropID = data.cropIDInPlot[plotIndex];
-    return cropGold(cropID);
-}
+const plotGold = (plotIndex) => cropGold(data.cropIDInPlot[plotIndex]);
+const plotXP = (plotIndex) => cropXP(data.cropIDInPlot[plotIndex]);
+const cropGold = (cropID) =>  Math.ceil(crops[cropID].gold * goldBoost());
+const cropXP = (cropID) => Math.ceil(crops[cropID].xp * xpBoost()); 
 
-function plotXP(plotIndex) {
-    let cropID = data.cropIDInPlot[plotIndex];
-    return cropXP(cropID);
-}
+const xpReq = (growthRate = 1.3) => Math.round(baseXPReq * Math.pow(growthRate, data.level));
 
-function cropGold(cropID) {
-    return Math.ceil(crops[cropID].gold * goldBoost);
-}
+const nextPlotLevelRequirement = () => data.numPlotsRevealed * 2;
+const nextCropLevelRequirement = () => data.numCropsRevealed * 2 + 1;
 
-function cropXP(cropID) {
-    return Math.ceil(crops[cropID].xp * xpBoost);
-}
+const goldBoost = () => upgrade[0].boost * data.upgradeLevel[0] + 1;
+const xpBoost = () => upgrade[1].boost * data.upgradeLevel[1] + 1;
+const harvestTimeBoost = () => Math.pow(1 - upgrade[2].boost, data.upgradeLevel[2]);
+const discountBoost = () => Math.pow(1 - upgrade[3].boost, data.upgradeLevel[3]);
