@@ -4,57 +4,49 @@
 // add an id field to the object and nest an object inside an object
 // crops.id = i 
 // print crops.id.name instead of crops[0].name
-const crops = [{
-    id: 0, 
+const crops = [{ 
     name: "Blueberries",
     cost: 0,
     gold: 2,
     xp: 2,
     harvestTime: 10000,
-}, {
-    id: 1, 
+}, { 
     name: "Raspberries",
     cost: 1,
     gold: 6,
     xp: 6,
     harvestTime: 30000,
-}, {
-    id: 2, 
+}, { 
     name: "Strawberries",
     cost: 2,
     gold: 19,
     xp: 19,
     harvestTime: 90000,
-}, {
-    id: 3, 
+}, { 
     name: "Wheat",
     cost: 3,
     gold: 59,
     xp: 59,
     harvestTime: 270000,
-}, {
-    id: 4, 
+}, { 
     name: "Carrots",
     cost: 4,
     gold: 184,
     xp: 184,
     harvestTime: 810000,
-}, {
-    id: 5, 
+}, { 
     name: "Tomatoes",
     cost: 5,
     gold: 572,
     xp: 572,
     harvestTime: 2430000,
-}, {
-    id: 6, 
+}, { 
     name: "Watermelon",
     cost: 6,
     gold: 1775,
     xp: 1775,
     harvestTime: 7290000,
-}, {
-    id: 7, 
+}, { 
     name: "Potatoes",
     cost: 7,
     gold: 5502,

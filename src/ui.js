@@ -17,13 +17,13 @@ const settingsMenuButtonElement = document.getElementById("settings-menu-button"
 
 let activeMenuButton = farmMenuButtonElement;
 farmMenuButtonElement.style.borderColor = 'Orange';
-cropsMenuButtonElement.style.borderColor = 'Black';
-upgradesMenuButtonElement.style.borderColor = 'Black';
-settingsMenuButtonElement.style.borderColor = 'Black'; 
+cropsMenuButtonElement.style.borderColor = 'White';
+upgradesMenuButtonElement.style.borderColor = 'White';
+settingsMenuButtonElement.style.borderColor = 'White'; 
 
 function openMenu(clickedMenu, clickedMenuButton) {
     activeMenu.style.display = "none";
-    activeMenuButton.style.borderColor = 'Black';
+    activeMenuButton.style.borderColor = 'White';
     activeMenu = clickedMenu;
     activeMenuButton = clickedMenuButton;
     activeMenuButton.style.borderColor = 'Orange';

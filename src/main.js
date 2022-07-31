@@ -10,7 +10,7 @@ function updateLevelAndGoldInfo() {
     xpTextElement.innerHTML = format(Math.floor(data.xp));
     xpReqTextElement.innerHTML = xpReq();
     goldTextElement.innerHTML = format(Math.floor(data.gold));
-    headerCostTextElement.style.color = data.gold < crops[data.selectedCrop].cost ? 'Red' : '#FAEDC6';
+    headerCostTextElement.style.color = data.gold < crops[data.selectedCrop].cost ? 'Red' : 'White';
 }
 
 function calculateAFKGains() {

@@ -15,14 +15,16 @@ function updateUnlockNextCropInfo() {
 
 function selectCrop(cropIndex) {
     data.selectedCrop = cropIndex;
-    headerCostTextElement.style.color = data.gold < crops[data.selectedCrop].cost ? 'Red' : '#FAEDC6';
+    headerCostTextElement.style.color = data.gold < crops[data.selectedCrop].cost ? 'Red' : 'White';
     updateHeaderCropSelectedInfo();
     updateSelectedCropColor();
 }
 
+// change
+// use forEach instead of .length
 function updateSelectedCropColor() {
     for (let i = 0; i < crops.length; i++) {
-        document.getElementById("crop" + i + "-button").style.borderColor = 'Black';
+        document.getElementById("crop" + i + "-button").style.borderColor = 'White';
     }
     document.getElementById("crop" + data.selectedCrop + "-button").style.borderColor = 'Orange';
 }
@@ -77,9 +79,9 @@ function updateUnlockNextCropColor() {
 
 function updateCropsMenuButtonColor() {
     if (data.level >= nextCropLevelRequirement()) {
-        cropsMenuButtonElement.style.backgroundColor = unlockCropsButtonElement.style.display === 'none'  ? 'Silver' : 'Green';
+        cropsMenuButtonElement.style.backgroundColor = unlockCropsButtonElement.style.display === 'none'  ? 'Black' : 'Green';
     } else {
-        cropsMenuButtonElement.style.backgroundColor = 'Silver';
+        cropsMenuButtonElement.style.backgroundColor = 'Black';
     }
 }
 

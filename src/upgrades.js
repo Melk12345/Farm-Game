@@ -5,6 +5,8 @@ function upgradeCost(upgradeIndex) {
     return Math.ceil(upgrade[upgradeIndex].cost * Math.pow(growthRate, data.upgradeLevel[upgradeIndex]) * discountBoost());
 }
 
+// change
+// use forEach instead of .length
 function updateUpgradeInfo() {
     for (let i = 0; i < data.upgradeLevel.length; i++) {
         document.getElementById("upgrade" + i + "-name").innerHTML = upgrade[i].name;
@@ -14,6 +16,8 @@ function updateUpgradeInfo() {
     }
 }
 
+// change
+// use forEach instead of .length
 function updateUpgradesButtonColor() {
     for (let i = 0; i < data.upgradeLevel.length; i++) {
         let element = document.getElementById("upgrade" + i + "-button");
