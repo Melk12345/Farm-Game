@@ -25,11 +25,17 @@ tbody tr:nth-child(even):not(.no-coloring) {
 
 button.disabled {
     border-color: #B33939;
+}
+
+button.disabled:hover {
     cursor: not-allowed;
 }
 
 button.enabled {
     border-color: Green;
+}
+
+button.enabled:hover {
     cursor: pointer;
 }
 

@@ -32,7 +32,7 @@ const plotXP = (plotIndex) => cropXP(data.cropIDInPlot[plotIndex]);
 const cropGold = (cropID) =>  Math.ceil(crops[cropID].gold * goldBoost());
 const cropXP = (cropID) => Math.ceil(crops[cropID].xp * xpBoost()); 
 
-const xpReq = (growthRate = 1.3) => Math.round(baseXPReq * Math.pow(growthRate, data.level));
+const xpReq = (growthRate = 1.3) => Math.round(baseXPReq * Math.pow(growthRate, data.level - 1));
 
 const nextPlotLevelRequirement = () => data.numPlotsRevealed * 2;
 const nextCropLevelRequirement = () => data.numCropsRevealed * 2 + 1;

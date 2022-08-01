@@ -78,7 +78,7 @@ const upgrade = [{
 
 const numPlotsMax = 8;
 const numCropsMax = 8;
-const baseXPReq = 8;
+const baseXPReq = 10;
 const basePlotLevelRequirement = 2;
 const baseCropLevelRequirement = 3;
 
