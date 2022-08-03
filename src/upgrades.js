@@ -23,6 +23,7 @@ function updateUpgradesButtonColor() {
         let element = document.getElementById("upgrade" + i + "-button");
 
         if (data.gold < upgradeCost(i)) {
+            console.log(i, document.getElementById("upgrade" + i + "-button"));
             element.classList.add("disabled");
             element.classList.remove("enabled");
         } else {

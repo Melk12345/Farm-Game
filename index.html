@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-7">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=0.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
     <script src="src/data.js" defer></script>
@@ -255,48 +255,23 @@
             <button onclick="buyUpgrade(0)" class="upgrade-buttons" id="upgrade0-button">
                 <span id="upgrade0-name"></span> (<span id="upgrade0-level"></span>) <br>
                 <span id="upgrade0-description"></span> <br>
-                <span id="upgrade0-cost"></span>
+                Cost: <span id="upgrade0-cost"></span>
             </button>
-            <!-- <table class="table-formatting" id="upgrade-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Level</th>
-                        <th>Description</th>
-                        <th>Cost</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><span id="upgrade0-name"></span></td>
-                        <td><span id="upgrade0-level"></span></td>
-                        <td><span id="upgrade0-description"></span></td>
-                        <td><span id="upgrade0-cost"></span></td>
-                        <td><button onclick="buyUpgrade(0)" class="upgrade-buttons" id="upgrade0-button">Buy</button></td>
-                    </tr>
-                    <tr>
-                        <td><span id="upgrade1-name"></span></td>
-                        <td><span id="upgrade1-level"></span></td>
-                        <td><span id="upgrade1-description"></span></td>
-                        <td><span id="upgrade1-cost"></span></td>
-                        <td><button onclick="buyUpgrade(1)" class="upgrade-buttons" id="upgrade1-button">Buy</button></td>
-                    </tr>
-                    <tr>
-                        <td><span id="upgrade2-name"></span></td>
-                        <td><span id="upgrade2-level"></span></td>
-                        <td><span id="upgrade2-description"></span></td>
-                        <td><span id="upgrade2-cost"></span></td>
-                        <td><button onclick="buyUpgrade(2)" class="upgrade-buttons" id="upgrade2-button">Buy</button></td>
-                    </tr>
-                    <tr>
-                        <td><span id="upgrade3-name"></span></td>
-                        <td><span id="upgrade3-level"></span></td>
-                        <td><span id="upgrade3-description"></span></td>
-                        <td><span id="upgrade3-cost"></span></td>
-                        <td><button onclick="buyUpgrade(3)" class="upgrade-buttons" id="upgrade3-button">Buy</button></td>
-                    </tr>
-                </tbody>
-            </table> -->
+            <button onclick="buyUpgrade(1)" class="upgrade-buttons" id="upgrade1-button">
+                <span id="upgrade1-name"></span> (<span id="upgrade1-level"></span>) <br>
+                <span id="upgrade1-description"></span> <br>
+                Cost: <span id="upgrade1-cost"></span>
+            </button>
+            <button onclick="buyUpgrade(2)" class="upgrade-buttons" id="upgrade2-button">
+                <span id="upgrade2-name"></span> (<span id="upgrade2-level"></span>) <br>
+                <span id="upgrade2-description"></span> <br>
+                Cost: <span id="upgrade2-cost"></span>
+            </button>
+            <button onclick="buyUpgrade(3)" class="upgrade-buttons" id="upgrade3-button">
+                <span id="upgrade3-name"></span> (<span id="upgrade3-level"></span>) <br>
+                <span id="upgrade3-description"></span> <br>
+                Cost: <span id="upgrade3-cost"></span>
+            </button>
         </div>
         <div id="settings-container">
             <button onclick="saveData()" class="settings-buttons" id="save-data-button">Save Data</button>
