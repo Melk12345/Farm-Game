@@ -15,17 +15,20 @@ const cropsMenuButtonElement = document.getElementById("crops-menu-button");
 const upgradesMenuButtonElement = document.getElementById("upgrades-menu-button");
 const settingsMenuButtonElement = document.getElementById("settings-menu-button");
 
+const selectedButtonBorderColor = 'Orange';
+const defaultButtonBorderColor = 'White';
+
 let activeMenuButton = farmMenuButtonElement;
-farmMenuButtonElement.style.borderColor = 'Orange';
-cropsMenuButtonElement.style.borderColor = 'White';
-upgradesMenuButtonElement.style.borderColor = 'White';
-settingsMenuButtonElement.style.borderColor = 'White'; 
+farmMenuButtonElement.style.borderColor = selectedButtonBorderColor;
+cropsMenuButtonElement.style.borderColor = defaultButtonBorderColor;
+upgradesMenuButtonElement.style.borderColor = defaultButtonBorderColor;
+settingsMenuButtonElement.style.borderColor = defaultButtonBorderColor; 
 
 function openMenu(clickedMenu, clickedMenuButton) {
     activeMenu.style.display = "none";
-    activeMenuButton.style.borderColor = 'White';
+    activeMenuButton.style.borderColor = defaultButtonBorderColor;
     activeMenu = clickedMenu;
     activeMenuButton = clickedMenuButton;
-    activeMenuButton.style.borderColor = 'Orange';
+    activeMenuButton.style.borderColor = selectedButtonBorderColor;
     activeMenu.style.display = "block";
 }

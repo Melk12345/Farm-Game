@@ -252,7 +252,12 @@
             </div>
         </div>
         <div id="upgrades-container">
-            <table class="table-formatting" id="upgrade-table">
+            <button onclick="buyUpgrade(0)" class="upgrade-buttons" id="upgrade0-button">
+                <span id="upgrade0-name"></span> (<span id="upgrade0-level"></span>) <br>
+                <span id="upgrade0-description"></span> <br>
+                <span id="upgrade0-cost"></span>
+            </button>
+            <!-- <table class="table-formatting" id="upgrade-table">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -291,7 +296,7 @@
                         <td><button onclick="buyUpgrade(3)" class="upgrade-buttons" id="upgrade3-button">Buy</button></td>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
         </div>
         <div id="settings-container">
             <button onclick="saveData()" class="settings-buttons" id="save-data-button">Save Data</button>
