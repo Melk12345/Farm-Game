@@ -6,9 +6,9 @@ const upgradesMenuContainerElement = document.getElementById("upgrades-container
 const settingsMenuContainerElement = document.getElementById("settings-container");
 
 let activeMenu = farmMenuContainerElement;
-cropsMenuContainerElement.style.display = "none";
-upgradesMenuContainerElement.style.display = "none";
-settingsMenuContainerElement.style.display = "none";
+cropsMenuContainerElement.classList.add("hidden");
+upgradesMenuContainerElement.classList.add("hidden");
+settingsMenuContainerElement.classList.add("hidden");
 
 const farmMenuButtonElement = document.getElementById("farm-menu-button");
 const cropsMenuButtonElement = document.getElementById("crops-menu-button");
@@ -25,10 +25,10 @@ upgradesMenuButtonElement.style.borderColor = defaultButtonBorderColor;
 settingsMenuButtonElement.style.borderColor = defaultButtonBorderColor; 
 
 function openMenu(clickedMenu, clickedMenuButton) {
-    activeMenu.style.display = "none";
+    activeMenu.classList.add("hidden");
     activeMenuButton.style.borderColor = defaultButtonBorderColor;
     activeMenu = clickedMenu;
     activeMenuButton = clickedMenuButton;
     activeMenuButton.style.borderColor = selectedButtonBorderColor;
-    activeMenu.style.display = "block";
+    activeMenu.classList.remove("hidden");
 }

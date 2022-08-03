@@ -5,6 +5,10 @@ body {
     background-color: black;
 }
 
+.hidden {
+    display: none;
+}
+
 .table-formatting {
     font-family: 'Roboto Mono';
     width: 95%;
