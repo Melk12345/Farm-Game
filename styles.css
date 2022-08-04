@@ -5,8 +5,8 @@ body {
     background-color: black;
 }
 
-.hidden {
-    display: none;
+.is-removed-from-layout {
+    display: none !important;
 }
 
 .table-formatting {
@@ -54,7 +54,7 @@ button.enabled:hover {
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: black;
+    background-color: gray;
     overflow-x: hidden;
     padding-top: 20px;
 }
@@ -184,6 +184,7 @@ button.enabled:hover {
 
 #upgrades-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
@@ -191,10 +192,14 @@ button.enabled:hover {
 .upgrade-buttons {
     color: white;
     font-size: 20px;
+    height: 150px;
+    width: 275px;
+    line-height: 2;
     font-family: 'Roboto Mono';
     background-color: black;
     border-width: 4px;
     border-color: white;
+    margin: 35px 90px 35px 90px;
 }
 
 .upgrade-buttons:hover {
