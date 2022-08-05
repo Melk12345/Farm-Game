@@ -124,8 +124,6 @@ function harvestCrop(plotIndex) {
     if (data.xp >= xpReq()) {
         data.xp -= xpReq();
         data.level++;
-        updatePlotInfo();
-        updateLevelAndGoldInfo();
         updateUnlockNextPlotColor();
         updateUnlockNextCropColor();
     }
@@ -151,12 +149,17 @@ function calculateHarvestTime(deltaTime) {
 
         if (data.plotHarvestTime[i] <= 0 || data.plotHarvestTime[i] - deltaTime <= 0) {
             data.plotHarvestTime[i] = 0;
-            updatePlotInfo();
         } else {
             data.plotHarvestTime[i] -= deltaTime;
-            updatePlotInfo();
         }
     }
+    updatePlotInfo();
+    updatePlantCropButtonColor();
+    updatePlantAllButtonColor();
+    updateHarvestCropButtonColor();
+    updateHarvestAllButtonColor();
+    updateEmptyPlotButtonColor();
+    updateEmptyAllButtonColor();
 }
 
 const plantAllButtonElement = document.getElementById("plant-all-button");
@@ -216,7 +219,7 @@ function updateEmptyAllButtonColor() {
     }
 }
 
-// loop through all revealed plots and if the plot is revealed, empty, and we have enough gold, we can plant in this plot
+// loop through all revealed plots and if the plot is empty and we have enough gold, we can plant in this plot
 function plantAll() {
     for (let i = 0; i < data.numPlotsRevealed; i++) {
         if (data.plotHarvestTime[i] < 0 && data.gold >= crops[data.selectedCrop].cost) {

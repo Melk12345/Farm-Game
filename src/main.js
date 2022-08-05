@@ -50,14 +50,6 @@ function mainLoop() {
     const now = Date.now();
     const deltaTime = (now - lastUpdate);
     lastUpdate = now;
-    // change
-    // try to move these out of the update method
-    updatePlantCropButtonColor();
-    updateHarvestCropButtonColor();
-    updateEmptyPlotButtonColor();
-    updatePlantAllButtonColor();
-    updateHarvestAllButtonColor();
-    updateEmptyAllButtonColor();
     calculateHarvestTime(deltaTime);
 }
 
@@ -74,6 +66,12 @@ function load() {
     updateCropInfo();
     revealPlots();
     revealCrops();
+    updatePlantCropButtonColor();
+    updatePlantAllButtonColor();
+    updateHarvestCropButtonColor();
+    updateHarvestAllButtonColor();
+    updateEmptyPlotButtonColor();
+    updateEmptyAllButtonColor();
     updateUnlockNextPlotColor();
     updateUnlockNextCropColor();
     updateUnlockNextPlotInfo();
