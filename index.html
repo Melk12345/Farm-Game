@@ -17,269 +17,271 @@
     <title>Farm Idle</title>
 </head>
 <body>
-    <div id="sidebar-container">
-        <div id="sidebar-header-container">
-            <p>Level <span id="level-text"></span><br>
-            <span id="xp-text"></span>/<span id="xp-req-text"></span> XP<br>
-            <span id="gold-text"></span> gold</p>
-        </div>
-        <div id="menu-container">
-            <button onclick="openMenu(farmMenuContainerElement, farmMenuButtonElement)" class="menu-buttons" id="farm-menu-button">Farm</button>
-            <button onclick="openMenu(cropsMenuContainerElement, cropsMenuButtonElement)" class="menu-buttons" id="crops-menu-button">Crops</button>
-            <button onclick="openMenu(upgradesMenuContainerElement, upgradesMenuButtonElement)" class="menu-buttons" id="upgrades-menu-button">Upgrades</button>
-            <button onclick="openMenu(settingsMenuContainerElement, settingsMenuButtonElement)" class="menu-buttons" id="settings-menu-button">Settings</button>
+    <div id="header-container">
+        <table id="header-table">
+            <thead>
+                <tr class="no-coloring">
+                    <th>Crop Selected</th>
+                    <th>Gold</th>
+                    <th>Xp</th>
+                    <th>Cost</th>
+                    <th>Harvest Time</th>
+                    <th>Level</th>
+                    <th>XP</th>
+                    <th>Gold</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="no-coloring">
+                    <td><span id="header-cropSelected-text"></span></td>
+                    <td><span id="header-gold-text"></span></td>
+                    <td><span id="header-xp-text"></span></td>
+                    <td><span id="header-cost-text"></span></td>
+                    <td><span id="header-harvestTime-text"></span></td>
+                    <td>Level <span id="level-text"></span></td>
+                    <td><span id="xp-text"></span>/<span id="xp-req-text"></span> XP</td>
+                    <td><span id="gold-text"></span> gold</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="menu-container">
+        <button onclick="openMenu(farmMenuContainerElement, farmMenuButtonElement)" class="menu-buttons"
+            id="farm-menu-button">Farm</button>
+        <button onclick="openMenu(cropsMenuContainerElement, cropsMenuButtonElement)" class="menu-buttons"
+            id="crops-menu-button">Crops</button>
+        <button onclick="openMenu(upgradesMenuContainerElement, upgradesMenuButtonElement)" class="menu-buttons"
+            id="upgrades-menu-button">Upgrades</button>
+        <button onclick="openMenu(settingsMenuContainerElement, settingsMenuButtonElement)" class="menu-buttons"
+            id="settings-menu-button">Settings</button>
+    </div>
+    <div id="farm-container">
+        <table class="table-formatting" id="plot-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Gold</th>
+                    <th>XP</th>
+                    <th>Cost</th>
+                    <th>Harvest Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="plot0-row">
+                    <td><span id="plot0-name"></span></td>
+                    <td><span id="plot0-gold"></span></td>
+                    <td><span id="plot0-xp"></span></td>
+                    <td><span id="plot0-cost"></span></td>
+                    <td><span id="plot0-harvestTime"></span></td>
+                    <td><button onclick="plantCrop(0)" class="plot-buttons" id="plant0-button">Plant</button></td>
+                    <td><button onclick="harvestCrop(0)" class="plot-buttons" id="harvest0-button">Harvest</button></td>
+                    <td><button onclick="emptyPlot(0)" class="plot-buttons" id="empty0-button">Empty</button></td>
+                </tr>
+                <tr id="plot1-row">
+                    <td><span id="plot1-name"></span></td>
+                    <td><span id="plot1-gold"></span></td>
+                    <td><span id="plot1-xp"></span></td>
+                    <td><span id="plot1-cost"></span></td>
+                    <td><span id="plot1-harvestTime"></span></td>
+                    <td><button onclick="plantCrop(1)" class="plot-buttons" id="plant1-button">Plant</button></td>
+                    <td><button onclick="harvestCrop(1)" class="plot-buttons" id="harvest1-button">Harvest</button></td>
+                    <td><button onclick="emptyPlot(1)" class="plot-buttons" id="empty1-button">Empty</button></td>
+                </tr>
+                <tr id="plot2-row">
+                    <td><span id="plot2-name"></span></td>
+                    <td><span id="plot2-gold"></span></td>
+                    <td><span id="plot2-xp"></span></td>
+                    <td><span id="plot2-cost"></span></td>
+                    <td><span id="plot2-harvestTime"></span></td>
+                    <td><button onclick="plantCrop(2)" class="plot-buttons" id="plant2-button">Plant</button></td>
+                    <td><button onclick="harvestCrop(2)" class="plot-buttons" id="harvest2-button">Harvest</button></td>
+                    <td><button onclick="emptyPlot(2)" class="plot-buttons" id="empty2-button">Empty</button></td>
+                </tr>
+                <tr id="plot3-row">
+                    <td><span id="plot3-name"></span></td>
+                    <td><span id="plot3-gold"></span></td>
+                    <td><span id="plot3-xp"></span></td>
+                    <td><span id="plot3-cost"></span></td>
+                    <td><span id="plot3-harvestTime"></span></td>
+                    <td><button onclick="plantCrop(3)" class="plot-buttons" id="plant3-button">Plant</button></td>
+                    <td><button onclick="harvestCrop(3)" class="plot-buttons" id="harvest3-button">Harvest</button></td>
+                    <td><button onclick="emptyPlot(3)" class="plot-buttons" id="empty3-button">Empty</button></td>
+                </tr>
+                <tr id="plot4-row">
+                    <td><span id="plot4-name"></span></td>
+                    <td><span id="plot4-gold"></span></td>
+                    <td><span id="plot4-xp"></span></td>
+                    <td><span id="plot4-cost"></span></td>
+                    <td><span id="plot4-harvestTime"></span></td>
+                    <td><button onclick="plantCrop(4)" class="plot-buttons" id="plant4-button">Plant</button></td>
+                    <td><button onclick="harvestCrop(4)" class="plot-buttons" id="harvest4-button">Harvest</button></td>
+                    <td><button onclick="emptyPlot(4)" class="plot-buttons" id="empty4-button">Empty</button></td>
+                </tr>
+                <tr id="plot5-row">
+                    <td><span id="plot5-name"></span></td>
+                    <td><span id="plot5-gold"></span></td>
+                    <td><span id="plot5-xp"></span></td>
+                    <td><span id="plot5-cost"></span></td>
+                    <td><span id="plot5-harvestTime"></span></td>
+                    <td><button onclick="plantCrop(5)" class="plot-buttons" id="plant5-button">Plant</button></td>
+                    <td><button onclick="harvestCrop(5)" class="plot-buttons" id="harvest5-button">Harvest</button></td>
+                    <td><button onclick="emptyPlot(5)" class="plot-buttons" id="empty5-button">Empty</button></td>
+                </tr>
+                <tr id="plot6-row">
+                    <td><span id="plot6-name"></span></td>
+                    <td><span id="plot6-gold"></span></td>
+                    <td><span id="plot6-xp"></span></td>
+                    <td><span id="plot6-cost"></span></td>
+                    <td><span id="plot6-harvestTime"></span></td>
+                    <td><button onclick="plantCrop(6)" class="plot-buttons" id="plant6-button">Plant</button></td>
+                    <td><button onclick="harvestCrop(6)" class="plot-buttons" id="harvest6-button">Harvest</button></td>
+                    <td><button onclick="emptyPlot(6)" class="plot-buttons" id="empty6-button">Empty</button></td>
+                </tr>
+                <tr id="plot7-row">
+                    <td><span id="plot7-name"></span></td>
+                    <td><span id="plot7-gold"></span></td>
+                    <td><span id="plot7-xp"></span></td>
+                    <td><span id="plot7-cost"></span></td>
+                    <td><span id="plot7-harvestTime"></span></td>
+                    <td><button onclick="plantCrop(7)" class="plot-buttons" id="plant7-button">Plant</button></td>
+                    <td><button onclick="harvestCrop(7)" class="plot-buttons" id="harvest7-button">Harvest</button></td>
+                    <td><button onclick="emptyPlot(7)" class="plot-buttons" id="empty7-button">Empty</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="footer-container">
+            <button onclick="unlockNextPlot()" class="footer-buttons" id="unlock-plots-button">
+                Unlock Next Plot<br>
+                Req: Lv. <span id="next-plot-level-requirement-text"></span>
+            </button>
+            <button onclick="plantAll()" class="footer-buttons" id="plant-all-button">
+                Plant in All<br>
+                Plots
+            </button>
+            <button onclick="harvestAll()" class="footer-buttons" id="harvest-all-button">
+                Harvest All<br>
+                Plots
+            </button>
+            <button onclick="emptyAll()" class="footer-buttons" id="empty-all-button">
+                Empty All<br>
+                Plots
+            </button>
         </div>
     </div>
-    <div id="left-container">
-        <div id="header-container">
-            <table id="header-table">
-                <thead>
-                    <tr class="no-coloring">
-                        <th>Crop Selected</th>
-                        <th>Gold</th>
-                        <th>Xp</th>
-                        <th>Cost</th>
-                        <th>Harvest Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="no-coloring">
-                        <td><span id="header-cropSelected-text"></span></td>
-                        <td><span id="header-gold-text"></span></td>
-                        <td><span id="header-xp-text"></span></td>
-                        <td><span id="header-cost-text"></span></td>
-                        <td><span id="header-harvestTime-text"></span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="farm-container">
-            <table class="table-formatting" id="plot-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Gold</th>
-                        <th>XP</th>
-                        <th>Cost</th>
-                        <th>Harvest Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="plot0-row">
-                        <td><span id="plot0-name"></span></td>
-                        <td><span id="plot0-gold"></span></td>
-                        <td><span id="plot0-xp"></span></td>
-                        <td><span id="plot0-cost"></span></td>
-                        <td><span id="plot0-harvestTime"></span></td>
-                        <td><button onclick="plantCrop(0)" class="plot-buttons" id="plant0-button">Plant</button></td>
-                        <td><button onclick="harvestCrop(0)" class="plot-buttons" id="harvest0-button">Harvest</button></td>
-                        <td><button onclick="emptyPlot(0)" class="plot-buttons" id="empty0-button">Empty</button></td>
-                    </tr>
-                    <tr id="plot1-row">
-                        <td><span id="plot1-name"></span></td>
-                        <td><span id="plot1-gold"></span></td>
-                        <td><span id="plot1-xp"></span></td>
-                        <td><span id="plot1-cost"></span></td>
-                        <td><span id="plot1-harvestTime"></span></td>
-                        <td><button onclick="plantCrop(1)" class="plot-buttons" id="plant1-button">Plant</button></td>
-                        <td><button onclick="harvestCrop(1)" class="plot-buttons" id="harvest1-button">Harvest</button></td>
-                        <td><button onclick="emptyPlot(1)" class="plot-buttons" id="empty1-button">Empty</button></td>
-                    </tr>
-                    <tr id="plot2-row">
-                        <td><span id="plot2-name"></span></td>
-                        <td><span id="plot2-gold"></span></td>
-                        <td><span id="plot2-xp"></span></td>
-                        <td><span id="plot2-cost"></span></td>
-                        <td><span id="plot2-harvestTime"></span></td>
-                        <td><button onclick="plantCrop(2)" class="plot-buttons" id="plant2-button">Plant</button></td>
-                        <td><button onclick="harvestCrop(2)" class="plot-buttons" id="harvest2-button">Harvest</button></td>
-                        <td><button onclick="emptyPlot(2)" class="plot-buttons" id="empty2-button">Empty</button></td>
-                    </tr>
-                    <tr id="plot3-row">
-                        <td><span id="plot3-name"></span></td>
-                        <td><span id="plot3-gold"></span></td>
-                        <td><span id="plot3-xp"></span></td>
-                        <td><span id="plot3-cost"></span></td>
-                        <td><span id="plot3-harvestTime"></span></td>
-                        <td><button onclick="plantCrop(3)" class="plot-buttons" id="plant3-button">Plant</button></td>
-                        <td><button onclick="harvestCrop(3)" class="plot-buttons" id="harvest3-button">Harvest</button></td>
-                        <td><button onclick="emptyPlot(3)" class="plot-buttons" id="empty3-button">Empty</button></td>
-                    </tr>
-                    <tr id="plot4-row">
-                        <td><span id="plot4-name"></span></td>
-                        <td><span id="plot4-gold"></span></td>
-                        <td><span id="plot4-xp"></span></td>
-                        <td><span id="plot4-cost"></span></td>
-                        <td><span id="plot4-harvestTime"></span></td>
-                        <td><button onclick="plantCrop(4)" class="plot-buttons" id="plant4-button">Plant</button></td>
-                        <td><button onclick="harvestCrop(4)" class="plot-buttons" id="harvest4-button">Harvest</button></td>
-                        <td><button onclick="emptyPlot(4)" class="plot-buttons" id="empty4-button">Empty</button></td>
-                    </tr>
-                    <tr id="plot5-row">
-                        <td><span id="plot5-name"></span></td>
-                        <td><span id="plot5-gold"></span></td>
-                        <td><span id="plot5-xp"></span></td>
-                        <td><span id="plot5-cost"></span></td>
-                        <td><span id="plot5-harvestTime"></span></td>
-                        <td><button onclick="plantCrop(5)" class="plot-buttons" id="plant5-button">Plant</button></td>
-                        <td><button onclick="harvestCrop(5)" class="plot-buttons" id="harvest5-button">Harvest</button></td>
-                        <td><button onclick="emptyPlot(5)" class="plot-buttons" id="empty5-button">Empty</button></td>
-                    </tr>
-                    <tr id="plot6-row">
-                        <td><span id="plot6-name"></span></td>
-                        <td><span id="plot6-gold"></span></td>
-                        <td><span id="plot6-xp"></span></td>
-                        <td><span id="plot6-cost"></span></td>
-                        <td><span id="plot6-harvestTime"></span></td>
-                        <td><button onclick="plantCrop(6)" class="plot-buttons" id="plant6-button">Plant</button></td>
-                        <td><button onclick="harvestCrop(6)" class="plot-buttons" id="harvest6-button">Harvest</button></td>
-                        <td><button onclick="emptyPlot(6)" class="plot-buttons" id="empty6-button">Empty</button></td>
-                    </tr>
-                    <tr id="plot7-row">
-                        <td><span id="plot7-name"></span></td>
-                        <td><span id="plot7-gold"></span></td>
-                        <td><span id="plot7-xp"></span></td>
-                        <td><span id="plot7-cost"></span></td>
-                        <td><span id="plot7-harvestTime"></span></td>
-                        <td><button onclick="plantCrop(7)" class="plot-buttons" id="plant7-button">Plant</button></td>
-                        <td><button onclick="harvestCrop(7)" class="plot-buttons" id="harvest7-button">Harvest</button></td>
-                        <td><button onclick="emptyPlot(7)" class="plot-buttons" id="empty7-button">Empty</button></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="footer-container">
-                <button onclick="unlockNextPlot()" class="footer-buttons" id="unlock-plots-button">
-                    Unlock Next Plot<br>
-                    Req: Lv. <span id="next-plot-level-requirement-text"></span>
-                </button>
-                <button onclick="plantAll()" class="footer-buttons" id="plant-all-button">
-                    Plant in All<br>
-                    Plots
-                </button>
-                <button onclick="harvestAll()" class="footer-buttons" id="harvest-all-button">
-                    Harvest All<br>
-                    Plots
-                </button>
-                <button onclick="emptyAll()" class="footer-buttons" id="empty-all-button">
-                    Empty All<br>
-                    Plots 
-                </button>
-            </div>
-        </div>
-        <div id="crops-container">
-            <table class="table-formatting" id="crops-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Gold</th>
-                        <th>XP</th>
-                        <th>Cost</th>
-                        <th>Harvest Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="crop0-row">
-                        <td><span id="crop0-name"></span></td>
-                        <td><span id="crop0-gold"></span></td>
-                        <td><span id="crop0-xp"></span></td>
-                        <td><span id="crop0-cost"></span></td>
-                        <td><span id="crop0-harvestTime"></span></td>
-                        <td><button onclick="selectCrop(0)" class="crop-buttons" id="crop0-button">Select</button></td>
-                    </tr>
-                    <tr id="crop1-row">
-                        <td><span id="crop1-name"></span></td>
-                        <td><span id="crop1-gold"></span></td>
-                        <td><span id="crop1-xp"></span></td>
-                        <td><span id="crop1-cost"></span></td>
-                        <td><span id="crop1-harvestTime"></span></td>
-                        <td><button onclick="selectCrop(1)" class="crop-buttons" id="crop1-button">Select</button></td>
-                    </tr>
-                    <tr id="crop2-row">
-                        <td><span id="crop2-name"></span></td>
-                        <td><span id="crop2-gold"></span></td>
-                        <td><span id="crop2-xp"></span></td>
-                        <td><span id="crop2-cost"></span></td>
-                        <td><span id="crop2-harvestTime"></span></td>
-                        <td><button onclick="selectCrop(2)" class="crop-buttons" id="crop2-button">Select</button></td>
-                    </tr>
-                    <tr id="crop3-row">
-                        <td><span id="crop3-name"></span></td>
-                        <td><span id="crop3-gold"></span></td>
-                        <td><span id="crop3-xp"></span></td>
-                        <td><span id="crop3-cost"></span></td>
-                        <td><span id="crop3-harvestTime"></span></td>
-                        <td><button onclick="selectCrop(3)" class="crop-buttons" id="crop3-button">Select</button></td>
-                    </tr>
-                    <tr id="crop4-row">
-                        <td><span id="crop4-name"></span></td>
-                        <td><span id="crop4-gold"></span></td>
-                        <td><span id="crop4-xp"></span></td>
-                        <td><span id="crop4-cost"></span></td>
-                        <td><span id="crop4-harvestTime"></span></td>
-                        <td><button onclick="selectCrop(4)" class="crop-buttons" id="crop4-button">Select</button></td>
-                    </tr>
-                    <tr id="crop5-row">
-                        <td><span id="crop5-name"></span></td>
-                        <td><span id="crop5-gold"></span></td>
-                        <td><span id="crop5-xp"></span></td>
-                        <td><span id="crop5-cost"></span></td>
-                        <td><span id="crop5-harvestTime"></span></td>
-                        <td><button onclick="selectCrop(5)" class="crop-buttons" id="crop5-button">Select</button></td>
-                    </tr>
-                    <tr id="crop6-row">
-                        <td><span id="crop6-name"></span></td>
-                        <td><span id="crop6-gold"></span></td>
-                        <td><span id="crop6-xp"></span></td>
-                        <td><span id="crop6-cost"></span></td>
-                        <td><span id="crop6-harvestTime"></span></td>
-                        <td><button onclick="selectCrop(6)" class="crop-buttons" id="crop6-button">Select</button></td>
-                    </tr>
-                    <tr id="crop7-row">
-                        <td><span id="crop7-name"></span></td>
-                        <td><span id="crop7-gold"></span></td>
-                        <td><span id="crop7-xp"></span></td>
-                        <td><span id="crop7-cost"></span></td>
-                        <td><span id="crop7-harvestTime"></span></td>
-                        <td><button onclick="selectCrop(7)" class="crop-buttons" id="crop7-button">Select</button></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="footer-container">
-                <button onclick="unlockNextCrop()" class="footer-buttons" id="unlock-crops-button">
-                    Unlock Next Crop<br>
-                    Req: Lv. <span id="next-crop-level-requirement-text"></span>
-                </button>
-            </div>
-        </div>
-        <div id="upgrades-container">
-            <button onclick="buyUpgrade(0)" class="upgrade-buttons" id="upgrade0-button">
-                <span id="upgrade0-name"></span> (<span id="upgrade0-level"></span>) <br>
-                <span id="upgrade0-description"></span> <br>
-                Cost: <span id="upgrade0-cost"></span>
-            </button>
-            <button onclick="buyUpgrade(1)" class="upgrade-buttons" id="upgrade1-button">
-                <span id="upgrade1-name"></span> (<span id="upgrade1-level"></span>) <br>
-                <span id="upgrade1-description"></span> <br>
-                Cost: <span id="upgrade1-cost"></span>
-            </button>
-            <button onclick="buyUpgrade(2)" class="upgrade-buttons" id="upgrade2-button">
-                <span id="upgrade2-name"></span> (<span id="upgrade2-level"></span>) <br>
-                <span id="upgrade2-description"></span> <br>
-                Cost: <span id="upgrade2-cost"></span>
-            </button>
-            <button onclick="buyUpgrade(3)" class="upgrade-buttons" id="upgrade3-button">
-                <span id="upgrade3-name"></span> (<span id="upgrade3-level"></span>) <br>
-                <span id="upgrade3-description"></span> <br>
-                Cost: <span id="upgrade3-cost"></span>
+    <div id="crops-container">
+        <table class="table-formatting" id="crops-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Gold</th>
+                    <th>XP</th>
+                    <th>Cost</th>
+                    <th>Harvest Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="crop0-row">
+                    <td><span id="crop0-name"></span></td>
+                    <td><span id="crop0-gold"></span></td>
+                    <td><span id="crop0-xp"></span></td>
+                    <td><span id="crop0-cost"></span></td>
+                    <td><span id="crop0-harvestTime"></span></td>
+                    <td><button onclick="selectCrop(0)" class="crop-buttons" id="crop0-button">Select</button></td>
+                </tr>
+                <tr id="crop1-row">
+                    <td><span id="crop1-name"></span></td>
+                    <td><span id="crop1-gold"></span></td>
+                    <td><span id="crop1-xp"></span></td>
+                    <td><span id="crop1-cost"></span></td>
+                    <td><span id="crop1-harvestTime"></span></td>
+                    <td><button onclick="selectCrop(1)" class="crop-buttons" id="crop1-button">Select</button></td>
+                </tr>
+                <tr id="crop2-row">
+                    <td><span id="crop2-name"></span></td>
+                    <td><span id="crop2-gold"></span></td>
+                    <td><span id="crop2-xp"></span></td>
+                    <td><span id="crop2-cost"></span></td>
+                    <td><span id="crop2-harvestTime"></span></td>
+                    <td><button onclick="selectCrop(2)" class="crop-buttons" id="crop2-button">Select</button></td>
+                </tr>
+                <tr id="crop3-row">
+                    <td><span id="crop3-name"></span></td>
+                    <td><span id="crop3-gold"></span></td>
+                    <td><span id="crop3-xp"></span></td>
+                    <td><span id="crop3-cost"></span></td>
+                    <td><span id="crop3-harvestTime"></span></td>
+                    <td><button onclick="selectCrop(3)" class="crop-buttons" id="crop3-button">Select</button></td>
+                </tr>
+                <tr id="crop4-row">
+                    <td><span id="crop4-name"></span></td>
+                    <td><span id="crop4-gold"></span></td>
+                    <td><span id="crop4-xp"></span></td>
+                    <td><span id="crop4-cost"></span></td>
+                    <td><span id="crop4-harvestTime"></span></td>
+                    <td><button onclick="selectCrop(4)" class="crop-buttons" id="crop4-button">Select</button></td>
+                </tr>
+                <tr id="crop5-row">
+                    <td><span id="crop5-name"></span></td>
+                    <td><span id="crop5-gold"></span></td>
+                    <td><span id="crop5-xp"></span></td>
+                    <td><span id="crop5-cost"></span></td>
+                    <td><span id="crop5-harvestTime"></span></td>
+                    <td><button onclick="selectCrop(5)" class="crop-buttons" id="crop5-button">Select</button></td>
+                </tr>
+                <tr id="crop6-row">
+                    <td><span id="crop6-name"></span></td>
+                    <td><span id="crop6-gold"></span></td>
+                    <td><span id="crop6-xp"></span></td>
+                    <td><span id="crop6-cost"></span></td>
+                    <td><span id="crop6-harvestTime"></span></td>
+                    <td><button onclick="selectCrop(6)" class="crop-buttons" id="crop6-button">Select</button></td>
+                </tr>
+                <tr id="crop7-row">
+                    <td><span id="crop7-name"></span></td>
+                    <td><span id="crop7-gold"></span></td>
+                    <td><span id="crop7-xp"></span></td>
+                    <td><span id="crop7-cost"></span></td>
+                    <td><span id="crop7-harvestTime"></span></td>
+                    <td><button onclick="selectCrop(7)" class="crop-buttons" id="crop7-button">Select</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="footer-container">
+            <button onclick="unlockNextCrop()" class="footer-buttons" id="unlock-crops-button">
+                Unlock Next Crop<br>
+                Req: Lv. <span id="next-crop-level-requirement-text"></span>
             </button>
         </div>
-        <div id="settings-container">
-            <button onclick="saveData()" class="settings-buttons" id="save-data-button">Save Data</button>
-            <button onclick="resetData()" class="settings-buttons" id="reset-data-button">Reset Data</button>
-            <button onclick="importData()" class="settings-buttons" id="import-data-button">Import Data</button>
-            <button onclick="exportData()" class="settings-buttons" id="export-data-button">Export Data</button>
-            <button onclick="toggleAFKGains()" class="settings-buttons" id="toggle-afk-gains-button"></button>
-        </div>
+    </div>
+    <div id="upgrades-container">
+        <button onclick="buyUpgrade(0)" class="upgrade-buttons" id="upgrade0-button">
+            <span id="upgrade0-name"></span> (<span id="upgrade0-level"></span>) <br>
+            <span id="upgrade0-description"></span> <br>
+            Cost: <span id="upgrade0-cost"></span>
+        </button>
+        <button onclick="buyUpgrade(1)" class="upgrade-buttons" id="upgrade1-button">
+            <span id="upgrade1-name"></span> (<span id="upgrade1-level"></span>) <br>
+            <span id="upgrade1-description"></span> <br>
+            Cost: <span id="upgrade1-cost"></span>
+        </button>
+        <button onclick="buyUpgrade(2)" class="upgrade-buttons" id="upgrade2-button">
+            <span id="upgrade2-name"></span> (<span id="upgrade2-level"></span>) <br>
+            <span id="upgrade2-description"></span> <br>
+            Cost: <span id="upgrade2-cost"></span>
+        </button>
+        <button onclick="buyUpgrade(3)" class="upgrade-buttons" id="upgrade3-button">
+            <span id="upgrade3-name"></span> (<span id="upgrade3-level"></span>) <br>
+            <span id="upgrade3-description"></span> <br>
+            Cost: <span id="upgrade3-cost"></span>
+        </button>
+    </div>
+    <div id="settings-container">
+        <button onclick="saveData()" class="settings-buttons" id="save-data-button">Save Data</button>
+        <button onclick="resetData()" class="settings-buttons" id="reset-data-button">Reset Data</button>
+        <button onclick="importData()" class="settings-buttons" id="import-data-button">Import Data</button>
+        <button onclick="exportData()" class="settings-buttons" id="export-data-button">Export Data</button>
+        <button onclick="toggleAFKGains()" class="settings-buttons" id="toggle-afk-gains-button"></button>
+    </div>
     </div>
 </body>
 </html>
