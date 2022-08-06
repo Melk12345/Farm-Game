@@ -254,26 +254,30 @@
         </div>
     </div>
     <div id="upgrades-container">
-        <button onclick="buyUpgrade(0)" class="upgrade-buttons" id="upgrade0-button">
-            <span id="upgrade0-name"></span> (<span id="upgrade0-level"></span>) <br>
-            <span id="upgrade0-description"></span> <br>
-            Cost: <span id="upgrade0-cost"></span>
-        </button>
-        <button onclick="buyUpgrade(1)" class="upgrade-buttons" id="upgrade1-button">
-            <span id="upgrade1-name"></span> (<span id="upgrade1-level"></span>) <br>
-            <span id="upgrade1-description"></span> <br>
-            Cost: <span id="upgrade1-cost"></span>
-        </button>
-        <button onclick="buyUpgrade(2)" class="upgrade-buttons" id="upgrade2-button">
-            <span id="upgrade2-name"></span> (<span id="upgrade2-level"></span>) <br>
-            <span id="upgrade2-description"></span> <br>
-            Cost: <span id="upgrade2-cost"></span>
-        </button>
-        <button onclick="buyUpgrade(3)" class="upgrade-buttons" id="upgrade3-button">
-            <span id="upgrade3-name"></span> (<span id="upgrade3-level"></span>) <br>
-            <span id="upgrade3-description"></span> <br>
-            Cost: <span id="upgrade3-cost"></span>
-        </button>
+        <div id="upgrades-top-row">
+            <button onclick="buyUpgrade(0)" class="upgrade-buttons" id="upgrade0-button">
+                <span id="upgrade0-name"></span> (<span id="upgrade0-level"></span>) <br>
+                <span id="upgrade0-description"></span> <br>
+                Cost: <span id="upgrade0-cost"></span>
+            </button>
+            <button onclick="buyUpgrade(1)" class="upgrade-buttons" id="upgrade1-button">
+                <span id="upgrade1-name"></span> (<span id="upgrade1-level"></span>) <br>
+                <span id="upgrade1-description"></span> <br>
+                Cost: <span id="upgrade1-cost"></span>
+            </button>
+        </div>
+        <div id="upgrades-bottom-row">
+            <button onclick="buyUpgrade(2)" class="upgrade-buttons" id="upgrade2-button">
+                <span id="upgrade2-name"></span> (<span id="upgrade2-level"></span>) <br>
+                <span id="upgrade2-description"></span> <br>
+                Cost: <span id="upgrade2-cost"></span>
+            </button>
+            <button onclick="buyUpgrade(3)" class="upgrade-buttons" id="upgrade3-button">
+                <span id="upgrade3-name"></span> (<span id="upgrade3-level"></span>) <br>
+                <span id="upgrade3-description"></span> <br>
+                Cost: <span id="upgrade3-cost"></span>
+            </button>
+        </div>
     </div>
     <div id="settings-container">
         <button onclick="saveData()" class="settings-buttons" id="save-data-button">Save Data</button>
