@@ -37,11 +37,11 @@ function updateHeaderCropSelectedInfo() {
     let totalSeconds = crops[data.selectedCrop].harvestTime  * harvestTimeBoost();
     let harvestTime = formatHarvestTime(totalSeconds);
 
-    headerCropSelectedTextElement.innerHTML = crops[data.selectedCrop].name;
-    headerGoldTextElement.innerHTML = `+${cropGold(data.selectedCrop)}`;
-    headerXpTextElement.innerHTML = `+${cropXP(data.selectedCrop)}`;
-    headerCostTextElement.innerHTML = `${crops[data.selectedCrop].cost} gold`;
-    headerHarvestTimeTextElement.innerHTML = harvestTime;
+    headerCropSelectedTextElement.innerHTML = `Crop Selected: ${crops[data.selectedCrop].name}`;
+    headerGoldTextElement.innerHTML = `+${cropGold(data.selectedCrop)} gold`;
+    headerXpTextElement.innerHTML = `+${cropXP(data.selectedCrop)} XP`;
+    headerCostTextElement.innerHTML = `Cost: ${crops[data.selectedCrop].cost} gold`;
+    headerHarvestTimeTextElement.innerHTML = ` Harvest Time: ${harvestTime}`;
 }
 
 function revealCrops() {

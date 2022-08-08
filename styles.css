@@ -10,7 +10,6 @@ body {
 }
 
 .table-formatting {
-    font-family: 'Roboto Mono';
     width: 95%;
     font-size: 20px;
     margin: 0 auto;
@@ -91,20 +90,10 @@ button.hidden {
     transition-duration: 0.5s;
 }
 
-#header-table {
-    font-family: 'Roboto Mono';
-    width: 95%;
-    font-size: 20px;
-    margin: 0 auto;
-	text-align: center;
-    border-spacing: 0 4px;
-    padding: 0px 0px 25px 0px;
-}
-
 #header-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    font-size: 25px;
+    margin: 15px 0px 15px 0px;
 }
 
 .plot-buttons {
