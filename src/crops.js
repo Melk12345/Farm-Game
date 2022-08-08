@@ -20,8 +20,6 @@ function selectCrop(cropIndex) {
     updateSelectedCropColor();
 }
 
-// change
-// use forEach instead of .length
 function updateSelectedCropColor() {
     for (let i = 0; i < crops.length; i++) {
         document.getElementById("crop" + i + "-button").style.borderColor = 'White';

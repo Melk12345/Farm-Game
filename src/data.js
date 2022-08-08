@@ -1,9 +1,5 @@
 "use strict";
 
-// change
-// add an id field to the object and nest an object inside an object
-// crops.id = i 
-// print crops.id.name instead of crops[0].name
 const crops = [{ 
     name: "Blueberries",
     cost: 0,
