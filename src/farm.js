@@ -57,10 +57,10 @@ function updatePlotInfo() {
             let totalSeconds = data.plotHarvestTime[i];
             let harvestTime = formatHarvestTime(totalSeconds);
 
-            document.getElementById("plot" + i + "-name").innerHTML = crops[data.cropIDInPlot[i]].name;
+            document.getElementById("plot" + i + "-name").innerHTML = crops[data.plots[i]].name;
             document.getElementById("plot" + i + "-gold").innerHTML = `+${formatWithCommas(plotGold(i))}`;
             document.getElementById("plot" + i + "-xp").innerHTML = `+${formatWithCommas(plotXP(i))}`;
-            document.getElementById("plot" + i + "-cost").innerHTML = `${crops[data.cropIDInPlot[i]].cost} gold`;
+            document.getElementById("plot" + i + "-cost").innerHTML = `${crops[data.plots[i]].cost} gold`;
             if (harvestTime !== "0.0s") document.getElementById("plot" + i + "-harvestTime").innerHTML = harvestTime;
             else document.getElementById("plot" + i + "-harvestTime").innerHTML = "Ready!";
         }
@@ -114,8 +114,8 @@ function plantCrop(plotIndex) {
     data.gold -= crops[data.selectedCrop].cost;
     updateLevelAndGoldInfo();
     updateUpgradesButtonColor();
-    data.cropIDInPlot[plotIndex] = data.selectedCrop;
-    data.plotHarvestTime[plotIndex] = crops[data.cropIDInPlot[plotIndex]].harvestTime * harvestTimeBoost();
+    data.plots[plotIndex] = data.selectedCrop;
+    data.plotHarvestTime[plotIndex] = crops[data.plots[plotIndex]].harvestTime * harvestTimeBoost();
 }
 
 function harvestCrop(plotIndex) {
@@ -127,7 +127,7 @@ function harvestCrop(plotIndex) {
         updateUnlockNextPlotColor();
         updateUnlockNextCropColor();
     }
-    data.cropIDInPlot[plotIndex] = 0;
+    data.plots[plotIndex] = 0;
     data.plotHarvestTime[plotIndex] = -10;
     updateLevelAndGoldInfo();
     updatePlotInfo();

@@ -27,8 +27,8 @@ function formatHarvestTime(totalSeconds) {
     return harvestTime;
 }
 
-const plotGold = (plotIndex) => cropGold(data.cropIDInPlot[plotIndex]);
-const plotXP = (plotIndex) => cropXP(data.cropIDInPlot[plotIndex]);
+const plotGold = (plotIndex) => cropGold(data.plots[plotIndex]);
+const plotXP = (plotIndex) => cropXP(data.plots[plotIndex]);
 const cropGold = (cropID) =>  Math.ceil(crops[cropID].gold * goldBoost());
 const cropXP = (cropID) => Math.ceil(crops[cropID].xp * xpBoost()); 
 

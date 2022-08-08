@@ -88,7 +88,7 @@ let data = {
     selectedCrop: 0,
     numPlotsRevealed: 1,
     numCropsRevealed: 1,
-    cropIDInPlot: [0, 0, 0, 0, 0, 0, 0, 0],
+    plots: [0, 0, 0, 0, 0, 0, 0, 0],
     plotHarvestTime: [-10, -10, -10, -10, -10, -10, -10, -10],
     upgradeLevel: [0, 0, 0, 0]
 }

@@ -40,3 +40,12 @@ function buyUpgrade(upgradeIndex) {
     updateCropInfo();
     updateLevelAndGoldInfo()
 }
+
+function buyMultiple(numberToBuy, baseCost, growthRate, currentAmount) {
+    return baseCost * Math.pow(growthRate, currentAmount) * ((Math.pow(growthRate, numberToBuy) - 1) / (growthRate - 1));
+}
+
+function maxAffordable(currency, baseCost, growthRate, currentAmount) {
+    return Math.floor(Math.log((currency * (growthRate - 1)) / (baseCost * Math.pow(growthRate, currentAmount)) + 1, growthRate));
+}
+
