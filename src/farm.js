@@ -34,7 +34,7 @@ function unlockNextPlot() {
 const unlockPlotsButtonElement = document.getElementById("unlock-plots-button");
 
 function updateUnlockNextPlotColor() {
-    if (data.level >= nextPlotLevelRequirement()) {
+    if (data.level >= nextPlotLevelRequirement() && data.numPlotsRevealed < numPlotsMax) {
         unlockPlotsButtonElement.classList.add("enabled");
         unlockPlotsButtonElement.classList.remove("disabled");
         farmMenuButtonElement.style.backgroundColor = unlockPlotsButtonElement.style.display === 'none'  ? 'Black' : 'Green';

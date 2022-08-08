@@ -48,8 +48,12 @@ function updateHeaderCropSelectedInfo() {
 
 function revealCrops() {
     for (let i = 0; i < numCropsMax; i++) {
-        let element = document.getElementById("crop" + i + "-row");
-        element.style.display = i < data.numCropsRevealed ? "table-row" : "none";
+        let element = document.getElementById("crop" + i + "-button");
+        if (i < data.numCropsRevealed) {
+            element.classList.remove("hidden");
+        } else {
+            element.classList.add("hidden");
+        }
     }
     updateCropInfo();
 }
@@ -67,20 +71,13 @@ function unlockNextCrop() {
 const unlockCropsButtonElement = document.getElementById("unlock-crops-button");
 
 function updateUnlockNextCropColor() {
-    if (data.level >= nextCropLevelRequirement()) {
+    if (data.level >= nextCropLevelRequirement() && data.numCropsRevealed < numCropsMax) {
         unlockCropsButtonElement.classList.add("enabled");
         unlockCropsButtonElement.classList.remove("disabled");
+        cropsMenuButtonElement.style.backgroundColor = unlockCropsButtonElement.style.display === 'none'  ? 'Black' : 'Green';
     } else {
         unlockCropsButtonElement.classList.add("disabled");
         unlockCropsButtonElement.classList.remove("enabled");
-    }
-    updateCropsMenuButtonColor();
-}
-
-function updateCropsMenuButtonColor() {
-    if (data.level >= nextCropLevelRequirement()) {
-        cropsMenuButtonElement.style.backgroundColor = unlockCropsButtonElement.style.display === 'none'  ? 'Black' : 'Green';
-    } else {
         cropsMenuButtonElement.style.backgroundColor = 'Black';
     }
 }

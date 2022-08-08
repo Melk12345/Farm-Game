@@ -8,7 +8,7 @@ const goldTextElement = document.getElementById("gold-text");
 function updateLevelAndGoldInfo() {
     levelTextElement.innerHTML = data.level;
     xpTextElement.innerHTML = format(Math.floor(data.xp));
-    xpReqTextElement.innerHTML = xpReq();
+    xpReqTextElement.innerHTML = format(xpReq());
     goldTextElement.innerHTML = format(Math.floor(data.gold));
     headerCostTextElement.style.color = data.gold < crops[data.selectedCrop].cost ? 'Red' : 'White';
 }
