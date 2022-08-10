@@ -153,13 +153,17 @@ function calculateHarvestTime(deltaTime) {
             data.plotHarvestTime[i] -= deltaTime;
         }
     }
-    updatePlotInfo();
-    updatePlantCropButtonColor();
-    updatePlantAllButtonColor();
-    updateHarvestCropButtonColor();
-    updateHarvestAllButtonColor();
-    updateEmptyPlotButtonColor();
-    updateEmptyAllButtonColor();
+}
+
+function updateHarvestTimeDisplay() {
+    for (let i = 0; i < data.numPlotsRevealed; i++) {
+        if (data.plotHarvestTime[i] >= 0) {
+            let totalSeconds = data.plotHarvestTime[i];
+            let harvestTime = formatHarvestTime(totalSeconds);
+            if (harvestTime !== "0.0s") document.getElementById("plot" + i + "-harvestTime").innerHTML = harvestTime;
+            else document.getElementById("plot" + i + "-harvestTime").innerHTML = "Ready!";
+        }
+    }
 }
 
 const plantAllButtonElement = document.getElementById("plant-all-button");

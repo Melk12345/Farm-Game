@@ -78,7 +78,7 @@ const baseXPReq = 10;
 const basePlotLevelRequirement = 2;
 const baseCropLevelRequirement = 3;
 
-let data = {
+const data = {
     time: Date.now(),
     firstTime: true,
     AFKGains: true,
@@ -88,7 +88,18 @@ let data = {
     selectedCrop: 0,
     numPlotsRevealed: 1,
     numCropsRevealed: 1,
-    plots: [0, 0, 0, 0, 0, 0, 0, 0],
     plotHarvestTime: [-10, -10, -10, -10, -10, -10, -10, -10],
-    upgradeLevel: [0, 0, 0, 0]
+    upgradeLevel: [0, 0, 0, 0],
+    plots: [
+        { cropID: 0, remainingHarvestTime: -10 },
+        { cropID: 0, remainingHarvestTime: -10 },
+        { cropID: 0, remainingHarvestTime: -10 },
+        { cropID: 0, remainingHarvestTime: -10 },
+        { cropID: 0, remainingHarvestTime: -10 },
+        { cropID: 0, remainingHarvestTime: -10 },
+        { cropID: 0, remainingHarvestTime: -10 },
+        { cropID: 0, remainingHarvestTime: -10 },
+        { cropID: 0, remainingHarvestTime: -10 },
+        { cropID: 0, remainingHarvestTime: -10 }
+    ]
 }

@@ -51,6 +51,13 @@ function mainLoop() {
     const deltaTime = (now - lastUpdate);
     lastUpdate = now;
     calculateHarvestTime(deltaTime);
+    updateHarvestTimeDisplay();
+    updatePlantCropButtonColor();
+    updatePlantAllButtonColor();
+    updateHarvestCropButtonColor();
+    updateHarvestAllButtonColor();
+    updateEmptyPlotButtonColor();
+    updateEmptyAllButtonColor();
 }
 
 function autoSaveData() {
@@ -66,12 +73,6 @@ function load() {
     updateCropInfo();
     revealPlots();
     revealCrops();
-    updatePlantCropButtonColor();
-    updatePlantAllButtonColor();
-    updateHarvestCropButtonColor();
-    updateHarvestAllButtonColor();
-    updateEmptyPlotButtonColor();
-    updateEmptyAllButtonColor();
     updateUnlockNextPlotColor();
     updateUnlockNextCropColor();
     updateUnlockNextPlotInfo();
